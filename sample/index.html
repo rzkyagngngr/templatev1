@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <title>Metrica - Liquid Glass Analytics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --bg-deep: #031423;
+            --bg-soft: rgba(255, 255, 255, 0.08);
+            --glass-stroke: rgba(255, 255, 255, 0.25);
+            --glass-shadow: 0 25px 80px rgba(2, 20, 35, 0.45);
+            --text-strong: #f5fbff;
+            --text-soft: rgba(245, 251, 255, 0.7);
+            --gradient-main: linear-gradient(135deg, #32d0ff 0%, #6de1ff 45%, #2b9dff 100%);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(61, 194, 255, 0.25), transparent 45%),
+                        radial-gradient(circle at 80% 0%, rgba(70, 255, 246, 0.35), transparent 55%),
+                        var(--bg-deep);
+            color: var(--text-strong);
+            position: relative;
+            overflow-x: hidden;
+            padding-bottom: 100px;
+        }
+        
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            width: 420px;
+            height: 420px;
+            border-radius: 40% 60% 70% 30% / 30% 50% 50% 70%;
+            background: rgba(111, 229, 255, 0.25);
+            filter: blur(60px);
+            z-index: 0;
+            animation: morphPulse 18s ease-in-out infinite alternate;
+        }
+        
+        body::before {
+            top: -120px;
+            right: -160px;
+        }
+        
+        body::after {
+            bottom: -160px;
+            left: -120px;
+            animation-delay: 4s;
+        }
+        
+        .page-shell {
+            position: relative;
+            z-index: 1;
+            padding: 32px clamp(16px, 4vw, 40px);
+        }
+        
+        .glass-element {
+            background: var(--bg-soft);
+            border: 1px solid var(--glass-stroke);
+            box-shadow: var(--glass-shadow);
+            border-radius: 26px;
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+        }
+        
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+        
+        .brand-mark {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        
+        .brand-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 22px;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #021821;
+            font-size: 26px;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(62, 199, 255, 0.5);
+        }
+        
+        .hero-meta h1 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 40px);
+        }
+        
+        .hero-meta span {
+            color: var(--text-soft);
+            font-size: 15px;
+        }
+        
+        .content-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+        
+        .card {
+            padding: 24px;
+        }
+        
+        .card h4 {
+            margin: 0 0 16px;
+            font-size: 20px;
+        }
+        
+        .card p {
+            margin: 0;
+            color: var(--text-soft);
+            line-height: 1.6;
+        }
+        
+        /* ===== BOTTOM FLOATING NAV - iOS 26 Liquid Glass ===== */
+        .floating-nav-wrapper {
+            position: fixed;
+            left: 50%;
+            bottom: 20px;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+        
+        .floating-nav {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 32px;
+            background: rgba(8, 31, 53, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border: none;
+            background: transparent;
+            color: var(--text-soft);
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        
+        .nav-btn i {
+            font-size: 20px;
+        }
+        
+        .nav-btn:hover {
+            color: #6fe8ff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-btn.active {
+            color: #6fe8ff;
+        }
+        
+        /* Submenu Styling */
+        .submenu {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 12px;
+        }
+        
+        .nav-item-wrapper:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .submenu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: rgba(8, 31, 53, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            min-width: 160px;
+        }
+        
+        .submenu-item {
+            padding: 0;
+        }
+        
+        .submenu-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            color: var(--text-soft);
+            text-decoration: none;
+            border-radius: 14px;
+            font-size: 13px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        
+        .submenu-link:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #6fe8ff;
+        }
+        
+        @keyframes morphPulse {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.2) rotate(12deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .page-shell {
+                padding: 20px 16px;
+            }
+            
+            .content-flow {
+                grid-template-columns: 1fr;
+            }
+            
+            .submenu-list {
+                min-width: 140px;
+            }
+            
+            .nav-btn span {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero glass-element">
+            <div class="brand-mark">
+                <div class="brand-icon">M</div>
+                <div class="hero-meta">
+                    <h1>Analytics Dashboard</h1>
+                    <span>Metrica v3.1 - Liquid Glass UI</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="content-flow">
+            <article class="card glass-element">
+                <h4>Sessions Overview</h4>
+                <p>Pantau semua sesi pengguna secara real-time dengan visualisasi data yang intuitif dan responsif.</p>
+                <div id="ana_dash_1" class="apex-charts" style="height: 280px; margin-top: 20px;"></div>
+            </article>
+
+            <article class="card glass-element">
+                <h4>Device Analytics</h4>
+                <p>Analisis perangkat yang mengakses dashboard Anda. Lihat distribusi pengguna per device type.</p>
+                <div id="ana_device" class="apex-charts" style="height: 280px; margin-top: 20px;"></div>
+            </article>
+
+            <article class="card glass-element">
+                <h4>Traffic Sources</h4>
+                <p>Identifikasi sumber traffic terbesar dan optimalkan strategi marketing Anda.</p>
+                <div id="circlechart" class="apex-charts" style="height: 280px; margin-top: 20px;"></div>
+            </article>
+
+            <article class="card glass-element">
+                <h4>Key Metrics</h4>
+                <div style="display: grid; gap: 16px;">
+                    <div>
+                        <p style="font-size: 12px; margin-bottom: 6px;">Total Sessions</p>
+                        <h2 style="margin: 0; font-size: 36px; color: #6fe8ff;">24,847</h2>
+                        <p style="font-size: 13px; margin: 4px 0 0; color: #64f7c6;">↑ 8.5% from last week</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 12px; margin-bottom: 6px;">Avg. Session Duration</p>
+                        <h2 style="margin: 0; font-size: 36px; color: #6fe8ff;">00:18</h2>
+                        <p style="font-size: 13px; margin: 4px 0 0; color: #64f7c6;">↑ 1.5% from last week</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card glass-element">
+                <h4>Bounce Rate</h4>
+                <div style="display: grid; gap: 16px;">
+                    <div>
+                        <p style="font-size: 12px; margin-bottom: 6px;">Bounce Rate %</p>
+                        <h2 style="margin: 0; font-size: 36px; color: #ff8ba7;">35.2%</h2>
+                        <p style="font-size: 13px; margin: 4px 0 0; color: #ff8ba7;">↓ 2.1% improvement</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card glass-element">
+                <h4>Goal Completions</h4>
+                <div style="display: grid; gap: 16px;">
+                    <div>
+                        <p style="font-size: 12px; margin-bottom: 6px;">Completed Goals</p>
+                        <h2 style="margin: 0; font-size: 36px; color: #64f7c6;">85,024</h2>
+                        <p style="font-size: 13px; margin: 4px 0 0; color: #64f7c6;">↑ 10.5% from last week</p>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <!-- FLOATING BOTTOM NAV -->
+    <div class="floating-nav-wrapper">
+        <nav class="floating-nav">
+            <!-- Dashboard -->
+            <div class="nav-item-wrapper">
+                <button class="nav-btn active" title="Dashboard">
+                    <i class="ti ti-smart-home"></i>
+                    <span>Home</span>
+                </button>
+                <ul class="submenu-list submenu">
+                    <li class="submenu-item"><a href="index.html" class="submenu-link"><i class="ti ti-chart-area"></i> Analytics</a></li>
+                    <li class="submenu-item"><a href="crypto-index.html" class="submenu-link"><i class="ti ti-coin"></i> Crypto</a></li>
+                    <li class="submenu-item"><a href="crm-index.html" class="submenu-link"><i class="ti ti-users"></i> CRM</a></li>
+                    <li class="submenu-item"><a href="projects-index.html" class="submenu-link"><i class="ti ti-folder"></i> Projects</a></li>
+                </ul>
+            </div>
+
+            <!-- Apps -->
+            <div class="nav-item-wrapper">
+                <button class="nav-btn" title="Apps">
+                    <i class="ti ti-apps"></i>
+                    <span>Apps</span>
+                </button>
+                <ul class="submenu-list submenu">
+                    <li class="submenu-item"><a href="apps-chat.html" class="submenu-link"><i class="ti ti-message"></i> Chat</a></li>
+                    <li class="submenu-item"><a href="apps-calendar.html" class="submenu-link"><i class="ti ti-calendar"></i> Calendar</a></li>
+                    <li class="submenu-item"><a href="apps-contact-list.html" class="submenu-link"><i class="ti ti-contacts"></i> Contacts</a></li>
+                    <li class="submenu-item"><a href="apps-invoice.html" class="submenu-link"><i class="ti ti-receipt"></i> Invoice</a></li>
+                </ul>
+            </div>
+
+            <!-- UI Kit -->
+            <div class="nav-item-wrapper">
+                <button class="nav-btn" title="UI Kit">
+                    <i class="ti ti-planet"></i>
+                    <span>UI Kit</span>
+                </button>
+                <ul class="submenu-list submenu">
+                    <li class="submenu-item"><a href="ui-alerts.html" class="submenu-link"><i class="ti ti-alert-circle"></i> Alerts</a></li>
+                    <li class="submenu-item"><a href="ui-buttons.html" class="submenu-link"><i class="ti ti-square"></i> Buttons</a></li>
+                    <li class="submenu-item"><a href="ui-cards.html" class="submenu-link"><i class="ti ti-layout-grid"></i> Cards</a></li>
+                    <li class="submenu-item"><a href="ui-modals.html" class="submenu-link"><i class="ti ti-window"></i> Modals</a></li>
+                </ul>
+            </div>
+
+            <!-- Pages -->
+            <div class="nav-item-wrapper">
+                <button class="nav-btn" title="Pages">
+                    <i class="ti ti-files"></i>
+                    <span>Pages</span>
+                </button>
+                <ul class="submenu-list submenu">
+                    <li class="submenu-item"><a href="pages-profile.html" class="submenu-link"><i class="ti ti-user"></i> Profile</a></li>
+                    <li class="submenu-item"><a href="pages-timeline.html" class="submenu-link"><i class="ti ti-timeline"></i> Timeline</a></li>
+                    <li class="submenu-item"><a href="pages-blogs.html" class="submenu-link"><i class="ti ti-news"></i> Blogs</a></li>
+                    <li class="submenu-item"><a href="pages-faq.html" class="submenu-link"><i class="ti ti-help"></i> FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Auth -->
+            <div class="nav-item-wrapper">
+                <button class="nav-btn" title="Authentication">
+                    <i class="ti ti-shield-lock"></i>
+                    <span>Auth</span>
+                </button>
+                <ul class="submenu-list submenu">
+                    <li class="submenu-item"><a href="auth-login.html" class="submenu-link"><i class="ti ti-login"></i> Login</a></li>
+                    <li class="submenu-item"><a href="auth-register.html" class="submenu-link"><i class="ti ti-user-plus"></i> Register</a></li>
+                    <li class="submenu-item"><a href="auth-recover-pw.html" class="submenu-link"><i class="ti ti-key"></i> Recover PW</a></li>
+                    <li class="submenu-item"><a href="auth-lock-screen.html" class="submenu-link"><i class="ti ti-lock"></i> Lock Screen</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/analytics-index.init.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        // Active nav item handler
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

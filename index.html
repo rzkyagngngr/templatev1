@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PTOS Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <h1 class="logo">PTOS</h1>
+        </div>
+        <div class="nav-center">
+            <div class="search-bar">
+                <span class="material-icons-round">search</span>
+                <input type="text" placeholder="Search">
+                <span class="search-shortcut">⌘K</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <!-- Language Selector -->
+            <div class="dropdown" id="langDropdown">
+                <button class="dropdown-toggle">
+                    <span class="lang-flag">🇺🇸</span>
+                    <span class="lang-code">EN</span>
+                    <span class="material-icons-round arrow">expand_more</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item active">
+                        <span class="lang-flag">🇺🇸</span> English
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <span class="lang-flag">🇮🇩</span> Indonesia
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <span class="lang-flag">🇯🇵</span> 日本語
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <span class="lang-flag">🇨🇳</span> 中文
+                    </a>
+                </div>
+            </div>
+            <!-- Notifications -->
+            <div class="dropdown" id="notifDropdown">
+                <button class="icon-btn notification-btn dropdown-toggle">
+                    <span class="material-icons-round">notifications</span>
+                    <span class="badge">3</span>
+                </button>
+                <div class="dropdown-menu notifications-menu">
+                    <div class="dropdown-header">
+                        <span>Notifications</span>
+                        <a href="#">Mark all read</a>
+                    </div>
+                    <a href="#" class="dropdown-item notification-item unread">
+                        <div class="notif-icon blue">
+                            <span class="material-icons-round">person_add</span>
+                        </div>
+                        <div class="notif-content">
+                            <strong>New user registered</strong>
+                            <small>John Doe just signed up</small>
+                            <span class="notif-time">2 min ago</span>
+                        </div>
+                    </a>
+                    <a href="#" class="dropdown-item notification-item unread">
+                        <div class="notif-icon green">
+                            <span class="material-icons-round">check_circle</span>
+                        </div>
+                        <div class="notif-content">
+                            <strong>Payment successful</strong>
+                            <small>Invoice #8832 paid</small>
+                            <span class="notif-time">15 min ago</span>
+                        </div>
+                    </a>
+                    <a href="#" class="dropdown-item notification-item">
+                        <div class="notif-icon orange">
+                            <span class="material-icons-round">warning</span>
+                        </div>
+                        <div class="notif-content">
+                            <strong>Low storage</strong>
+                            <small>Only 10% space remaining</small>
+                            <span class="notif-time">1 hour ago</span>
+                        </div>
+                    </a>
+                    <div class="dropdown-footer">
+                        <a href="#">View all notifications</a>
+                    </div>
+                </div>
+            </div>
+            <!-- User Profile -->
+            <div class="dropdown" id="userDropdown">
+                <button class="user-profile dropdown-toggle">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=0ea5e9&color=fff" alt="User"
+                        class="avatar">
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                        <span class="user-role">Administrator</span>
+                    </div>
+                    <span class="material-icons-round arrow">expand_more</span>
+                </button>
+                <div class="dropdown-menu user-menu">
+                    <div class="dropdown-header user-header">
+                        <div class="user-avatar-wrapper">
+                            <img src="https://ui-avatars.com/api/?name=Admin&background=0ea5e9&color=fff" alt="User"
+                                class="avatar-lg">
+                            <span class="online-status"></span>
+                        </div>
+                        <div class="user-details">
+                            <strong>Admin User</strong>
+                            <small>admin@ptos.com</small>
+                            <span class="role-badge">Administrator</span>
+                        </div>
+                    </div>
+                    <div class="user-stats">
+                        <div class="stat-item">
+                            <span class="material-icons-round">schedule</span>
+                            <div>
+                                <span class="stat-label">Last Login</span>
+                                <span class="stat-value">Today, 09:45 AM</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <span class="material-icons-round">cloud</span>
+                            <div>
+                                <span class="stat-label">Storage</span>
+                                <div class="storage-bar">
+                                    <div class="storage-fill" style="width: 65%"></div>
+                                </div>
+                                <span class="stat-value">6.5 GB / 10 GB</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="dropdown-item">
+                        <span class="material-icons-round">photo_camera</span>
+                        Change Image
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <span class="material-icons-round">lock</span>
+                        Change Password
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <span class="material-icons-round">settings</span>
+                        Settings
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item logout">
+                        <span class="material-icons-round">logout</span>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="page-header">
+            <h2>Dashboard</h2>
+            <div class="header-actions">
+                <button class="btn-secondary">Export</button>
+                <button class="btn-primary">+ New Request</button>
+            </div>
+        </header>
+
+        <!-- Row 1: Stats Cards (3 columns) -->
+        <div class="content-row cols-3">
+            <div class="glass-card">
+                <div class="card-icon blue">
+                    <span class="material-icons-round">account_balance_wallet</span>
+                </div>
+                <div class="card-data">
+                    <span class="card-label">Total Revenue</span>
+                    <span class="card-value">$122,569.00</span>
+                    <span class="card-trend up">+11.1% from yesterday</span>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="card-icon green">
+                    <span class="material-icons-round">trending_up</span>
+                </div>
+                <div class="card-data">
+                    <span class="card-label">Active Requests</span>
+                    <span class="card-value">1,245</span>
+                    <span class="card-trend up">+5.4% this week</span>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="card-icon orange">
+                    <span class="material-icons-round">pending_actions</span>
+                </div>
+                <div class="card-data">
+                    <span class="card-label">Pending Approvals</span>
+                    <span class="card-value">38</span>
+                    <span class="card-trend down">-2.1% decrease</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: Chart + Balance (70/30) -->
+        <div class="content-row cols-70-30">
+            <div class="glass-card">
+                <div class="card-header">
+                    <h3>Revenue & Requests</h3>
+                    <div class="tabs">
+                        <button class="tab">Hour</button>
+                        <button class="tab active">Day</button>
+                        <button class="tab">Week</button>
+                        <button class="tab">Month</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="mainChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="card-header">
+                    <h3>Total Balance</h3>
+                    <span class="date-label">Dec 16, 2025</span>
+                </div>
+                <div class="balance-display">
+                    <h2 class="balance-amount">$85,692.00</h2>
+                    <p class="balance-change up">+$455.00 <span>(6.2%)</span></p>
+                </div>
+                <div class="balance-actions">
+                    <button class="btn-action green">Receive</button>
+                    <button class="btn-action red">Send</button>
+                    <button class="btn-action blue">+ Invest</button>
+                </div>
+                <ul class="asset-list">
+                    <li>
+                        <div class="asset-info">
+                            <span class="asset-icon">💰</span>
+                            <div>
+                                <strong>6.18424000</strong>
+                                <small>$33,277.36</small>
+                            </div>
+                        </div>
+                        <span class="asset-badge">Bitcoin</span>
+                    </li>
+                    <li>
+                        <div class="asset-info">
+                            <span class="asset-icon">💎</span>
+                            <div>
+                                <strong>32.65849</strong>
+                                <small>$5,562.36</small>
+                            </div>
+                        </div>
+                        <span class="asset-badge">Ethereum</span>
+                    </li>
+                    <li>
+                        <div class="asset-info">
+                            <span class="asset-icon">⚡</span>
+                            <div>
+                                <strong>10.65849</strong>
+                                <small>$7,854.36</small>
+                            </div>
+                        </div>
+                        <span class="asset-badge">Litecoin</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Row 3: Activity + History (2 columns) -->
+        <div class="content-row cols-2">
+            <div class="glass-card">
+                <div class="card-header">
+                    <h3>Recent Activity</h3>
+                    <span class="filter-badge">All</span>
+                </div>
+                <ul class="activity-list">
+                    <li>
+                        <div class="activity-icon send">
+                            <span class="material-icons-round">arrow_upward</span>
+                        </div>
+                        <div class="activity-info">
+                            <strong>Send BTC</strong>
+                            <small>6 June 2019 10:25 AM</small>
+                        </div>
+                        <span class="activity-amount red">-0.000245684 BTC</span>
+                    </li>
+                    <li>
+                        <div class="activity-icon receive">
+                            <span class="material-icons-round">arrow_downward</span>
+                        </div>
+                        <div class="activity-info">
+                            <strong>Receive BTC</strong>
+                            <small>4 June 2019 7:05 PM</small>
+                        </div>
+                        <span class="activity-amount green">+0.012458632 BTC</span>
+                    </li>
+                    <li>
+                        <div class="activity-icon send">
+                            <span class="material-icons-round">arrow_upward</span>
+                        </div>
+                        <div class="activity-info">
+                            <strong>Send BTC</strong>
+                            <small>1 June 2019 11:30 PM</small>
+                        </div>
+                        <span class="activity-amount red">-0.000245684 BTC</span>
+                    </li>
+                    <li>
+                        <div class="activity-icon receive">
+                            <span class="material-icons-round">arrow_downward</span>
+                        </div>
+                        <div class="activity-info">
+                            <strong>Receive ETH</strong>
+                            <small>28 May 2019 08:45 AM</small>
+                        </div>
+                        <span class="activity-amount green">+1.25486321 ETH</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="glass-card">
+                <div class="card-header">
+                    <h3>Transaction History</h3>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="clean-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Volume</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>16-12-2025</td>
+                                <td>$86,359.9</td>
+                                <td>$445.94M</td>
+                                <td class="red">-0.07%</td>
+                            </tr>
+                            <tr>
+                                <td>15-12-2025</td>
+                                <td>$86,421.6</td>
+                                <td>$2.80B</td>
+                                <td class="red">-1.98%</td>
+                            </tr>
+                            <tr>
+                                <td>14-12-2025</td>
+                                <td>$88,164.4</td>
+                                <td>$1.24B</td>
+                                <td class="red">-2.32%</td>
+                            </tr>
+                            <tr>
+                                <td>13-12-2025</td>
+                                <td>$90,258.1</td>
+                                <td>$439.87M</td>
+                                <td class="red">-0.02%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 4: Market Cap Table (Full Width) -->
+        <div class="content-row cols-1">
+            <div class="glass-card">
+                <div class="card-header">
+                    <h3>Market Overview</h3>
+                    <p class="market-summary">The global market cap is <strong>$1.44T</strong>, a <span
+                            class="red">3.99%</span> decrease.</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="clean-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>24h Change</th>
+                                <th>Market Cap</th>
+                                <th>Volume (24h)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="coin-cell">
+                                        <span class="coin-icon">₿</span>
+                                        <div>
+                                            <strong>Bitcoin</strong>
+                                            <small>BTC</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$7,289.45</td>
+                                <td class="green">+2.5%</td>
+                                <td>$129,820,932</td>
+                                <td>$25,111,773</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="coin-cell">
+                                        <span class="coin-icon">Ξ</span>
+                                        <div>
+                                            <strong>Ethereum</strong>
+                                            <small>ETH</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$234.45</td>
+                                <td class="green">+0.45%</td>
+                                <td>$24,909,743</td>
+                                <td>$12,856,403</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="coin-cell">
+                                        <span class="coin-icon">Ł</span>
+                                        <div>
+                                            <strong>Litecoin</strong>
+                                            <small>LTC</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$7,289.45</td>
+                                <td class="green">+3.51%</td>
+                                <td>$5,399,795,666</td>
+                                <td>$4,394,304,674</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="coin-cell">
+                                        <span class="coin-icon">ɱ</span>
+                                        <div>
+                                            <strong>Monero</strong>
+                                            <small>XMR</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>$7,289.45</td>
+                                <td class="green">+0.95%</td>
+                                <td>$1,375,808,437</td>
+                                <td>$58,791,421</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 5: Users Table (Full Width) -->
+        <div class="content-row cols-1">
+            <div class="glass-card">
+                <div class="card-header">
+                    <h3>Recent Users</h3>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="clean-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Date</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#8832</td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=John+Doe&background=random" alt="img"
+                                            class="avatar-sm">
+                                        <span>John Doe</span>
+                                    </div>
+                                </td>
+                                <td>Oct 24, 2025</td>
+                                <td>$450.00</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                                <td><span class="material-icons-round action-btn">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td>#8831</td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Alice+Smith&background=random"
+                                            alt="img" class="avatar-sm">
+                                        <span>Alice Smith</span>
+                                    </div>
+                                </td>
+                                <td>Oct 24, 2025</td>
+                                <td>$120.50</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                                <td><span class="material-icons-round action-btn">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td>#8830</td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Robert+Fox&background=random"
+                                            alt="img" class="avatar-sm">
+                                        <span>Robert Fox</span>
+                                    </div>
+                                </td>
+                                <td>Oct 23, 2025</td>
+                                <td>$950.00</td>
+                                <td><span class="status-badge failed">Failed</span></td>
+                                <td><span class="material-icons-round action-btn">more_vert</span></td>
+                            </tr>
+                            <tr>
+                                <td>#8829</td>
+                                <td>
+                                    <div class="user-cell">
+                                        <img src="https://ui-avatars.com/api/?name=Jane+Cooper&background=random"
+                                            alt="img" class="avatar-sm">
+                                        <span>Jane Cooper</span>
+                                    </div>
+                                </td>
+                                <td>Oct 23, 2025</td>
+                                <td>$210.00</td>
+                                <td><span class="status-badge success">Completed</span></td>
+                                <td><span class="material-icons-round action-btn">more_vert</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Bottom Navigation (matching crypto-index.html) -->
+    <nav class="floating-nav" id="floatingNav">
+        <button class="nav-btn active" data-target="home">
+            <span class="material-icons-round">home</span>
+            <span class="nav-btn-label">Home</span>
+            <div class="submenu">
+                <a href="index.html" class="submenu-item">Analytics</a>
+                <a href="crypto-index.html" class="submenu-item">Crypto</a>
+                <a href="crm-index.html" class="submenu-item">CRM</a>
+                <a href="projects-index.html" class="submenu-item">Projects</a>
+            </div>
+        </button>
+        <button class="nav-btn" data-target="apps">
+            <span class="material-icons-round">apps</span>
+            <span class="nav-btn-label">Apps</span>
+            <div class="submenu">
+                <a href="apps-email-inbox.html" class="submenu-item">Email</a>
+                <a href="apps-chat.html" class="submenu-item">Chat</a>
+                <a href="apps-contact-list.html" class="submenu-item">Contacts</a>
+                <a href="apps-calendar.html" class="submenu-item">Calendar</a>
+            </div>
+        </button>
+        <button class="nav-btn" data-target="ui">
+            <span class="material-icons-round">palette</span>
+            <span class="nav-btn-label">UI</span>
+            <div class="submenu">
+                <a href="ui-alerts.html" class="submenu-item">Alerts</a>
+                <a href="ui-buttons.html" class="submenu-item">Buttons</a>
+                <a href="ui-cards.html" class="submenu-item">Cards</a>
+                <a href="ui-modals.html" class="submenu-item">Modals</a>
+            </div>
+        </button>
+        <button class="nav-btn" data-target="pages">
+            <span class="material-icons-round">description</span>
+            <span class="nav-btn-label">Pages</span>
+            <div class="submenu">
+                <a href="pages-profile.html" class="submenu-item">Profile</a>
+                <a href="pages-timeline.html" class="submenu-item">Timeline</a>
+                <a href="pages-pricing.html" class="submenu-item">Pricing</a>
+                <a href="pages-gallery.html" class="submenu-item">Gallery</a>
+            </div>
+        </button>
+        <button class="nav-btn" data-target="auth">
+            <span class="material-icons-round">shield</span>
+            <span class="nav-btn-label">Auth</span>
+            <div class="submenu">
+                <a href="auth-login.html" class="submenu-item">Login</a>
+                <a href="auth-register.html" class="submenu-item">Register</a>
+                <a href="auth-recover-pw.html" class="submenu-item">Recover</a>
+            </div>
+        </button>
+        <button class="nav-toggle-btn" id="navToggleBtn" title="Toggle Layout">
+            <span class="material-icons-round">view_agenda</span>
+        </button>
+    </nav>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

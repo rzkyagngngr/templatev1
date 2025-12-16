@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <title>Metrica - Liquid Glass Analytics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+        :root {
+            --bg-deep: #031423;
+            --bg-soft: rgba(255, 255, 255, 0.08);
+            --glass-stroke: rgba(255, 255, 255, 0.25);
+            --glass-shadow: 0 25px 80px rgba(2, 20, 35, 0.45);
+            --text-strong: #f5fbff;
+            --text-soft: rgba(245, 251, 255, 0.7);
+            --gradient-main: linear-gradient(135deg, #32d0ff 0%, #6de1ff 45%, #2b9dff 100%);
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 20%, rgba(61, 194, 255, 0.25), transparent 45%),
+                        radial-gradient(circle at 80% 0%, rgba(70, 255, 246, 0.35), transparent 55%),
+                        var(--bg-deep);
+            color: var(--text-strong);
+            position: relative;
+            overflow-x: hidden;
+        }
+        body::before,
+        body::after {
+            content: '';
+            position: fixed;
+            width: 420px;
+            height: 420px;
+            border-radius: 40% 60% 70% 30% / 30% 50% 50% 70%;
+            background: rgba(111, 229, 255, 0.25);
+            filter: blur(60px);
+            z-index: 0;
+            animation: morphPulse 18s ease-in-out infinite alternate;
+        }
+        body::before {
+            top: -120px;
+            right: -160px;
+        }
+        body::after {
+            bottom: -160px;
+            left: -120px;
+            animation-delay: 4s;
+        }
+        .page-shell {
+            position: relative;
+            z-index: 1;
+            padding: 32px clamp(16px, 4vw, 60px) 120px;
+        }
+        .glass-element {
+            background: var(--bg-soft);
+            border: 1px solid var(--glass-stroke);
+            box-shadow: var(--glass-shadow);
+            border-radius: 26px;
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+        }
+        .nav-glass {
+            position: relative;
+        }
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: clamp(18px, 2vw, 26px);
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 24px;
+            background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15), transparent 60%);
+            pointer-events: none;
+        }
+        .brand-mark {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .brand-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 22px;
+            background: var(--gradient-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #021821;
+            font-size: 26px;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(62, 199, 255, 0.5);
+        }
+        .hero-meta {
+            display: flex;
+            flex-direction: column;
+        }
+        .hero-meta h1 {
+            margin: 0;
+            font-size: clamp(28px, 4vw, 40px);
+        }
+        .hero-meta span {
+            color: var(--text-soft);
+            font-size: 15px;
+        }
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-actions button,
+        .hero-actions .glass-chip {
+            border: none;
+            color: var(--text-strong);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 12px 20px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+        }
+        .hero-actions button:hover {
+            background: rgba(255, 255, 255, 0.16);
+            cursor: pointer;
+        }
+        .content-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+        .metric-card {
+            padding: 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .metric-card::after {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            top: -70px;
+            right: -40px;
+            filter: blur(12px);
+        }
+        .metric-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--text-strong);
+        }
+        .metric-details h3 {
+            margin: 6px 0;
+            font-size: 30px;
+            letter-spacing: 0.4px;
+        }
+        .metric-details p {
+            margin: 0;
+            color: var(--text-soft);
+            font-size: 14px;
+        }
+        .trend.up {
+            color: #64f7c6;
+        }
+        .trend.down {
+            color: #ff8ba7;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        .chart-card {
+            padding: 24px;
+        }
+        .chart-card header,
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 14px;
+        }
+        .chart-card h4,
+        .section-heading h4 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .drop-filter {
+            border: none;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-strong);
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+        #ana_dash_1,
+        #ana_device,
+        #circlechart {
+            min-height: 280px;
+        }
+        .device-table table,
+        .traffic-table table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+            font-size: 14px;
+        }
+        .device-table th,
+        .traffic-table th {
+            text-align: left;
+            color: var(--text-soft);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .device-table td,
+        .traffic-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .device-table td:last-child,
+        .traffic-table td:last-child {
+            text-align: right;
+        }
+        .live-block {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+        .traffic-card {
+            padding: 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+        .progress {
+            height: 12px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+            margin-top: 10px;
+        }
+        .progress span {
+            display: block;
+            height: 100%;
+            border-radius: 20px;
+        }
+        .progress span:nth-child(1) {
+            width: 55%;
+            background: #6fddff;
+        }
+        .progress span:nth-child(2) {
+            width: 28%;
+            background: #36f4c3;
+        }
+        .progress span:nth-child(3) {
+            width: 17%;
+            background: rgba(255, 255, 255, 0.35);
+        }
+        .page-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .page-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .page-list img {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+        }
+        .activity-stream {
+            max-height: 420px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .activity-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .activity-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        .table-duo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        table .tag {
+            color: var(--text-soft);
+            font-size: 12px;
+        }
+        .footer-glass {
+            margin-top: 30px;
+            padding: 18px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-soft);
+        }
+        .liquid-bottom-nav {
+            position: fixed;
+            left: 50%;
+            bottom: 26px;
+            transform: translateX(-50%);
+            width: min(520px, 90vw);
+            padding: 14px 16px;
+            border-radius: 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 31, 53, 0.85);
+            backdrop-filter: blur(24px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            z-index: 10;
+            transition: transform 0.4s ease;
+        }
+        .liquid-bottom-nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 32px;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 55%);
+            pointer-events: none;
+        }
+        .nav-indicator {
+            position: absolute;
+            height: 54px;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.12);
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.35s ease, width 0.35s ease;
+            z-index: 0;
+        }
+        .liquid-bottom-nav button {
+            flex: 1;
+            border: none;
+            background: transparent;
+            color: var(--text-soft);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 0;
+            z-index: 1;
+        }
+        .liquid-bottom-nav button i {
+            font-size: 20px;
+        }
+        .liquid-bottom-nav button.active {
+            color: #6fe8ff;
+        }
+        .liquid-bottom-nav button:focus {
+            outline: none;
+        }
+        .nav-floating-active {
+            box-shadow: 0 32px 70px rgba(40, 136, 255, 0.35);
+        }
+        @keyframes morphPulse {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            100% {
+                transform: scale(1.2) rotate(12deg);
+            }
+        }
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+            .hero-actions {
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .metrics-grid,
+            .grid-2,
+            .table-duo {
+                grid-template-columns: 1fr;
+            }
+            .page-shell {
+                padding-bottom: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="hero glass-element nav-glass">
+            <div class="brand-mark">
+                <div class="brand-icon">M</div>
+                <div class="hero-meta">
+                    <span>Analytics Command Center</span>
+                    <h1>Aero Glass Dashboard</h1>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <span class="glass-chip">Live sessions: 80</span>
+                <button type="button">Sync Insights</button>
+            </div>
+        </header>
+
+        <main class="content-flow">
+            <section class="metrics-grid">
+                <article class="metric-card glass-element">
+                    <div class="metric-icon"><i class="ti ti-users"></i></div>
+                    <div class="metric-details">
+                        <p>Sessions</p>
+                        <h3>24k</h3>
+                        <p class="trend up"><i class="ti ti-trending-up"></i> 8.5% new today</p>
+                    </div>
+                </article>
+                <article class="metric-card glass-element">
+                    <div class="metric-icon"><i class="ti ti-clock"></i></div>
+                    <div class="metric-details">
+                        <p>Avg. Sessions</p>
+                        <h3>00:18</h3>
+                        <p class="trend up"><i class="ti ti-trending-up"></i> 1.5% weekly</p>
+                    </div>
+                </article>
+                <article class="metric-card glass-element">
+                    <div class="metric-icon"><i class="ti ti-activity"></i></div>
+                    <div class="metric-details">
+                        <p>Bounce Rate</p>
+                        <h3>$2400</h3>
+                        <p class="trend down"><i class="ti ti-trending-down"></i> 35% weekly</p>
+                    </div>
+                </article>
+                <article class="metric-card glass-element">
+                    <div class="metric-icon"><i class="ti ti-confetti"></i></div>
+                    <div class="metric-details">
+                        <p>Goal Completions</p>
+                        <h3>85k</h3>
+                        <p class="trend up"><i class="ti ti-trending-up"></i> 10.5% weekly</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="grid-2">
+                <article class="chart-card glass-element">
+                    <header>
+                        <h4>Audience Overview</h4>
+                        <button class="drop-filter">This Year</button>
+                    </header>
+                    <div id="ana_dash_1" class="apex-charts"></div>
+                </article>
+                <article class="chart-card glass-element">
+                    <header>
+                        <h4>Sessions Device</h4>
+                        <button class="drop-filter">All</button>
+                    </header>
+                    <div id="ana_device" class="apex-charts"></div>
+                    <div class="device-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Device</th>
+                                    <th class="text-end">Sessions</th>
+                                    <th class="text-end">Day</th>
+                                    <th class="text-end">Week</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Desktops</td>
+                                    <td class="text-end">1843</td>
+                                    <td class="text-end">-3</td>
+                                    <td class="text-end">-12</td>
+                                </tr>
+                                <tr>
+                                    <td>Tablets</td>
+                                    <td class="text-end">2543</td>
+                                    <td class="text-end">-5</td>
+                                    <td class="text-end">-2</td>
+                                </tr>
+                                <tr>
+                                    <td>Mobiles</td>
+                                    <td class="text-end">3654</td>
+                                    <td class="text-end">-5</td>
+                                    <td class="text-end">-6</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </section>
+
+            <section class="grid-2">
+                <article class="chart-card glass-element">
+                    <header>
+                        <h4>Live Visits · New Site</h4>
+                        <button class="drop-filter">Today</button>
+                    </header>
+                    <div id="circlechart" class="apex-charts"></div>
+                    <div class="live-block">
+                        <div>
+                            <div class="traffic-card">
+                                <p class="mb-1 text-muted">Right Now</p>
+                                <h2 style="margin: 0">80</h2>
+                                <p class="text-muted mb-0">Traffic Sources</p>
+                            </div>
+                        </div>
+                        <div>
+                            <ul class="page-list">
+                                <li>
+                                    <div>
+                                        <strong>Organic</strong>
+                                        <p class="text-muted mb-0">55%</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <strong>Direct</strong>
+                                        <p class="text-muted mb-0">28%</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <strong>Campaign</strong>
+                                        <p class="text-muted mb-0">17%</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="progress">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </article>
+                <article class="chart-card glass-element">
+                    <header>
+                        <h4>Pages View by Users</h4>
+                        <button class="drop-filter">Today</button>
+                    </header>
+                    <ul class="page-list">
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="assets/images/small/rgb.svg" alt="rgb" />
+                                <div>
+                                    <strong>Dastone - Admin Dashboard</strong>
+                                    <p class="text-muted mb-0">analytic-index.html</p>
+                                </div>
+                            </div>
+                            <button class="drop-filter" style="padding: 6px 12px;">4.3k</button>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="assets/images/small/cobweb.svg" alt="cobweb" />
+                                <div>
+                                    <strong>Metrica Simple</strong>
+                                    <p class="text-muted mb-0">sales-index.html</p>
+                                </div>
+                            </div>
+                            <button class="drop-filter" style="padding: 6px 12px;">3.7k</button>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="assets/images/small/blocks.svg" alt="blocks" />
+                                <div>
+                                    <strong>Crovex</strong>
+                                    <p class="text-muted mb-0">helpdesk-index.html</p>
+                                </div>
+                            </div>
+                            <button class="drop-filter" style="padding: 6px 12px;">2.9k</button>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center gap-3">
+                                <img src="assets/images/small/atom.svg" alt="atom" />
+                                <div>
+                                    <strong>Annex</strong>
+                                    <p class="text-muted mb-0">calendar.html</p>
+                                </div>
+                            </div>
+                            <button class="drop-filter" style="padding: 6px 12px;">1.6k</button>
+                        </li>
+                    </ul>
+                    <div class="traffic-card" style="margin-top: 16px;">
+                        <span class="text-warning">Right now</span>
+                        <h5 style="margin: 8px 0;">Traffic Spotlight</h5>
+                        <p class="text-muted" style="margin: 0;">It is a long established fact that a reader will be distracted by the readable content.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="grid-2">
+                <article class="chart-card glass-element">
+                    <header>
+                        <h4>Activity</h4>
+                        <button class="drop-filter">All</button>
+                    </header>
+                    <div class="activity-stream">
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="ti ti-user-clock"></i></div>
+                            <div>
+                                <p class="mb-1 text-muted"><strong>Donald</strong> updated the status of <a href="#">Refund #1234</a> to awaiting customer response.</p>
+                                <small class="text-muted">10 min ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="ti ti-timeline"></i></div>
+                            <div>
+                                <p class="mb-1 text-muted"><strong>Lucy Peterson</strong> joined the group <a href="#">Overtake</a>.</p>
+                                <small class="text-muted">50 min ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><img src="assets/images/users/user-5.jpg" alt="Joseph" class="rounded-circle" width="40" height="40" /></div>
+                            <div>
+                                <p class="mb-1 text-muted"><strong>Joseph Rust</strong> opened showcase <a href="#">Mannat #112233</a>.</p>
+                                <small class="text-muted">10 hours ago</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="ti ti-clock"></i></div>
+                            <div>
+                                <p class="mb-1 text-muted"><strong>Donald</strong> updated the status of <a href="#">Refund #1234</a>.</p>
+                                <small class="text-muted">Yesterday</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><i class="ti ti-alert-circle"></i></div>
+                            <div>
+                                <p class="mb-1 text-muted"><strong>Lucy Peterson</strong> added new constraint to <a href="#">Overtake</a>.</p>
+                                <small class="text-muted">14 Nov 2019</small>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-icon"><img src="assets/images/users/user-4.jpg" alt="Joseph" class="rounded-circle" width="40" height="40" /></div>
+                            <div>
+                                <p class="mb-1 text-muted"><strong>Joseph Rust</strong> opened showcase <a href="#">Mannat #112233</a>.</p>
+                                <small class="text-muted">15 Nov 2019</small>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="chart-card glass-element">
+                    <header>
+                        <h4>Live Device Sessions</h4>
+                        <button class="drop-filter">Today</button>
+                    </header>
+                    <div class="traffic-card">
+                        <div class="d-flex align-items-center gap-3">
+                            <h2 style="margin: 0;">80</h2>
+                            <div>
+                                <span class="text-muted">Right now</span>
+                                <h5 style="margin: 6px 0 0;">Traffic Sources</h5>
+                            </div>
+                        </div>
+                        <p class="text-muted" style="margin-top: 12px;">It is a long established fact that a reader will be distracted by the readable content.
+                            <a href="#" class="text-primary">Read More</a>
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="table-duo">
+                <article class="chart-card glass-element traffic-table">
+                    <header>
+                        <h4>Browser Used & Traffic Reports</h4>
+                    </header>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Channel</th>
+                                <th>Sessions</th>
+                                <th>Prev. Period</th>
+                                <th>% Change</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="#">Organic search</a></td>
+                                <td>10853 <span class="tag">(52%)</span></td>
+                                <td>566 <span class="tag">(92%)</span></td>
+                                <td class="trend up">52.80%</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Direct</a></td>
+                                <td>2545 <span class="tag">(47%)</span></td>
+                                <td>498 <span class="tag">(81%)</span></td>
+                                <td class="trend down">-17.20%</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Referral</a></td>
+                                <td>1836 <span class="tag">(38%)</span></td>
+                                <td>455 <span class="tag">(74%)</span></td>
+                                <td class="trend up">41.12%</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Email</a></td>
+                                <td>1958 <span class="tag">(31%)</span></td>
+                                <td>361 <span class="tag">(61%)</span></td>
+                                <td class="trend down">-8.24%</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">Social</a></td>
+                                <td>1566 <span class="tag">(26%)</span></td>
+                                <td>299 <span class="tag">(49%)</span></td>
+                                <td class="trend up">29.33%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+                <article class="chart-card glass-element traffic-table">
+                    <header>
+                        <h4>Browser Used & Traffic Reports</h4>
+                    </header>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Browser</th>
+                                <th>Sessions</th>
+                                <th>Bounce Rate</th>
+                                <th>Transactions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="assets/images/logos/chrome.png" alt="Chrome" height="16" class="me-2" />Chrome</td>
+                                <td>10853 <span class="tag">(52%)</span></td>
+                                <td>52.80%</td>
+                                <td>566 <span class="tag">(92%)</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/images/logos/micro-edge.png" alt="Edge" height="16" class="me-2" />Microsoft Edge</td>
+                                <td>2545 <span class="tag">(47%)</span></td>
+                                <td>47.54%</td>
+                                <td>498 <span class="tag">(81%)</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/images/logos/in-explorer.png" alt="IE" height="16" class="me-2" />Internet Explorer</td>
+                                <td>1836 <span class="tag">(38%)</span></td>
+                                <td>41.12%</td>
+                                <td>455 <span class="tag">(74%)</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/images/logos/opera.png" alt="Opera" height="16" class="me-2" />Opera</td>
+                                <td>1958 <span class="tag">(31%)</span></td>
+                                <td>36.82%</td>
+                                <td>361 <span class="tag">(61%)</span></td>
+                            </tr>
+                            <tr>
+                                <td><img src="assets/images/logos/chrome.png" alt="Chrome" height="16" class="me-2" />Chrome</td>
+                                <td>10853 <span class="tag">(52%)</span></td>
+                                <td>52.80%</td>
+                                <td>566 <span class="tag">(92%)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </article>
+            </section>
+        </main>
+
+        <footer class="glass-element footer-glass">
+            &copy; <script>document.write(new Date().getFullYear())</script> Metrica · Crafted with <span style="color:#ff6f9c;">❤</span> by Mannatthemes
+        </footer>
+    </div>
+
+    <nav class="liquid-bottom-nav glass-element" aria-label="Primary">
+        <div class="nav-indicator"></div>
+        <button class="nav-item active" data-index="0">
+            <i class="ti ti-smart-home"></i>
+            <span>Home</span>
+        </button>
+        <button class="nav-item" data-index="1">
+            <i class="ti ti-activity"></i>
+            <span>Insights</span>
+        </button>
+        <button class="nav-item" data-index="2">
+            <i class="ti ti-apps"></i>
+            <span>Apps</span>
+        </button>
+        <button class="nav-item" data-index="3">
+            <i class="ti ti-bell"></i>
+            <span>Alerts</span>
+        </button>
+        <button class="nav-item" data-index="4">
+            <i class="ti ti-user"></i>
+            <span>Profile</span>
+        </button>
+    </nav>
+
+    <script>
+        (function() {
+            const nav = document.querySelector('.liquid-bottom-nav');
+            const indicator = document.querySelector('.nav-indicator');
+            const buttons = document.querySelectorAll('.liquid-bottom-nav .nav-item');
+
+            const positionIndicator = (element) => {
+                if (!indicator || !element) return;
+                const { width, left } = element.getBoundingClientRect();
+                const parentLeft = element.parentElement.getBoundingClientRect().left;
+                indicator.style.width = `${width}px`;
+                indicator.style.transform = `translate(${left - parentLeft}px, -50%)`;
+            };
+
+            buttons.forEach((button) => {
+                button.addEventListener('click', () => {
+                    buttons.forEach((btn) => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    positionIndicator(button);
+                });
+            });
+
+            window.addEventListener('resize', () => {
+                const active = document.querySelector('.liquid-bottom-nav .nav-item.active');
+                positionIndicator(active);
+            });
+
+            window.addEventListener('load', () => {
+                const active = document.querySelector('.liquid-bottom-nav .nav-item.active');
+                positionIndicator(active);
+            });
+
+            window.addEventListener('scroll', () => {
+                if (!nav) return;
+                const toggled = window.scrollY > 20;
+                nav.classList.toggle('nav-floating-active', toggled);
+                nav.style.transform = toggled
+                    ? 'translate(-50%, -6px)'
+                    : 'translate(-50%, 0)';
+            });
+        })();
+    </script>
+
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/analytics-index.init.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

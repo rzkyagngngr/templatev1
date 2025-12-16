@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        
+
+        <meta charset="utf-8" />
+                <title>Metrica - Admin & Dashboard Template</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+                <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+                <meta content="" name="author" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+                <!-- App favicon -->
+                <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+       
+
+         <!-- App css -->
+         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+         <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+         <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+
+
+    </head>
+
+    <body id="body">
+        <style>
+            /* Soft Liquid Glass Border Highlight */
+            .card,
+            .modal-content,
+            .dropdown-menu {
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3),
+                            inset 0 -1px 0 rgba(50, 208, 255, 0.15) !important;
+            }
+
+            .topbar {
+                border-bottom: 2px solid rgba(255, 255, 255, 0.2) !important;
+                box-shadow: 0 2px 8px rgba(50, 208, 255, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            }
+
+            .floating-nav {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1000;
+                display: flex;
+                gap: 8px;
+                padding: 12px 16px;
+                border-radius: 50px;
+                background: rgba(255, 255, 255, 0.08);
+                backdrop-filter: blur(28px);
+                -webkit-backdrop-filter: blur(28px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                flex-direction: row;
+                transition: all 0.4s ease;
+                opacity: 1;
+            }
+
+            .floating-nav.vertical {
+                flex-direction: column;
+                bottom: auto;
+                top: 50%;
+                left: auto;
+                transform: translateY(-50%);
+                border-radius: 16px;
+                width: 60px;
+                align-items: center;
+            }
+
+            .floating-nav.vertical.left {
+                left: 20px;
+            }
+
+            .floating-nav.vertical.right {
+                right: 20px;
+            }
+
+            .floating-nav.fadeout {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+                pointer-events: none;
+            }
+
+            .floating-nav.vertical.fadeout {
+                transform: translateY(-50%);
+                bottom: auto;
+                top: 50%;
+            }
+
+            .floating-nav.vertical.fadeout.left {
+                transform: translateY(-50%);
+                left: 20px;
+            }
+
+            .floating-nav.vertical.fadeout.right {
+                transform: translateY(-50%);
+                right: 20px;
+            }
+
+            @keyframes slideInLeft {
+                from {
+                    transform: translateX(-30px);
+                    opacity: 0;
+                }
+                to {
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(30px);
+                    opacity: 0;
+                }
+                to {
+                    transform: none;
+                    opacity: 1;
+                }
+            }
+
+            .floating-nav.vertical.left.active {
+                animation: slideInLeft 0.4s ease;
+            }
+
+            .floating-nav.vertical.right.active {
+                animation: slideInRight 0.4s ease;
+            }
+
+            .nav-toggle-btn {
+                width: 36px;
+                height: 36px;
+                border: none;
+                background: rgba(255, 255, 255, 0.12);
+                border-radius: 12px;
+                color: #32d0ff;
+                font-size: 16px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+
+            .nav-toggle-btn:hover {
+                background: rgba(255, 255, 255, 0.18);
+                box-shadow: 0 0 20px rgba(50, 208, 255, 0.3);
+            }
+
+            .floating-nav.vertical .nav-toggle-btn {
+                width: 48px;
+                height: 48px;
+                margin-top: 8px;
+            }
+
+            body {
+                padding-bottom: 100px;
+                margin-left: 0 !important;
+                background: #f5f6f8 !important;
+            }
+
+            .page-wrapper {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+
+            .page-content-tab {
+                margin-left: 0 !important;
+                width: 100% !important;
+            }
+
+            .button-menu-mobile {
+                display: none !important;
+            }
+
+            .navbar-custom, .nav-sticky{
+                margin-left: 0 !important;
+            }
+
+            .nav-btn {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 48px;
+                height: 48px;
+                border: none;
+                background: rgba(255, 255, 255, 0.12);
+                border-radius: 16px;
+                color: #32d0ff;
+                font-size: 20px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .nav-btn:hover {
+                background: rgba(255, 255, 255, 0.18);
+                box-shadow: 0 0 20px rgba(50, 208, 255, 0.3);
+                transform: translateY(-4px);
+            }
+
+            .nav-btn-label {
+                font-size: 10px;
+                margin-top: 2px;
+                color: #e0e0e0;
+                font-weight: 500;
+            }
+
+            .submenu {
+                position: absolute;
+                bottom: calc(100% + 12px);
+                left: 50%;
+                transform: translateX(-50%);
+                background: #ffffff;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                border-radius: 12px;
+                padding: 8px 0;
+                min-width: 160px;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.15s ease;
+                pointer-events: none;
+                z-index: 1001;
+                margin-top: -8px;
+                padding-top: 20px;
+                white-space: nowrap;
+            }
+
+            /* Submenu untuk nav vertikal di kiri - muncul ke kanan */
+            .floating-nav.vertical.left .submenu {
+                position: absolute;
+                bottom: auto;
+                left: 100%;
+                right: auto;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 12px;
+                margin-top: 0;
+                padding-top: 8px;
+                min-width: 180px;
+            }
+
+            /* Submenu untuk nav vertikal di kanan - muncul ke kiri */
+            .floating-nav.vertical.right .submenu {
+                position: absolute;
+                bottom: auto;
+                left: auto;
+                right: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-right: 12px;
+                margin-left: 0;
+                margin-top: 0;
+                padding-top: 8px;
+                min-width: 180px;
+            }
+
+            .submenu-item {
+                display: block;
+                padding: 12px 16px;
+                color: #1a1a1a;
+                text-decoration: none;
+                font-size: 13px;
+                cursor: pointer;
+                transition: all 0.2s ease;
+                border: none;
+                background: none;
+                width: 100%;
+                text-align: left;
+                font-weight: 500;
+            }
+
+            .submenu-item:hover {
+                background: rgba(50, 208, 255, 0.25);
+                color: #0099ff;
+                padding-left: 20px;
+            }
+
+            /* Show submenu when parent has submenu-active class */
+            .nav-btn.submenu-active .submenu {
+                opacity: 1;
+                visibility: visible;
+                pointer-events: auto;
+            }
+
+            @media (max-width: 768px) {
+                .floating-nav {
+                    bottom: 10px;
+                    padding: 10px 12px;
+                }
+
+                .nav-btn {
+                    width: 44px;
+                    height: 44px;
+                    font-size: 18px;
+                }
+
+                .nav-btn-label {
+                    font-size: 9px;
+                }
+            }
+        </style>
+
+        <!-- Top Bar Start -->
+        <!-- Top Bar Start -->
+        <div class="topbar">            
+            <!-- Navbar -->
+            <nav class="navbar-custom" id="navbar-custom">    
+                <ul class="list-unstyled topbar-nav float-end mb-0">
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <img src="assets/images/flags/us_flag.jpg" alt="" class="thumb-xxs rounded-circle">
+                    </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#"><img src="assets/images/flags/us_flag.jpg" alt="" height="15" class="me-2">English</a>
+                            <a class="dropdown-item" href="#"><img src="assets/images/flags/spain_flag.jpg" alt="" height="15" class="me-2">Spanish</a>
+                            <a class="dropdown-item" href="#"><img src="assets/images/flags/germany_flag.jpg" alt="" height="15" class="me-2">German</a>
+                            <a class="dropdown-item" href="#"><img src="assets/images/flags/french_flag.jpg" alt="" height="15" class="me-2">French</a>
+                        </div>
+                    </li><!--end topbar-language-->
+            
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <i class="ti ti-mail"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+                
+                            <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                                Emails <span class="badge bg-soft-primary badge-pill">3</span>
+                            </h6> 
+                            <div class="notification-menu" data-simplebar>
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-1.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">10 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-4.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">40 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-2.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">1 hr ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-5.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <img src="assets/images/users/user-3.jpg" alt="" class="thumb-sm rounded-circle">
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                            </div>
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                View all <i class="fi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown notification-list">
+                        <a class="nav-link dropdown-toggle arrow-none nav-icon" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <i class="ti ti-bell"></i>
+                            <span class="alert-badge"></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-lg pt-0">
+                
+                            <h6 class="dropdown-item-text font-15 m-0 py-3 border-bottom d-flex justify-content-between align-items-center">
+                                Notifications <span class="badge bg-soft-primary badge-pill">2</span>
+                            </h6> 
+                            <div class="notification-menu" data-simplebar>
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i class="ti ti-chart-arcs"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing and industry.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">10 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i class="ti ti-device-computer-camera"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Meeting with designers</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">40 min ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">                                                    
+                                            <i class="ti ti-diamond"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">UX 3 Task complete.</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">1 hr ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i class="ti ti-drone"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Your order is placed</h6>
+                                            <small class="text-muted mb-0">It is a long established fact that a reader.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                                <!-- item-->
+                                <a href="#" class="dropdown-item py-3">
+                                    <small class="float-end text-muted ps-2">2 hrs ago</small>
+                                    <div class="media">
+                                        <div class="avatar-md bg-soft-primary">
+                                            <i class="ti ti-users"></i>
+                                        </div>
+                                        <div class="media-body align-self-center ms-2 text-truncate">
+                                            <h6 class="my-0 fw-normal text-dark">Payment Successfull</h6>
+                                            <small class="text-muted mb-0">Dummy text of the printing.</small>
+                                        </div><!--end media-body-->
+                                    </div><!--end media-->
+                                </a><!--end-item-->
+                            </div>
+                            <!-- All-->
+                            <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                View all <i class="fi-arrow-right"></i>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle nav-user" data-bs-toggle="dropdown" href="#" role="button"
+                            aria-haspopup="false" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/images/users/user-4.jpg" alt="profile-user" class="rounded-circle me-2 thumb-sm" />
+                                <div>
+                                    <small class="d-none d-md-block font-11">Admin</small>
+                                    <span class="d-none d-md-block fw-semibold font-12">Maria Gibson <i
+                                            class="mdi mdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#"><i class="ti ti-user font-16 me-1 align-text-bottom"></i> Profile</a>
+                            <a class="dropdown-item" href="#"><i class="ti ti-settings font-16 me-1 align-text-bottom"></i> Settings</a>
+                            <div class="dropdown-divider mb-0"></div>
+                            <a class="dropdown-item" href="#"><i class="ti ti-power font-16 me-1 align-text-bottom"></i> Logout</a>
+                        </div>
+                    </li><!--end topbar-profile-->
+                    <li class="notification-list">
+                        <a class="nav-link arrow-none nav-icon offcanvas-btn" href="#" data-bs-toggle="offcanvas" data-bs-target="#Appearance" role="button" aria-controls="Rightbar">
+                            <i class="ti ti-settings ti-spin"></i>
+                        </a>
+                    </li>   
+                </ul><!--end topbar-nav-->
+
+                <ul class="list-unstyled topbar-nav mb-0">                        
+                    <li class="hide-phone app-search">
+                        <form role="search" action="#" method="get">
+                            <input type="search" name="search" class="form-control top-search mb-0" placeholder="Type text...">
+                            <button type="submit"><i class="ti ti-search"></i></button>
+                        </form>
+                    </li>                       
+                </ul>
+            </nav>
+            <!-- end navbar-->
+        </div>
+        <!-- Top Bar End -->
+        <!-- Top Bar End -->
+
+        <div class="page-wrapper">
+
+            <!-- Page Content-->
+            <div class="page-content-tab">
+
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <!-- end page title end breadcrumb -->
+                    <div class="row mt-5">
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="crypto-report-history d-flex justify-content-end">
+                                        <ul class="nav nav-tabs mb-3">
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#Hour" href="#">Hour</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#Day" href="#">Day</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#Week" href="#">Week</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#Month" href="#">Month</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#Order_Book" href="#">Order Book</a>
+                                            </li>                                        
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="media">
+                                                <img src="assets/images/logos/btc.png" class="me-2 thumb-sm align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h4 class="m-0">$50,289.45</h4>
+                                                        <p class="text-muted mb-0">Bitcoin 
+                                                            <span class="text-muted font-12">(BTC)</span>
+                                                            <span class="text-success">2.5% <i class="mdi mdi-arrow-up"></i></span>
+                                                        </p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div><!--end col--> 
+                                        </div><!--end col--> 
+                                        <div class="col-md-3">
+                                            <p class="mb-0 p-2 bg-soft-dark rounded"><b>Last: </b>0.25436584</p>
+                                        </div><!--end col--> 
+                                        <div class="col-md-3">
+                                            <p class="mb-0 p-2 bg-soft-success rounded"><b>24High: </b>0.25436584</p>
+                                        </div><!--end col--> 
+                                        <div class="col-md-3">
+                                            <p class="mb-0 p-2 bg-soft-danger rounded"><b>24Low: </b>0.25436584</p>
+                                        </div><!--end col--> 
+                                    </div><!-- end row -->                                            
+                                    <div id="crypto_dash_main" class="apex-charts"></div>
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div><!--end col--> 
+
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Total Balance</h4>   
+                                            <span class="text-muted font-12">30 june 2021</span>                   
+                                        </div><!--end col-->                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-md mb-2 mb-lg-0">
+                                            <h4 class="m-0">$85692.00</h4>
+                                            <p class="text-success mb-0"> + $455.00 <span class="font-12 text-muted">(6.2% <i class="mdi mdi-trending-up text-success"></i>)</span></p>
+                                        </div><!--end col-->
+                                        <div class="col-12 col-md align-self-center">
+                                            <div class="text-end  mb-2 mb-lg-0">
+                                                <button class="btn btn-de-success btn-sm px-3">Receive</button>
+                                                <button class="btn btn-de-danger btn-sm px-3">Send</button>
+                                                <button class="btn btn-de-primary btn-sm px-3">+ Invest</button>
+                                            </div>
+                                        </div><!--end col-->                                        
+                                    </div> <!--end row-->                                              
+                                </div><!--end card-body-->
+                                <div class="card-body pt-0">
+                                    <ul class="list-group">
+                                        <li class="list-group-item align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <img src="assets/images/logos/btc.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h5 class="m-0 font-14">6.18424000</h5>
+                                                        <p class="text-muted mb-0">$ 33277.3660</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="badge bg-soft-secondary">Bitcoin</span>
+                                        </li>
+                                        <li class="list-group-item align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <img src="assets/images/logos/mon.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h5 class="m-0 font-14">60.1842</h5>
+                                                        <p class="text-muted mb-0">$ 18564.3660</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="badge bg-soft-secondary">Monero</span>
+                                        </li>
+                                        <li class="list-group-item align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <img src="assets/images/logos/eth.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h5 class="m-0 font-14">32.65849212</h5>
+                                                        <p class="text-muted mb-0">$5562.3660</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="badge bg-soft-secondary">Ethereum</span>
+                                        </li>
+                                        <li class="list-group-item align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <img src="assets/images/logos/lite.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h5 class="m-0 font-14">10.65849212</h5>
+                                                        <p class="text-muted mb-0">$7854.3660</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="badge bg-soft-secondary">Light</span>
+                                        </li>
+                                        <li class="list-group-item align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <img src="assets/images/logos/dash.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h5 class="m-0 font-14">62.65849212</h5>
+                                                        <p class="text-muted mb-0">$7289.3660</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="badge bg-soft-secondary">Dashcoin</span>
+                                        </li>
+                                        <li class="list-group-item align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <img src="assets/images/logos/mon.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                <div class="media-body align-self-center"> 
+                                                    <div class="coin-bal">                                                        
+                                                        <h5 class="m-0 font-14">60.1842</h5>
+                                                        <p class="text-muted mb-0">$ 18564.3660</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="badge bg-soft-secondary">Monero</span>
+                                        </li>
+                                    </ul> 
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div><!--end col-->
+                    </div> <!-- end row -->
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Currency Calculator</h4>                  
+                                        </div><!--end col-->                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4 align-self-center">
+                                            <div class="card-body">
+                                                <img src="assets/images/small/btc.png" alt="" class="img-fluid d-block mx-auto">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8 align-self-center">
+                                            <div class="card-body">
+                                                <button type="button" class="btn btn-soft-secondary btn-icon-circle float-end">
+                                                    <i class="fas fa-sync-alt"></i>
+                                                </button>
+                                                <span class="badge font-12 fw-bold bg-soft-secondary p-2 ">Balance</span>
+                                                <h4 class="mb-0 font-20">122.5692.00 <small class="font-14">BTC</small></h4>                                            
+                                                <p class="mb-1 text-muted">
+                                                    <span class="text-success"><i class="mdi mdi-arrow-up"></i>11.1%</span> Up from yesterday
+                                                </p>                                                                                                                    
+                                            </div><!--end card-body-->
+                                        </div><!--end col-->
+                                    </div><!--end row-->
+                                                                                
+                                    <div class="crypto-calcy w-100 mt-3">
+                                        <crypto-converter-widget
+                                           live
+                                           shadow
+                                           symbol
+                                           fiat="united-states-dollar"
+                                           crypto="bitcoin"
+                                           amount="1"
+                                           border-radius="0.60rem"
+                                           background-color="#383a59"
+                                           decimal-places="2"></crypto-converter-widget>
+                                        <script src="https://cdn.jsdelivr.net/gh/dejurin/crypto-converter-widget@1.5.2/dist/latest.min.js" async></script>
+                                    </div>
+                                </div><!--end card-body--> 
+                            </div><!--end card-->
+                        </div><!--end col-->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Transaction History</h4>                  
+                                        </div><!--end col-->    
+                                        <div class="col-auto">                      
+                                            <a href="" class="text-primary">View All</a>                 
+                                        </div><!--end col-->                                        
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">                                    
+                                    <ul class="list-unsyled m-0 ps-0 transaction-history">
+                                        <li class="align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <div class="thumb-xs bg-soft-primary rounded-circle d-flex justify-content-center align-items-center">
+                                                    <i class="mdi mdi-arrow-top-right-thick font-20"></i>
+                                                </div>                                                
+                                                <div class="media-body align-self-center ms-3"> 
+                                                    <div class="transaction-data">                                                        
+                                                        <h5 class="m-0 font-14">Send BTC</h5>
+                                                        <p class="text-muted mb-0">6 June 2019 10:25 AM</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="text-danger">0.000245684 BTC</span>
+                                        </li>
+                                        <li class="align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <div class="thumb-xs bg-soft-primary rounded-circle d-flex justify-content-center align-items-center">
+                                                    <i class="mdi mdi-arrow-down-thick font-20"></i>
+                                                </div>                                                
+                                                <div class="media-body align-self-center ms-3"> 
+                                                    <div class="transaction-data">                                                        
+                                                        <h5 class="m-0 font-14">Receive BTC</h5>
+                                                        <p class="text-muted mb-0">4 June 2019 7:05 PM</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="text-success">0.012458632 BTC</span>
+                                        </li>
+                                        <li class="align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <div class="thumb-xs bg-soft-primary rounded-circle d-flex justify-content-center align-items-center">
+                                                    <i class="mdi mdi-arrow-top-right-thick font-20"></i>
+                                                </div>                                                
+                                                <div class="media-body align-self-center ms-3"> 
+                                                    <div class="transaction-data">                                                        
+                                                        <h5 class="m-0 font-14">Send BTC</h5>
+                                                        <p class="text-muted mb-0">1 June 2019 11:30 PM</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="text-danger">0.000245684 BTC</span>
+                                        </li>
+                                        <li class="align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <div class="thumb-xs bg-soft-primary rounded-circle d-flex justify-content-center align-items-center">
+                                                    <i class="mdi mdi-arrow-top-right-thick font-20"></i>
+                                                </div>                                                
+                                                <div class="media-body align-self-center ms-3"> 
+                                                    <div class="transaction-data">                                                        
+                                                        <h5 class="m-0 font-14">Send BTC</h5>
+                                                        <p class="text-muted mb-0">28 May 2019 08:45 AM</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="text-danger">0.000245684 BTC</span>
+                                        </li>
+                                        <li class="align-items-center d-flex justify-content-between">
+                                            <div class="media">
+                                                <div class="thumb-xs bg-soft-primary rounded-circle d-flex justify-content-center align-items-center">
+                                                    <i class="mdi mdi-arrow-down-thick font-20"></i>
+                                                </div>                                                
+                                                <div class="media-body align-self-center ms-3"> 
+                                                    <div class="transaction-data">                                                        
+                                                        <h5 class="m-0 font-14">Receive BTC</h5>
+                                                        <p class="text-muted mb-0">25 May 2019 01:25 PM</p>
+                                                    </div>                                                                                              
+                                                </div><!--end media body-->
+                                            </div>
+                                            <span class="text-success">0.012458632 BTC</span>
+                                        </li>
+                                    </ul>                                    
+                                </div><!--end card-body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                        
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Market cap</h4>                  
+                                        </div><!--end col-->                                     
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->
+                                <div class="card-body">
+                                    <p class="mt-n1 mb-2 fw-semibold">The global crypto market cap is $1.44T, a <span class="text-danger">3.99%</span> decrease over the last day.</p>
+                                    <div class="table-responsive">
+                                        <table class="table mb-0">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <th>Name</th>
+                                                <th class="text-end">Market cap</th>
+                                                <th class="text-end">Volume(24h)</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/logos/btc.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                        <div class="media-body align-self-center"> 
+                                                            <div class="coin-bal">                                                        
+                                                                <h5 class="m-0 font-14">$7289.45</h5>
+                                                                <p class="text-muted mb-0">Bitcoin 
+                                                                    <span class="text-muted font-12">(BTC)</span>
+                                                                    <span class="text-success">2.5% <i class="mdi mdi-arrow-up"></i></span>
+                                                                </p>
+                                                            </div>                                                                                              
+                                                        </div><!--end media body-->
+                                                    </div> <!--end media-->               
+                                                </td>
+                                                <td class="text-end">$129,820,932</td>
+                                                <td class="text-end">$25,111,773</td>
+                                            </tr><!--end tr-->
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/logos/eth.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                        <div class="media-body align-self-center"> 
+                                                            <div class="coin-bal">                                                        
+                                                                <h5 class="m-0 font-14">$234.45</h5>
+                                                                <p class="text-muted mb-0">Ethereum 
+                                                                    <span class="text-muted font-12">(ETH)</span>
+                                                                    <span class="text-success">0.45% <i class="mdi mdi-arrow-up"></i></span>
+                                                                </p>
+                                                            </div>                                                                                              
+                                                        </div><!--end media body-->
+                                                    </div> <!--end media-->               
+                                                </td>
+                                                <td class="text-end">$24,909,743</td>
+                                                <td class="text-end">$12,856,403</td>
+                                            </tr><!--end tr-->
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/logos/lite.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                        <div class="media-body align-self-center"> 
+                                                            <div class="coin-bal">                                                        
+                                                                <h5 class="m-0 font-14">$7289.45</h5>
+                                                                <p class="text-muted mb-0">Litecoin 
+                                                                    <span class="text-muted font-12">(LTC)</span>
+                                                                    <span class="text-success">3.51% <i class="mdi mdi-arrow-up"></i></span>
+                                                                </p>
+                                                            </div>                                                                                              
+                                                        </div><!--end media body-->
+                                                    </div> <!--end media-->               
+                                                </td>
+                                                <td class="text-end">$5,399,795,666</td>
+                                                <td class="text-end">$4,394,304,674</td>
+                                            </tr><!--end tr-->
+                                            <tr>
+                                                <td>
+                                                    <div class="media">
+                                                        <img src="assets/images/logos/mon.png" class="me-3 thumb-xs align-self-center rounded-circle" alt="...">
+                                                        <div class="media-body align-self-center"> 
+                                                            <div class="coin-bal">                                                        
+                                                                <h5 class="m-0 font-14">$7289.45</h5>
+                                                                <p class="text-muted mb-0">Monero 
+                                                                    <span class="text-muted font-12">(XMR)</span>
+                                                                    <span class="text-success">0.95% <i class="mdi mdi-arrow-up"></i></span>
+                                                                </p>
+                                                            </div>                                                                                              
+                                                        </div><!--end media body-->
+                                                    </div> <!--end media-->               
+                                                </td>
+                                                <td class="text-end">$1,375,808,437</td>
+                                                <td class="text-end">$58,791,421	</td>
+                                            </tr><!--end tr-->
+                                            </tbody>
+                                        </table><!--end /table-->
+                                    </div><!--end /tableresponsive-->                                    
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div><!--end col-->                                       
+                    </div><!--end row--> 
+                    
+                   
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card"> 
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">                      
+                                            <h4 class="card-title">Activity</h4>                      
+                                        </div><!--end col-->
+                                        <div class="col-auto"> 
+                                            <div class="dropdown">
+                                                <a href="#" class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    All<i class="las la-angle-down ms-1"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="#">Last Week</a>
+                                                    <a class="dropdown-item" href="#">Last Month</a>
+                                                </div>
+                                            </div>          
+                                        </div><!--end col-->
+                                    </div>  <!--end row-->                                  
+                                </div><!--end card-header-->                                       
+                                <div class="card-body p-0"> 
+                                    <div class="p-3" style="height: 368px;" data-simplebar>
+                                        <div class="activity">
+                                            <div class="activity-info">
+                                                <div class="icon-info-activity">
+                                                    <i class="las la-user-clock bg-soft-primary"></i>
+                                                </div>
+                                                <div class="activity-info-text">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="text-muted mb-0 font-13 w-75"><span>Donald</span> 
+                                                            updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                        </p>
+                                                        <small class="text-muted">10 Min ago</small>
+                                                    </div>    
+                                                </div>
+                                            </div>   
+
+                                            <div class="activity-info">
+                                                <div class="icon-info-activity">
+                                                    <i class="mdi mdi-timer-off bg-soft-primary"></i>
+                                                </div>
+                                                <div class="activity-info-text">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="text-muted mb-0 font-13 w-75"><span>Lucy Peterson</span> 
+                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                        </p>
+                                                        <small class="text-muted">50 Min ago</small>
+                                                    </div>    
+                                                </div>
+                                            </div>   
+
+                                            <div class="activity-info">
+                                                <div class="icon-info-activity">
+                                                    <img src="assets/images/users/user-5.jpg" alt="" class="rounded-circle thumb-sm">
+                                                </div>
+                                                <div class="activity-info-text">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="text-muted mb-0 font-13 w-75"><span>Joseph Rust</span> 
+                                                            opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                        </p>
+                                                        <small class="text-muted">10 hours ago</small>
+                                                    </div>    
+                                                </div>
+                                            </div>   
+
+                                            <div class="activity-info">
+                                                <div class="icon-info-activity">
+                                                    <i class="mdi mdi-clock-outline bg-soft-primary"></i>
+                                                </div>
+                                                <div class="activity-info-text">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="text-muted mb-0 font-13 w-75"><span>Donald</span> 
+                                                            updated the status of <a href="">Refund #1234</a> to awaiting customer response
+                                                        </p>
+                                                        <small class="text-muted">Yesterday</small>
+                                                    </div>    
+                                                </div>
+                                            </div>   
+                                            <div class="activity-info">
+                                                <div class="icon-info-activity">
+                                                    <i class="mdi mdi-alert-outline bg-soft-primary"></i>
+                                                </div>
+                                                <div class="activity-info-text">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="text-muted mb-0 font-13 w-75"><span>Lucy Peterson</span> 
+                                                            was added to the group, group name is <a href="">Overtake</a>
+                                                        </p>
+                                                        <small class="text-muted">14 Nov 2019</small>
+                                                    </div>    
+                                                </div>
+                                            </div> 
+                                            <div class="activity-info">
+                                                <div class="icon-info-activity">
+                                                    <img src="assets/images/users/user-4.jpg" alt="" class="rounded-circle thumb-sm">
+                                                </div>
+                                                <div class="activity-info-text">
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <p class="text-muted mb-0 font-13 w-75"><span>Joseph Rust</span> 
+                                                            opened new showcase <a href="">Mannat #112233</a> with theme market
+                                                        </p>
+                                                        <small class="text-muted">15 Nov 2019</small>
+                                                    </div>    
+                                                </div>
+                                            </div>                                                                                                                                      
+                                        </div><!--end activity-->
+                                    </div><!--end analytics-dash-activity-->
+                                </div>  <!--end card-body-->                                         
+                            </div><!--end card--> 
+                        </div><!--end col-->    
+                        <div class="col-lg-8">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="mt-0 mb-3 header-title">Historical Bitcoin Price and Volume</h4>
+                                    <script type="text/javascript" src="https://widgets.cryptocompare.com/serve/v1/coin/histo_week?fsym=BTC&amp;tsym=USD&amp;app=www.cryptocompare.com"></script>
+                                </div><!--end card-body--> 
+                            </div><!--end card--> 
+                        </div><!--end col-->     
+                    </div><!--end row--> 
+
+                </div><!-- container -->
+
+                <!--Start Rightbar-->
+                <!--Start Rightbar/offcanvas-->
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="Appearance" aria-labelledby="AppearanceLabel">
+                    <div class="offcanvas-header border-bottom">
+                      <h5 class="m-0 font-14" id="AppearanceLabel">Appearance</h5>
+                      <button type="button" class="btn-close text-reset p-0 m-0 align-self-center" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">  
+                        <h6>Account Settings</h6>
+                        <div class="p-2 text-start mt-3">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="settings-switch1">
+                                <label class="form-check-label" for="settings-switch1">Auto updates</label>
+                            </div><!--end form-switch-->
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="settings-switch2" checked>
+                                <label class="form-check-label" for="settings-switch2">Location Permission</label>
+                            </div><!--end form-switch-->
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="settings-switch3">
+                                <label class="form-check-label" for="settings-switch3">Show offline Contacts</label>
+                            </div><!--end form-switch-->
+                        </div><!--end /div-->
+                        <h6>General Settings</h6>
+                        <div class="p-2 text-start mt-3">
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="settings-switch4">
+                                <label class="form-check-label" for="settings-switch4">Show me Online</label>
+                            </div><!--end form-switch-->
+                            <div class="form-check form-switch mb-2">
+                                <input class="form-check-input" type="checkbox" id="settings-switch5" checked>
+                                <label class="form-check-label" for="settings-switch5">Status visible to all</label>
+                            </div><!--end form-switch-->
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="settings-switch6">
+                                <label class="form-check-label" for="settings-switch6">Notifications Popup</label>
+                            </div><!--end form-switch-->
+                        </div><!--end /div-->               
+                    </div><!--end offcanvas-body-->
+                </div>
+                <!--end Rightbar/offcanvas-->
+                 <!--end Rightbar-->
+                 
+                <!--Start Footer-->
+                <!-- Footer Start -->
+                <footer class="footer text-center text-sm-start">
+                    &copy; <script>
+                        document.write(new Date().getFullYear())
+                    </script> Metrica <span class="text-muted d-none d-sm-inline-block float-end">Crafted with <i
+                            class="mdi mdi-heart text-danger"></i> by Mannatthemes</span>
+                </footer>
+                <!-- end Footer -->                
+                <!--end footer-->
+            </div>
+            <!-- end page content -->
+        </div>
+        <!-- end page-wrapper -->
+
+        <!-- Floating Navigation -->
+        <div class="floating-nav">
+            <button class="nav-btn" title="Home">
+                <i class="ti ti-home"></i>
+                <div class="nav-btn-label">Home</div>
+                <div class="submenu">
+                    <a href="index.html" class="submenu-item">Analytics</a>
+                    <a href="crypto-index.html" class="submenu-item">Crypto</a>
+                    <a href="crm-index.html" class="submenu-item">CRM</a>
+                    <a href="projects-index.html" class="submenu-item">Projects</a>
+                </div>
+            </button>
+            <button class="nav-btn" title="Apps">
+                <i class="ti ti-apps"></i>
+                <div class="nav-btn-label">Apps</div>
+                <div class="submenu">
+                    <a href="apps-email-inbox.html" class="submenu-item">Email</a>
+                    <a href="apps-chat.html" class="submenu-item">Chat</a>
+                    <a href="apps-contact-list.html" class="submenu-item">Contacts</a>
+                    <a href="apps-calendar.html" class="submenu-item">Calendar</a>
+                </div>
+            </button>
+            <button class="nav-btn" title="UI Kit">
+                <i class="ti ti-planet"></i>
+                <div class="nav-btn-label">UI</div>
+                <div class="submenu">
+                    <a href="ui-alerts.html" class="submenu-item">Alerts</a>
+                    <a href="ui-buttons.html" class="submenu-item">Buttons</a>
+                    <a href="ui-cards.html" class="submenu-item">Cards</a>
+                    <a href="ui-modals.html" class="submenu-item">Modals</a>
+                </div>
+            </button>
+            <button class="nav-btn" title="Pages">
+                <i class="ti ti-files"></i>
+                <div class="nav-btn-label">Pages</div>
+                <div class="submenu">
+                    <a href="pages-profile.html" class="submenu-item">Profile</a>
+                    <a href="pages-timeline.html" class="submenu-item">Timeline</a>
+                    <a href="pages-pricing.html" class="submenu-item">Pricing</a>
+                    <a href="pages-gallery.html" class="submenu-item">Gallery</a>
+                </div>
+            </button>
+            <button class="nav-btn" title="Auth">
+                <i class="ti ti-shield-lock"></i>
+                <div class="nav-btn-label">Auth</div>
+                <div class="submenu">
+                    <a href="auth-login.html" class="submenu-item">Login</a>
+                    <a href="auth-register.html" class="submenu-item">Register</a>
+                    <a href="auth-recover-pw.html" class="submenu-item">Recover</a>
+                </div>
+            </button>
+            <button class="nav-toggle-btn" title="Toggle Layout" id="navToggleBtn">
+                <i class="ti ti-layout-list"></i>
+            </button>
+        </div>
+
+        <!-- Javascript  -->   
+        <!-- vendor js -->
+        
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+        <script src="assets/js/pages/crypto-index.init.js"></script>
+        <!-- App js -->
+        <script src="assets/js/app.js"></script>
+
+        <script>
+            // Handle submenu hover dengan delay
+            document.querySelectorAll('.nav-btn:not(.nav-toggle-btn)').forEach(btn => {
+                let hideTimeout;
+                
+                btn.addEventListener('mouseenter', function() {
+                    clearTimeout(hideTimeout);
+                    this.classList.add('submenu-active');
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    const self = this;
+                    hideTimeout = setTimeout(() => {
+                        self.classList.remove('submenu-active');
+                    }, 300);
+                });
+            });
+
+            // Handle nav layout toggle
+            const floatingNav = document.querySelector('.floating-nav');
+            const toggleBtn = document.getElementById('navToggleBtn');
+            let isVertical = false;
+            let currentSide = 'bottom';
+
+            toggleBtn.addEventListener('click', function() {
+                if (!isVertical) {
+                    // Toggle to vertical - fade out from bottom first
+                    floatingNav.classList.add('fadeout');
+                    setTimeout(() => {
+                        // Now set position to vertical center
+                        floatingNav.style.bottom = 'auto';
+                        floatingNav.style.left = '20px';
+                        floatingNav.style.top = '50%';
+                        floatingNav.style.transform = 'translateY(-50%)';
+                        floatingNav.classList.add('vertical', 'left');
+                        floatingNav.classList.remove('fadeout');
+                        floatingNav.classList.add('active');
+                        toggleBtn.innerHTML = '<i class="ti ti-layout-distribute-horizontal"></i>';
+                        isVertical = true;
+                        currentSide = 'left';
+                    }, 200);
+                } else if (currentSide === 'left') {
+                    // Switch to right
+                    floatingNav.classList.add('fadeout');
+                    setTimeout(() => {
+                        floatingNav.style.left = 'auto';
+                        floatingNav.style.right = '20px';
+                        floatingNav.classList.remove('left', 'fadeout');
+                        floatingNav.classList.add('right', 'active');
+                        currentSide = 'right';
+                    }, 200);
+                } else {
+                    // Switch back to horizontal
+                    floatingNav.classList.add('fadeout');
+                    setTimeout(() => {
+                        floatingNav.style.bottom = '20px';
+                        floatingNav.style.left = '50%';
+                        floatingNav.style.top = 'auto';
+                        floatingNav.style.transform = 'translateX(-50%)';
+                        floatingNav.style.right = 'auto';
+                        floatingNav.classList.remove('fadeout', 'vertical', 'left', 'right', 'active');
+                        toggleBtn.innerHTML = '<i class="ti ti-layout-list"></i>';
+                        isVertical = false;
+                        currentSide = 'bottom';
+                    }, 200);
+                }
+            });
+        </script>
+
+    </body>
+    <!--end body-->
+</html>
