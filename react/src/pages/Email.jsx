@@ -1,4 +1,4 @@
-
+﻿
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -7,15 +7,15 @@ const Email = ({ type }) => {
 
     // Sample Data extracted from apps-email-inbox.html
     const emails = [
-        { id: 1, sender: 'Peter, me (3)', subject: 'Hello', teaser: 'Trip home from 🎉 Colombo has been arranged, then Jenna will come get me from Stockholm. :)', date: 'Mar. 6', read: false, starred: false, type: 'inbox', label: '' },
+        { id: 1, sender: 'Peter, me (3)', subject: 'Hello', teaser: 'Trip home from ðŸŽ‰ Colombo has been arranged, then Jenna will come get me from Stockholm. :)', date: 'Mar. 6', read: false, starred: false, type: 'inbox', label: '' },
         { id: 2, sender: 'me, Susanna (7)', subject: 'Since you asked... and i\'m inconceivably bored at the train station', teaser: 'Alright thanks. I\'ll have to re-book that somehow, i\'ll get back to you.', date: 'Mar. 6', read: true, starred: false, type: 'inbox', label: 'Freelance', labelColor: 'warning' },
         { id: 3, sender: 'Web Support Dennis', subject: 'Re: New mail settings', teaser: 'Will you answer him asap?', date: 'Mar 7', read: true, starred: false, type: 'inbox', label: '' },
         { id: 4, sender: 'me, Peter (2)', subject: 'Off on Thursday', teaser: 'Eff that place, you might as well stay here with us instead! Sent from my iPhone 4 > 4 mar 2014 at 5:55 pm', date: 'Mar 4', read: true, starred: false, type: 'inbox', label: 'Support', labelColor: 'info' },
-        { id: 5, sender: 'Medium', subject: 'This Week\'s Top Stories', teaser: 'Our top pick for you on Medium this week The Man Who Destroyed America’s Ego', date: 'Feb 28', read: true, starred: false, type: 'inbox', label: 'Social', labelColor: 'purple' },
-        { id: 6, sender: 'Death to Stock', subject: '🎁 Montly High-Res Photos', teaser: 'To create this month\'s pack, we hosted a party with local musician Jared Mahone here in Columbus, Ohio.', date: 'Feb 28', read: true, starred: false, type: 'inbox', label: '' },
+        { id: 5, sender: 'Medium', subject: 'This Week\'s Top Stories', teaser: 'Our top pick for you on Medium this week The Man Who Destroyed Americaâ€™s Ego', date: 'Feb 28', read: true, starred: false, type: 'inbox', label: 'Social', labelColor: 'purple' },
+        { id: 6, sender: 'Death to Stock', subject: 'ðŸŽ Montly High-Res Photos', teaser: 'To create this month\'s pack, we hosted a party with local musician Jared Mahone here in Columbus, Ohio.', date: 'Feb 28', read: true, starred: false, type: 'inbox', label: '' },
         { id: 7, sender: 'Randy, me (5)', subject: 'Last pic over my village', teaser: 'Yeah i\'d like that! Do you remember the video you showed me of your train ride between Colombo and Kandy? The one with the mountain view? I would love to see that one again!', date: '5:01 am', read: false, starred: true, type: 'inbox', label: 'Family', labelColor: 'success' },
         { id: 8, sender: 'Andrew Zimmer', subject: 'Mochila Beta: Subscription Confirmed', teaser: 'You\'ve been confirmed! Welcome to the ruling class of the inbox. For your records, here is a copy of the information you submitted to us...', date: 'Mar 8', read: true, starred: false, type: 'inbox', label: '' },
-        { id: 9, sender: 'Infinity HR', subject: 'Sveriges Hetaste sommarjobb', teaser: 'Hej Nicklas Sandell! Vi vill bjuda in dig till "First tour 2014", ett rekryteringsevent som erbjuder jobb på 16 semesterorter iSverige.', date: 'Mar 8', read: true, starred: false, type: 'inbox', label: '' },
+        { id: 9, sender: 'Infinity HR', subject: 'Sveriges Hetaste sommarjobb', teaser: 'Hej Nicklas Sandell! Vi vill bjuda in dig till "First tour 2014", ett rekryteringsevent som erbjuder jobb pÃ¥ 16 semesterorter iSverige.', date: 'Mar 8', read: true, starred: false, type: 'inbox', label: '' },
         { id: 10, sender: 'Revibe', subject: 'Weekend on Revibe', teaser: 'Today\'s Friday and we thought maybe you want some music inspiration for the weekend. Here are some trending tracks and playlists we think you should give a listen!', date: 'Feb 27', read: true, starred: false, type: 'inbox', label: 'Friends', labelColor: 'pink' },
         // Add more sample emails if needed, but this covers the visible ones in the snippet
     ];
@@ -34,7 +34,7 @@ const Email = ({ type }) => {
                     <div className="page-title-box">
                         <div className="float-end">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="#">Metrica</a></li>
+                                <li className="breadcrumb-item"><a href="#">Glacia</a></li>
                                 <li className="breadcrumb-item"><a href="#">Apps</a></li>
                                 <li className="breadcrumb-item active">Inbox</li>
                             </ol>
@@ -146,7 +146,7 @@ const Email = ({ type }) => {
                                         <div className="col-mail col-mail-2">
                                             <a href="#" className="subject">
                                                 {email.label && <span className={`badge-soft-${email.labelColor || 'primary'} badge me-2`}>{email.label}</span>}
-                                                {email.subject} &nbsp;–&nbsp; <span className="teaser">{email.teaser}</span>
+                                                {email.subject} &nbsp;â€“&nbsp; <span className="teaser">{email.teaser}</span>
                                             </a>
                                             <div className="date">{email.date}</div>
                                         </div>

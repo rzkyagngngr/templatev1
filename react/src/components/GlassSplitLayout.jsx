@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, Outlet } from 'react-router-dom';
 import { navConfig } from '../config/navConfig';
 
@@ -52,7 +52,7 @@ export default function GlassSplitLayout({ activeTab }) { // activeTab comes fro
         <div className="flex h-[calc(100vh-8rem)] gap-6 p-2 mx-auto max-w-[90rem]">
             {/* Column 1: Submenu (Left Panel) */}
             <div className="w-16 md:w-20 lg:w-64 flex-none flex flex-col gap-2 bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)] overflow-y-auto custom-scrollbar">
-                <div className="text-xs font-bold text-white/40 uppercase tracking-widest px-2 mb-2 hidden lg:block">
+                <div className="text-xs font-bold =/40 uppercase tracking-widest px-2 mb-2 hidden lg:block">
                     {categoryData.label}
                 </div>
                 {categoryData.items.map((item) => (
@@ -64,11 +64,11 @@ export default function GlassSplitLayout({ activeTab }) { // activeTab comes fro
                                 : 'hover:bg-white/10 border border-transparent'
                             }`}
                     >
-                        <span className={`material-icons-round text-2xl transition-colors ${activeSubItem === item.id ? 'text-primary' : 'text-slate-400 group-hover:text-white'
+                        <span className={`material-icons-round text-2xl transition-colors ${activeSubItem === item.id ? 'text-primary' : 'text-slate-700 group-hover:='
                             }`}>
                             {item.icon}
                         </span>
-                        <span className={`text-sm font-medium hidden lg:block transition-colors ${activeSubItem === item.id ? 'text-white' : 'text-slate-400 group-hover:text-white'
+                        <span className={`text-sm font-medium hidden lg:block transition-colors ${activeSubItem === item.id ? '=' : 'text-slate-700 group-hover:='
                             }`}>
                             {item.label}
                         </span>
@@ -86,7 +86,7 @@ export default function GlassSplitLayout({ activeTab }) { // activeTab comes fro
 
                 return (
                     <div className="w-48 lg:w-60 flex-none flex flex-col gap-1 bg-white/5 backdrop-blur-md border border-white/5 rounded-3xl p-3 shadow-lg overflow-y-auto custom-scrollbar">
-                        <div className="text-xs font-bold text-white/30 uppercase tracking-widest px-3 py-2 mb-1">
+                        <div className="text-xs font-bold =/30 uppercase tracking-widest px-3 py-2 mb-1">
                             {activeItemData.label}
                         </div>
                         {activeItemData.subItems.map((subItem) => (
@@ -94,8 +94,8 @@ export default function GlassSplitLayout({ activeTab }) { // activeTab comes fro
                                 key={subItem.id}
                                 onClick={() => navigate(subItem.path)}
                                 className={`text-left px-4 py-3 rounded-xl text-sm transition-all duration-200 ${location.pathname === subItem.path
-                                        ? 'bg-white/10 text-white font-medium shadow-inner'
-                                        : 'text-slate-400 hover:text-white hover:bg-white/5'
+                                        ? 'bg-white/10 text-slate-900 font-medium shadow-inner'
+                                        : 'text-slate-700 hover:text-slate-900 hover:bg-white/5'
                                     }`}
                             >
                                 {subItem.label}

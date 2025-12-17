@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
 export default function BottomNav({ activeTab, onNavigate }) {
     const [layout, setLayout] = useState('bottom'); // 'bottom', 'left', 'right'
@@ -299,6 +299,97 @@ export default function BottomNav({ activeTab, onNavigate }) {
                 { label: 'Error 404-alt', path: '/auth-404-alt' },
                 { label: 'Error 500', path: '/auth-500' },
                 { label: 'Error 500-alt', path: '/auth-500-alt' },
+            ]
+        },
+        {
+            id: 'business',
+            icon: 'business',
+            label: 'Business',
+            path: '/hr/dashboard',
+            submenus: [
+                {
+                    label: 'HR & Payroll',
+                    submenus: [
+                        { label: 'Dashboard', path: '/hr/dashboard' },
+                        { label: 'Employees', path: '/hr/employees' },
+                        { label: 'Departments', path: '/hr/departments' },
+                        { label: 'Attendance', path: '/hr/attendance' },
+                        { label: 'Leave Management', path: '/hr/leaves' },
+                        { label: 'Payroll', path: '/hr/payroll' },
+                        { label: 'Performance', path: '/hr/performance' },
+                        { label: 'Recruitment', path: '/hr/recruitment' },
+                        { label: 'Training', path: '/hr/training' },
+                    ]
+                },
+                {
+                    label: 'Finance & Accounting',
+                    submenus: [
+                        { label: 'Dashboard', path: '/finance/dashboard' },
+                        { label: 'Invoices', path: '/finance/invoices' },
+                        { label: 'Expenses', path: '/finance/expenses' },
+                        { label: 'Reports', path: '/finance/reports' },
+                        { label: 'Budget', path: '/finance/budget' },
+                        { label: 'Audits', path: '/finance/audits' },
+                    ]
+                },
+                {
+                    label: 'Sales & Marketing',
+                    submenus: [
+                        { label: 'Sales Dashboard', path: '/sales/dashboard' },
+                        { label: 'Orders', path: '/sales/orders' },
+                        { label: 'Quotes', path: '/sales/quotes' },
+                        { label: 'Leads', path: '/sales/leads' },
+                        { label: 'Marketing Campaigns', path: '/marketing/campaigns' },
+                        { label: 'Marketing Analytics', path: '/marketing/analytics' },
+                    ]
+                },
+                {
+                    label: 'QA & Testing',
+                    submenus: [
+                        { label: 'Dashboard', path: '/qa/dashboard' },
+                        { label: 'Test Cases', path: '/qa/testcases' },
+                        { label: 'Defects', path: '/qa/defects' },
+                        { label: 'Test Environments', path: '/qa/environments' },
+                        { label: 'Test Coverage', path: '/qa/coverage' },
+                    ]
+                },
+                {
+                    label: 'Projects & Operations',
+                    submenus: [
+                        { label: 'Projects Dashboard', path: '/projects/dashboard' },
+                        { label: 'Kanban Board', path: '/projects/kanban' },
+                        { label: 'Tasks', path: '/projects/tasks' },
+                        { label: 'Project Approvals', path: '/projects/approvals' },
+                        { label: 'Operations Dashboard', path: '/operations/dashboard' },
+                        { label: 'Tickets', path: '/operations/tickets' },
+                    ]
+                },
+                {
+                    label: 'Reporting',
+                    submenus: [
+                        { label: 'Dashboard', path: '/reporting/dashboard' },
+                        { label: 'Report Builder', path: '/reporting/builder' },
+                        { label: 'Scheduled Reports', path: '/reporting/scheduler' },
+                    ]
+                },
+                {
+                    label: 'Inventory',
+                    submenus: [
+                        { label: 'Dashboard', path: '/inventory/dashboard' },
+                        { label: 'Products', path: '/inventory/products' },
+                        { label: 'Warehouses', path: '/inventory/warehouses' },
+                        { label: 'Stock Management', path: '/inventory/stock' },
+                    ]
+                },
+                {
+                    label: 'Support & Knowledge',
+                    submenus: [
+                        { label: 'Support Dashboard', path: '/support/dashboard' },
+                        { label: 'Support Tickets', path: '/support/tickets' },
+                        { label: 'Knowledge Base', path: '/support/knowledgebase' },
+                        { label: 'FAQ', path: '/support/faq' },
+                    ]
+                },
             ]
         }
     ];

@@ -1,0 +1,4 @@
+﻿import React from 'react';
+export default function CryptoNews() {
+    return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Crypto News</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>Crypto</span><span className="mx-2">/</span><span className="text-slate-900">News</span></div></div><div className="space-y-4"><div className="glass-card p-6"><h5 className="text-slate-900 font-semibold mb-2">Bitcoin Reaches New Heights</h5><p className="text-slate-700 text-sm">Bitcoin has reached a new all-time high...</p><p className="text-xs text-slate-500 mt-2">2 hours ago</p></div><div className="glass-card p-6"><h5 className="text-slate-900 font-semibold mb-2">Ethereum Updates Network</h5><p className="text-slate-700 text-sm">Ethereum network has been upgraded...</p><p className="text-xs text-slate-500 mt-2">4 hours ago</p></div></div></div>);
+}

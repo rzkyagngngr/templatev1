@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import PillLayout from '../components/PillLayout';
 
 // Simple Calendar Grid Implementation
@@ -22,8 +22,8 @@ const CalendarGrid = () => {
             <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold text-textPrimary">October 2023</h2>
                 <div className="flex gap-2">
-                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-tertiary hover:bg-white/10 hover:text-white transition"><span className="material-icons-round">chevron_left</span></button>
-                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-tertiary hover:bg-white/10 hover:text-white transition"><span className="material-icons-round">chevron_right</span></button>
+                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-tertiary hover:bg-white/10 hover:text-slate-900 transition"><span className="material-icons-round">chevron_left</span></button>
+                    <button className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-tertiary hover:bg-white/10 hover:text-slate-900 transition"><span className="material-icons-round">chevron_right</span></button>
                 </div>
             </div>
             <div className="grid grid-cols-7 mb-4">
@@ -37,7 +37,7 @@ const CalendarGrid = () => {
                             {d && <span className={`text-sm font-medium ${[6, 0].includes(i % 7) ? 'text-rose-400' : 'text-textPrimary'}`}>{d}</span>}
                             <div className="w-full flex flex-col gap-1 mt-1">
                                 {dayEvents.map((e, idx) => (
-                                    <div key={idx} className={`${e.color} text-white text-[10px] px-1.5 py-0.5 rounded shadow-sm w-full truncate`}>
+                                    <div key={idx} className={`${e.color} text-slate-900 text-[10px] px-1.5 py-0.5 rounded shadow-sm w-full truncate`}>
                                         {e.title}
                                     </div>
                                 ))}

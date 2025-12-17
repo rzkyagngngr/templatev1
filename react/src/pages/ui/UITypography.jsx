@@ -1,0 +1,4 @@
+﻿import React from 'react';
+export default function UITypography() {
+    return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Typography</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>UI</span><span className="mx-2">/</span><span className="text-slate-900">Typography</span></div></div><div className="glass-card p-6 space-y-6"><div><h1 className="text-4xl font-bold =">Heading 1</h1><p className="text-slate-700 text-sm mt-2">Large heading for page titles</p></div><div><h2 className="text-3xl font-bold =">Heading 2</h2><p className="text-slate-700 text-sm mt-2">Medium heading for section titles</p></div><div><p className="text-slate-900">Regular paragraph text</p><p className="text-slate-700 text-sm">Small secondary text</p></div></div></div>);
+}

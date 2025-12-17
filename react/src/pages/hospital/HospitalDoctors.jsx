@@ -1,180 +1,95 @@
-
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+﻿
+import React, { useState } from 'react';
+import { Edit2, Trash2 } from 'lucide-react';
 
 const HospitalDoctors = () => {
-    const navigate = useNavigate();
+  const [doctors] = useState([
+    { id: 1, name: 'Dr. Wendy Keen', specialty: 'MD Orthopedic', experience: '4 years', hospital: 'Apollo Hospital', status: 'Active' },
+    { id: 2, name: 'Dr. Helen White', specialty: 'MS Cardiology', experience: '3 years', hospital: 'Apollo Hospital', status: 'Active' },
+    { id: 3, name: 'Dr. Thomas Fant', specialty: 'MD Neurology', experience: '10 years', hospital: 'Apollo Hospital', status: 'Active' },
+    { id: 4, name: 'Dr. Justin Williams', specialty: 'MS Psychology', experience: '4 years', hospital: 'Apollo Hospital', status: 'Active' },
+    { id: 5, name: 'Dr. Aretha Garland', specialty: 'MD Pediatrics', experience: '6 years', hospital: 'Apollo Hospital', status: 'Active' },
+    { id: 6, name: 'Dr. William Gonzalez', specialty: 'MS Gastroenterology', experience: '8 years', hospital: 'Apollo Hospital', status: 'Inactive' },
+    { id: 7, name: 'Dr. Lea Sanchez', specialty: 'MD Gynaecology', experience: '5 years', hospital: 'Apollo Hospital', status: 'Active' },
+    { id: 8, name: 'Dr. Marcus Johnson', specialty: 'MD Radiology', experience: '7 years', hospital: 'Apollo Hospital', status: 'Active' },
+  ]);
 
-    const handleProfileClick = (e) => {
-        e.preventDefault();
-        navigate('/apps/hospital/doctor-profile');
-    };
+  const handleEdit = (id) => {
+    console.log('Edit doctor:', id);
+  };
 
-    return (
-        <div className="page-content-tab">
-            <div className="container-fluid">
-                {/* Page-Title */}
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="page-title-box">
-                            <div className="float-end">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="#">Metrica</a></li>
-                                    <li className="breadcrumb-item"><a href="#">Hospital</a></li>
-                                    <li className="breadcrumb-item active">All Doctors</li>
-                                </ol>
-                            </div>
-                            <h4 className="page-title">All Doctors</h4>
-                        </div>
-                    </div>
-                </div>
-                {/* end page title end breadcrumb */}
+  const handleDelete = (id) => {
+    console.log('Delete doctor:', id);
+  };
 
-                <div className="row">
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-2.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Wendy Keen</h5>
-                                <p className="text-muted mb-1">MD Orthopedic</p>
-                                <p className="text-center font-14">4 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-4.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Helen White</h5>
-                                <p className="text-muted mb-1">MS Cardiology</p>
-                                <p className="text-center font-14">3 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-5.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Thomas Fant</h5>
-                                <p className="text-muted mb-1">MD Neurology</p>
-                                <p className="text-center font-14">10 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="w-full space-y-6 p-6">
+      <div>
+        <nav className="flex text-gray-500 text-sm mb-2">
+          <span className="hover:text-gray-900 cursor-pointer">Glacia</span>
+          <span className="mx-2">/</span>
+          <span className="hover:text-gray-900 cursor-pointer">Hospital</span>
+          <span className="mx-2">/</span>
+          <span className="text-gray-900 font-semibold">All Doctors</span>
+        </nav>
+        <h1 className="text-3xl font-bold text-gray-900">All Doctors</h1>
+      </div>
 
-                <div className="row">
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-6.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Justin Williams</h5>
-                                <p className="text-muted mb-1">MS Psychology</p>
-                                <p className="text-center font-14">4 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
+      <div className="backdrop-blur-md bg-white/30 border border-gray-300 rounded-xl overflow-hidden shadow-lg">
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead className="bg-gray-50/50">
+              <tr>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Doctor Name</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Specialty</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Experience</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Hospital</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Status</th>
+                <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">Action</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200/50">
+              {doctors.map((doctor) => (
+                <tr key={doctor.id} className="hover:bg-white/20 transition">
+                  <td className="px-6 py-4 text-sm text-gray-900">{doctor.name}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900">{doctor.specialty}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900">{doctor.experience}</td>
+                  <td className="px-6 py-4 text-sm text-gray-900">{doctor.hospital}</td>
+                  <td className="px-6 py-4 text-sm">
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                      doctor.status === 'Active' 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-red-100 text-red-800'
+                    }`}>
+                      {doctor.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 text-sm">
+                    <div className="flex items-center justify-center gap-3">
+                      <button
+                        onClick={() => handleEdit(doctor.id)}
+                        className="text-gray-600 hover:text-blue-600 transition"
+                        title="Edit"
+                      >
+                        <Edit2 size={18} />
+                      </button>
+                      <button
+                        onClick={() => handleDelete(doctor.id)}
+                        className="text-gray-600 hover:text-red-600 transition"
+                        title="Delete"
+                      >
+                        <Trash2 size={18} />
+                      </button>
                     </div>
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-6.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Wendy Keen</h5>
-                                <p className="text-muted mb-1">MD Orthopedic</p>
-                                <p className="text-center font-14">4 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-1.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Helen White</h5>
-                                <p className="text-muted mb-1">MS Cardiology</p>
-                                <p className="text-center font-14">3 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-2.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Thomas Fant</h5>
-                                <p className="text-muted mb-1">MD Neurology</p>
-                                <p className="text-center font-14">10 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-5.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Justin Williams</h5>
-                                <p className="text-muted mb-1">MS Psychology</p>
-                                <p className="text-center font-14">4 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-lg-4">
-                        <div className="card">
-                            <div className="card-body text-center">
-                                <div className="text-end">
-                                    <a href="#"><i className="las la-pen text-secondary font-16"></i></a>
-                                    <a href="#"><i className="las la-trash-alt text-secondary font-16"></i></a>
-                                </div>
-                                <img src="/assets/images/users/dr-2.jpg" alt="user" height="100" className="rounded-circle mt-n3" />
-                                <h5 className="mb-1">Dr.Wendy Keen</h5>
-                                <p className="text-muted mb-1">MD Orthopedic</p>
-                                <p className="text-center font-14">4 years experience in Apollo Hospital</p>
-                                <button type="button" className="btn btn-sm btn-de-primary" onClick={handleProfileClick}>View Profile</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default HospitalDoctors;

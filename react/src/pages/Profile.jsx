@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 // import MobileNavbar from '../components/MobileNavbar'; // Assuming we might want mobile nav here too, but Layout handles it.
 // Profile View
 
@@ -14,7 +14,7 @@ const Post = ({ author, time, text, images, likes, comments }) => (
                     <p className="text-xs text-tertiary">{time}</p>
                 </div>
             </div>
-            <button className="text-tertiary hover:text-white"><span className="material-icons-round">more_horiz</span></button>
+            <button className="text-tertiary hover:="><span className="material-icons-round">more_horiz</span></button>
         </div>
         <p className="text-textPrimary text-sm mb-4 leading-relaxed">{text}</p>
         {images && (
@@ -47,7 +47,7 @@ export default function Profile() {
             <div className="glass-card p-0 overflow-hidden relative group">
                 <div className="h-48 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 relative">
                     <div className="absolute inset-0 bg-black/20"></div>
-                    <button className="absolute top-4 right-4 bg-black/30 text-white px-3 py-1 rounded-full text-xs hover:bg-black/50 transition">Change Cover</button>
+                    <button className="absolute top-4 right-4 bg-black/30 text-slate-900 px-3 py-1 rounded-full text-xs hover:bg-black/50 transition">Change Cover</button>
                 </div>
                 <div className="px-6 pb-6 relative">
                     <div className="flex flex-col md:flex-row items-end -mt-12 mb-4 gap-6">
@@ -57,10 +57,10 @@ export default function Profile() {
                         </div>
                         <div className="flex-1 mb-2">
                             <h2 className="text-2xl font-bold text-textPrimary">Rosa Dodson</h2>
-                            <p className="text-tertiary">Senior UX Designer • San Francisco, CA</p>
+                            <p className="text-tertiary">Senior UX Designer â€¢ San Francisco, CA</p>
                         </div>
                         <div className="flex gap-3 mb-2">
-                            <button className="px-4 py-2 bg-primary text-white rounded-lg shadow-lg shadow-primary/30 hover:bg-primary-dark transition font-medium text-sm">Follow</button>
+                            <button className="px-4 py-2 bg-primary text-slate-900 rounded-lg shadow-lg shadow-primary/30 hover:bg-primary-dark transition font-medium text-sm">Follow</button>
                             <button className="px-4 py-2 bg-white/5 text-textPrimary rounded-lg hover:bg-white/10 transition font-medium text-sm">Message</button>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ export default function Profile() {
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`px-4 py-3 text-sm font-medium border-b-2 transition ${activeTab === tab ? 'border-primary text-primary' : 'border-transparent text-tertiary hover:text-white'}`}
+                                className={`px-4 py-3 text-sm font-medium border-b-2 transition ${activeTab === tab ? 'border-primary text-primary' : 'border-transparent text-tertiary hover:='}`}
                             >
                                 {tab.charAt(0).toUpperCase() + tab.slice(1)}
                             </button>
@@ -124,7 +124,7 @@ export default function Profile() {
                     <Post
                         author="Rosa Dodson"
                         time="2 hours ago"
-                        text="Designing the new dashboard for Metrica. It's coming along nicely! 🎨✨"
+                        text="Designing the new dashboard for Glacia. It's coming along nicely! ðŸŽ¨âœ¨"
                         images={['img1']}
                         likes="156"
                         comments="32"

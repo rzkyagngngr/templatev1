@@ -1,4 +1,4 @@
-
+﻿
 import React from 'react';
 
 const HospitalDashboard = () => {
@@ -11,7 +11,7 @@ const HospitalDashboard = () => {
                         <div className="page-title-box">
                             <div className="float-end">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="#">Metrica</a></li>
+                                    <li className="breadcrumb-item"><a href="#">Glacia</a></li>
                                     <li className="breadcrumb-item"><a href="#">Hospital</a></li>
                                     <li className="breadcrumb-item active">Dashboard</li>
                                 </ol>

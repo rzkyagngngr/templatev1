@@ -1,0 +1,4 @@
+﻿import React from 'react';
+export default function AdvancedClipboard() {
+    return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Clipboard Functionality</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>Advanced</span><span className="mx-2">/</span><span className="text-slate-900">Clipboard</span></div></div><div className="glass-card p-6"><div className="bg-white/5 rounded-lg p-4 mb-4"><code className="text-slate-900 text-sm">npm install @react-copy-to-clipboard</code></div><button className="px-6 py-2.5 bg-primary hover:bg-primary/90 rounded-lg text-slate-900 font-medium text-sm"><span className="material-icons-round text-sm mr-1 align-middle">content_copy</span>Copy</button></div></div>);
+}

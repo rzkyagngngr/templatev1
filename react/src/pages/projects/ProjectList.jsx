@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 export default function ProjectList() {
     // Dummy Data
@@ -7,7 +7,7 @@ export default function ProjectList() {
             id: 1,
             name: 'Banking',
             client: 'Hyman M. Cross',
-            image: 'https://mannatthemes.com/metrica/default/assets/images/small/project-2.jpg',
+            image: 'https://mannatthemes.com/Glacia/default/assets/images/small/project-2.jpg',
             start: '15 Nov 2021',
             deadline: '28 Feb 2022',
             budget: '$56,800',
@@ -22,7 +22,7 @@ export default function ProjectList() {
             id: 2,
             name: 'Transfer money',
             client: 'Jack Z Jackson',
-            image: 'https://mannatthemes.com/metrica/default/assets/images/small/project-1.jpg',
+            image: 'https://mannatthemes.com/Glacia/default/assets/images/small/project-1.jpg',
             start: '08 Dec 2021',
             deadline: '28 Feb 2022',
             budget: '$33,100',
@@ -37,7 +37,7 @@ export default function ProjectList() {
             id: 3,
             name: 'Organic Farming',
             client: 'Hyman M. Cross',
-            image: 'https://mannatthemes.com/metrica/default/assets/images/small/project-3.jpg',
+            image: 'https://mannatthemes.com/Glacia/default/assets/images/small/project-3.jpg',
             start: '15 Nov 2021',
             deadline: '28 Feb 2022',
             budget: '$56,800',
@@ -52,7 +52,7 @@ export default function ProjectList() {
             id: 4,
             name: 'Book My World',
             client: 'Hyman M. Cross',
-            image: 'https://mannatthemes.com/metrica/default/assets/images/small/project-1.jpg',
+            image: 'https://mannatthemes.com/Glacia/default/assets/images/small/project-1.jpg',
             start: '15 Nov 2021',
             deadline: '28 Feb 2022',
             budget: '$82,000',
@@ -67,7 +67,7 @@ export default function ProjectList() {
             id: 5,
             name: 'Body Care',
             client: 'Hyman M. Cross',
-            image: 'https://mannatthemes.com/metrica/default/assets/images/small/project-2.jpg',
+            image: 'https://mannatthemes.com/Glacia/default/assets/images/small/project-2.jpg',
             start: '15 Nov 2021',
             deadline: '28 Feb 2022',
             budget: '$28,500',
@@ -82,7 +82,7 @@ export default function ProjectList() {
             id: 6,
             name: 'New GPS System',
             client: 'Hyman M. Cross',
-            image: 'https://mannatthemes.com/metrica/default/assets/images/small/project-3.jpg',
+            image: 'https://mannatthemes.com/Glacia/default/assets/images/small/project-3.jpg',
             start: '15 Nov 2021',
             deadline: '28 Feb 2022',
             budget: '$35,200',
@@ -99,28 +99,28 @@ export default function ProjectList() {
         <div className="w-full">
             {/* Header / Breadcrumb */}
             <div className="flex justify-between items-center mb-6">
-                <h4 className="text-xl font-bold text-white tracking-wide">Projects</h4>
+                <h4 className="text-xl font-bold text-slate-900 tracking-wide">Projects</h4>
                 <div className="text-sm text-slate-400">
-                    <span className="hover:text-white cursor-pointer">Metrica</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Glacia</span>
                     <span className="mx-2">/</span>
-                    <span className="hover:text-white cursor-pointer">Projects</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Projects</span>
                     <span className="mx-2">/</span>
-                    <span className="text-white">All</span>
+                    <span className="text-slate-900">All</span>
                 </div>
             </div>
 
             {/* Controls */}
             <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-                <h5 className="text-slate-300">Here is the list of all projects. <span className="bg-pink-500/20 text-pink-500 px-2 py-0.5 rounded text-xs ml-2">6</span></h5>
+                <h5 className="text-slate-600">Here is the list of all projects. <span className="bg-pink-500/20 text-pink-500 px-2 py-0.5 rounded text-xs ml-2">6</span></h5>
                 <div className="flex gap-2">
                     <div className="relative">
-                        <input type="text" placeholder="Search" className="bg-white/5 border border-white/10 rounded-lg px-4 py-1.5 text-sm text-white focus:outline-none focus:border-primary/50 w-48" />
-                        <span className="material-icons-round absolute right-2 top-1.5 text-slate-400 text-sm pointer-events-none">search</span>
+                        <input type="text" placeholder="Search" className="bg-white/5 border border-white/10 rounded-lg px-4 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-primary/50 w-48" />
+                        <span className="material-icons-round absolute right-2 top-1.5 text-slate-700 text-sm pointer-events-none">search</span>
                     </div>
-                    <button className="bg-primary hover:bg-primary-dark text-white px-4 py-1.5 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20 flex items-center gap-1">
+                    <button className="bg-primary hover:bg-primary-dark text-slate-900 px-4 py-1.5 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20 flex items-center gap-1">
                         <span className="material-icons-round text-sm">filter_list</span>
                     </button>
-                    <button className="bg-primary hover:bg-primary-dark text-white px-4 py-1.5 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20">
+                    <button className="bg-primary hover:bg-primary-dark text-slate-900 px-4 py-1.5 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20">
                         + Add New Project
                     </button>
                 </div>
@@ -133,12 +133,12 @@ export default function ProjectList() {
                         <div className="flex items-center gap-4 mb-4">
                             <img src={project.image} alt={project.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/10" />
                             <div className="overflow-hidden">
-                                <h4 className="text-lg font-bold text-white truncate">{project.name}</h4>
-                                <p className="text-slate-400 text-xs truncate">Client: {project.client}</p>
+                                <h4 className="text-lg font-bold text-slate-900 truncate">{project.name}</h4>
+                                <p className="text-slate-700 text-xs truncate">Client: {project.client}</p>
                             </div>
                         </div>
 
-                        <div className="flex justify-between items-center mb-4 text-xs text-slate-400 border-b border-white/5 pb-4">
+                        <div className="flex justify-between items-center mb-4 text-xs text-slate-700 border-b border-white/5 pb-4">
                             <div>
                                 <span className="block font-semibold text-slate-300">Start:</span> {project.start}
                             </div>
@@ -148,11 +148,11 @@ export default function ProjectList() {
                         </div>
 
                         <div className="mb-4">
-                            <h3 className="text-xl font-bold text-white">{project.budget}</h3>
+                            <h3 className="text-xl font-bold =">{project.budget}</h3>
                             <p className="text-slate-500 text-xs font-medium">Total Budget</p>
                         </div>
 
-                        <p className="text-slate-400 text-xs mb-4 line-clamp-3">
+                        <p className="text-slate-700 text-xs mb-4 line-clamp-3">
                             There are many variations of passages of Lorem Ipsum available,
                             but the majority have suffered alteration in some form.
                         </p>
@@ -175,15 +175,15 @@ export default function ProjectList() {
                             <div className="flex justify-between items-center">
                                 <div className="flex -space-x-2">
                                     {project.users.map((u, index) => (
-                                        <img key={index} src={`https://mannatthemes.com/metrica/default/assets/images/users/user-${u + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="user" />
+                                        <img key={index} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${u + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="user" />
                                     ))}
-                                    <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-slate-800 flex items-center justify-center text-xs text-blue-400 font-semibold">+{project.extraUsers}</div>
+                                    <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-slate-800 flex items-center justify-center text-xs text-blue-600 font-semibold">+{project.extraUsers}</div>
                                 </div>
                                 <div className="flex gap-2">
-                                    <button className="text-slate-400 hover:text-white transition-colors" title="List"><span className="material-icons-round text-lg">format_list_bulleted</span></button>
-                                    <button className="text-slate-400 hover:text-white transition-colors" title="Comments"><span className="material-icons-round text-lg">chat_bubble_outline</span></button>
-                                    <button className="text-slate-400 hover:text-white transition-colors" title="Edit"><span className="material-icons-round text-lg">edit</span></button>
-                                    <button className="text-slate-400 hover:text-red-400 transition-colors" title="Delete"><span className="material-icons-round text-lg">delete</span></button>
+                                    <button className="text-slate-700 hover:text-slate-900 transition-colors" title="List"><span className="material-icons-round text-lg">format_list_bulleted</span></button>
+                                    <button className="text-slate-700 hover:text-slate-900 transition-colors" title="Comments"><span className="material-icons-round text-lg">chat_bubble_outline</span></button>
+                                    <button className="text-slate-700 hover:text-slate-900 transition-colors" title="Edit"><span className="material-icons-round text-lg">edit</span></button>
+                                    <button className="text-slate-700 hover:text-red-600 transition-colors" title="Delete"><span className="material-icons-round text-lg">delete</span></button>
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -107,13 +107,13 @@ export default function Dashboard() {
         <div className="w-full">
             {/* Header / Breadcrumb */}
             <div className="flex justify-between items-center mb-6">
-                <h4 className="text-xl font-bold text-white tracking-wide">Dashboard</h4>
+                <h4 className="text-xl font-bold text-slate-900 tracking-wide">Dashboard</h4>
                 <div className="text-sm text-slate-400">
-                    <span className="hover:text-white cursor-pointer">Metrica</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Glacia</span>
                     <span className="mx-2">/</span>
-                    <span className="hover:text-white cursor-pointer">Project</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Project</span>
                     <span className="mx-2">/</span>
-                    <span className="text-white">Dashboard</span>
+                    <span className="text-slate-900">Dashboard</span>
                 </div>
             </div>
 
@@ -122,56 +122,56 @@ export default function Dashboard() {
                 {/* Projects */}
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Projects</p>
-                        <h3 className="text-2xl font-bold text-white">77</h3>
+                        <p className="text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Projects</p>
+                        <h3 className="text-2xl font-bold =">77</h3>
                         <p className="text-slate-500 text-xs mt-1">
-                            <span className="text-green-400 font-bold"><span className="material-icons-round text-xs align-middle">check_circle</span> 26</span> Complete
+                            <span className="text-emerald-600 font-bold"><span className="material-icons-round text-xs align-middle">check_circle</span> 26</span> Complete
                         </p>
                     </div>
                     <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                        <span className="material-icons-round text-slate-300 text-2xl">layers</span>
+                        <span className="material-icons-round text-slate-600 text-2xl">layers</span>
                     </div>
                 </div>
 
                 {/* Tasks */}
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Tasks</p>
-                        <h3 className="text-2xl font-bold text-white">41</h3>
+                        <p className="text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Tasks</p>
+                        <h3 className="text-2xl font-bold =">41</h3>
                         <p className="text-slate-500 text-xs mt-1">
-                            <span className="text-green-400 font-bold">Active</span> Weekly Avg.
+                            <span className="text-emerald-600 font-bold">Active</span> Weekly Avg.
                         </p>
                     </div>
                     <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                        <span className="material-icons-round text-slate-300 text-2xl">check_box</span>
+                        <span className="material-icons-round text-slate-600 text-2xl">check_box</span>
                     </div>
                 </div>
 
                 {/* Total Hours */}
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Total Hours</p>
-                        <h3 className="text-2xl font-bold text-white">801:30</h3>
+                        <p className="text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Total Hours</p>
+                        <h3 className="text-2xl font-bold =">801:30</h3>
                         <p className="text-slate-500 text-xs mt-1">
-                            <span className="text-slate-400">01:33</span> / <span className="text-slate-400">9:30</span> Duration
+                            <span className="text-slate-700">01:33</span> / <span className="text-slate-700">9:30</span> Duration
                         </p>
                     </div>
                     <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                        <span className="material-icons-round text-slate-300 text-2xl">schedule</span>
+                        <span className="material-icons-round text-slate-600 text-2xl">schedule</span>
                     </div>
                 </div>
 
                 {/* Budget */}
                 <div className="glass-card p-6 flex items-center justify-between">
                     <div>
-                        <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1">Budget</p>
-                        <h3 className="text-2xl font-bold text-white">$24,100</h3>
+                        <p className="text-slate-700 text-xs font-semibold uppercase tracking-wider mb-1">Budget</p>
+                        <h3 className="text-2xl font-bold =">$24,100</h3>
                         <p className="text-slate-500 text-xs mt-1">
-                            <span className="text-white">$14k</span> Total used
+                            <span className="text-slate-900">$14k</span> Total used
                         </p>
                     </div>
                     <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                        <span className="material-icons-round text-slate-300 text-2xl">attach_money</span>
+                        <span className="material-icons-round text-slate-600 text-2xl">attach_money</span>
                     </div>
                 </div>
             </div>
@@ -181,16 +181,16 @@ export default function Dashboard() {
                 {/* Overview Chart */}
                 <div className="glass-card p-6 lg:col-span-2">
                     <div className="flex justify-between items-center mb-4">
-                        <h4 className="text-lg font-bold text-white">Overview</h4>
+                        <h4 className="text-lg font-bold =">Overview</h4>
                         <div className="flex gap-2">
-                            <button className="text-slate-400 hover:text-white"><span className="material-icons-round">more_horiz</span></button>
+                            <button className="text-slate-700 hover:="><span className="material-icons-round">more_horiz</span></button>
                         </div>
                     </div>
                     <div className="h-64">
                         <Line options={overviewOptions} data={overviewData} />
                     </div>
                     <div className="mt-4 p-3 bg-blue-500/10 rounded-lg text-center border border-blue-500/20">
-                        <h6 className="text-blue-400 font-semibold text-sm">
+                        <h6 className="text-blue-600 font-semibold text-sm">
                             <span className="material-icons-round align-middle text-sm mr-1">calendar_today</span>
                             01 January 2021 to 01 January 2022
                         </h6>
@@ -200,14 +200,14 @@ export default function Dashboard() {
                 {/* Task Performance */}
                 <div className="glass-card p-6">
                     <div className="flex justify-between items-center mb-4">
-                        <h4 className="text-lg font-bold text-white">Tasks Performance</h4>
-                        <button className="text-slate-400 hover:text-white"><span className="material-icons-round">more_horiz</span></button>
+                        <h4 className="text-lg font-bold =">Tasks Performance</h4>
+                        <button className="text-slate-700 hover:="><span className="material-icons-round">more_horiz</span></button>
                     </div>
                     <div className="h-64 flex justify-center items-center">
                         <Doughnut options={taskStatusOptions} data={taskStatusData} />
                     </div>
                     <div className="mt-4 p-3 bg-blue-500/10 rounded-lg text-center border border-blue-500/20">
-                        <h6 className="text-blue-400 font-semibold text-sm">
+                        <h6 className="text-blue-600 font-semibold text-sm">
                             <span className="material-icons-round align-middle text-sm mr-1">calendar_today</span>
                             Current Report
                         </h6>
@@ -226,8 +226,8 @@ export default function Dashboard() {
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
                                     className={`pb-3 text-sm font-semibold border-b-2 transition-colors ${activeTab === tab
-                                            ? 'border-primary text-white'
-                                            : 'border-transparent text-slate-400 hover:text-slate-200'
+                                            ? 'border-primary ='
+                                            : 'border-transparent text-slate-700 hover:text-slate-200'
                                         }`}
                                 >
                                     Project {idx + 1}
@@ -241,15 +241,15 @@ export default function Dashboard() {
                         <div>
                             <div className="flex flex-col md:flex-row justify-between mb-6">
                                 <div className="flex items-center gap-4">
-                                    <img src="https://mannatthemes.com/metrica/default/assets/images/small/project-2.jpg" alt="" className="w-16 h-16 rounded-full border-2 border-white/10 shadow-lg object-cover" />
+                                    <img src="https://mannatthemes.com/Glacia/default/assets/images/small/project-2.jpg" alt="" className="w-16 h-16 rounded-full border-2 border-white/10 shadow-lg object-cover" />
                                     <div>
-                                        <h4 className="text-xl font-bold text-white">Banking App</h4>
-                                        <p className="text-slate-400 text-sm">Client: <span className="text-slate-200">Hyman M. Cross</span></p>
+                                        <h4 className="text-xl font-bold =">Banking App</h4>
+                                        <p className="text-slate-700 text-sm">Client: <span className="text-slate-200">Hyman M. Cross</span></p>
                                     </div>
                                 </div>
                                 <div className="mt-4 md:mt-0 text-right">
-                                    <p className="text-slate-400 text-sm font-semibold">Start: <span className="text-slate-200 font-normal">15 Nov 2021</span></p>
-                                    <p className="text-slate-400 text-sm font-semibold mt-1">Deadline: <span className="text-slate-200 font-normal">28 Feb 2022</span></p>
+                                    <p className="text-slate-700 text-sm font-semibold">Start: <span className="text-slate-200 font-normal">15 Nov 2021</span></p>
+                                    <p className="text-slate-700 text-sm font-semibold mt-1">Deadline: <span className="text-slate-200 font-normal">28 Feb 2022</span></p>
                                 </div>
                             </div>
 
@@ -257,41 +257,41 @@ export default function Dashboard() {
                             <div className="flex justify-between items-center mb-6 relative">
                                 <div className="absolute top-1/2 left-0 w-full h-0.5 bg-white/10 -z-10"></div>
                                 <div className="flex flex-col items-center">
-                                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">check</span></div>
-                                    <span className="text-xs text-white mt-2 font-medium">Planning</span>
+                                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-slate-900 border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">check</span></div>
+                                    <span className="text-xs text-slate-900 mt-2 font-medium">Planning</span>
                                 </div>
                                 <div className="flex flex-col items-center">
-                                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">check</span></div>
-                                    <span className="text-xs text-white mt-2 font-medium">Design</span>
+                                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-slate-900 border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">check</span></div>
+                                    <span className="text-xs text-slate-900 mt-2 font-medium">Design</span>
                                 </div>
                                 <div className="flex flex-col items-center">
-                                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">code</span></div>
-                                    <span className="text-xs text-slate-400 mt-2">Dev</span>
+                                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-700 border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">code</span></div>
+                                    <span className="text-xs text-slate-700 mt-2">Dev</span>
                                 </div>
                                 <div className="flex flex-col items-center">
-                                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-400 border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">bug_report</span></div>
-                                    <span className="text-xs text-slate-400 mt-2">Testing</span>
+                                    <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-slate-700 border-4 border-slate-900 shadow-lg"><span className="material-icons-round text-xs">bug_report</span></div>
+                                    <span className="text-xs text-slate-700 mt-2">Testing</span>
                                 </div>
                             </div>
 
                             {/* Stats & Progress */}
                             <div className="glass-card bg-white/5 p-4 rounded-xl border border-white/5">
                                 <div className="flex justify-between items-center mb-2">
-                                    <span className="text-xs font-semibold text-slate-400 uppercase">Progress</span>
-                                    <span className="text-xs font-bold text-white">15%</span>
+                                    <span className="text-xs font-semibold text-slate-700 uppercase">Progress</span>
+                                    <span className="text-xs font-bold =">15%</span>
                                 </div>
                                 <div className="w-full bg-slate-700 rounded-full h-2 mb-4">
                                     <div className="bg-purple-500 h-2 rounded-full" style={{ width: '15%' }}></div>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <div>
-                                        <p className="text-slate-400 text-xs">Hours: 281:30 / 530</p>
+                                        <p className="text-slate-700 text-xs">Hours: 281:30 / 530</p>
                                     </div>
                                     <div className="flex -space-x-2">
                                         {[1, 2, 3, 4].map(i => (
-                                            <img key={i} src={`https://mannatthemes.com/metrica/default/assets/images/users/user-${i + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="" />
+                                            <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${i + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="" />
                                         ))}
-                                        <div className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs text-white">+4</div>
+                                        <div className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs =">+4</div>
                                     </div>
                                 </div>
                             </div>
@@ -306,7 +306,7 @@ export default function Dashboard() {
 
                 {/* Calendar Placeholder / Extra Stats */}
                 <div className="glass-card p-6">
-                    <h4 className="text-lg font-bold text-white mb-4">Calendar</h4>
+                    <h4 className="text-lg font-bold text-slate-900 mb-4">Calendar</h4>
                     <div className="h-64 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center text-slate-500 mb-6">
                         Calendar Component Placeholder
                     </div>
@@ -316,19 +316,19 @@ export default function Dashboard() {
             {/* All Projects Table */}
             <div className="glass-card">
                 <div className="p-6 border-b border-white/5 flex justify-between items-center">
-                    <h4 className="text-lg font-bold text-white">All Projects</h4>
-                    <button className="text-primary text-sm hover:text-white transition-colors">View All</button>
+                    <h4 className="text-lg font-bold =">All Projects</h4>
+                    <button className="text-primary text-sm hover:text-slate-900 transition-colors">View All</button>
                 </div>
                 <div className="overflow-x-auto">
                     <table className="clean-table w-full text-left">
                         <thead>
                             <tr>
-                                <th className="p-4 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-white/10">Project Name</th>
-                                <th className="p-4 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-white/10">Client</th>
-                                <th className="p-4 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-white/10">Start Date</th>
-                                <th className="p-4 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-white/10">Deadline</th>
-                                <th className="p-4 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-white/10">Status</th>
-                                <th className="p-4 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-white/10">Progress</th>
+                                <th className="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-white/10">Project Name</th>
+                                <th className="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-white/10">Client</th>
+                                <th className="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-white/10">Start Date</th>
+                                <th className="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-white/10">Deadline</th>
+                                <th className="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-white/10">Status</th>
+                                <th className="p-4 text-xs font-bold text-slate-700 uppercase tracking-wider border-b border-white/10">Progress</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-white/5">
@@ -339,10 +339,10 @@ export default function Dashboard() {
                                 { name: 'App Launch', client: 'Mike T', start: '01/4/2021', end: '01/9/2021', status: 'Active', progress: 25, color: 'blue' },
                             ].map((proj, i) => (
                                 <tr key={i} className="hover:bg-white/5 transition-colors">
-                                    <td className="p-4 font-medium text-white">{proj.name}</td>
-                                    <td className="p-4 text-slate-400 text-sm">{proj.client}</td>
-                                    <td className="p-4 text-slate-400 text-sm">{proj.start}</td>
-                                    <td className="p-4 text-slate-400 text-sm">{proj.end}</td>
+                                    <td className="p-4 font-medium =">{proj.name}</td>
+                                    <td className="p-4 text-slate-700 text-sm">{proj.client}</td>
+                                    <td className="p-4 text-slate-700 text-sm">{proj.start}</td>
+                                    <td className="p-4 text-slate-700 text-sm">{proj.end}</td>
                                     <td className="p-4">
                                         <span className={`px-2 py-1 rounded text-xs font-medium bg-${proj.color}-500/20 text-${proj.color}-400`}>
                                             {proj.status}

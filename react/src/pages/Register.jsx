@@ -1,10 +1,10 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Register() {
     return (
         <div className="w-full max-w-md glass-card p-8 animate-in fade-in zoom-in duration-300">
             <div className="text-center mb-8">
-                <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-pink-500/30">
+                <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-slate-900 mb-4 shadow-lg shadow-pink-500/30">
                     <span className="material-icons-round text-2xl">person_add</span>
                 </div>
                 <h2 className="text-2xl font-bold text-textPrimary mb-2">Create Account</h2>
@@ -46,7 +46,7 @@ export default function Register() {
                     I agree to the <a href="#" className="text-primary hover:underline">Terms of Use</a>
                 </div>
 
-                <button type="button" className="w-full py-3 bg-purple-500 text-white font-bold rounded-xl shadow-lg shadow-purple-500/30 hover:scale-105 transition transform active:scale-95">Register</button>
+                <button type="button" className="w-full py-3 bg-purple-500 text-slate-900 font-bold rounded-xl shadow-lg shadow-purple-500/30 hover:scale-105 transition transform active:scale-95">Register</button>
             </form>
 
             <div className="mt-8 text-center text-sm text-tertiary">

@@ -1,0 +1,4 @@
+﻿import React from 'react';
+export default function AdvancedRatings() {
+    return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Star Ratings</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>Advanced</span><span className="mx-2">/</span><span className="text-slate-900">Ratings</span></div></div><div className="glass-card p-6"><div className="flex gap-8"><div className="text-center"><p className="text-yellow-600 text-4xl mb-2">â˜…â˜…â˜…â˜…â˜…</p><p className="text-slate-900">5 Stars</p></div><div className="text-center"><p className="text-yellow-600 text-4xl mb-2">â˜…â˜…â˜…â˜…â˜†</p><p className="text-slate-900">4 Stars</p></div><div className="text-center"><p className="text-yellow-600 text-4xl mb-2">â˜…â˜…â˜…â˜†â˜†</p><p className="text-slate-900">3 Stars</p></div></div></div></div>);
+}

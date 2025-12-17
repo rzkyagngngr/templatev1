@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Invoice() {
     // Invoice is usually a static document view.
@@ -22,13 +22,13 @@ export default function Invoice() {
                     <div>
                         <div className="flex items-center gap-2 mb-4">
                             <span className="material-icons-round text-3xl text-primary">change_history</span>
-                            <span className="text-2xl font-bold text-textPrimary tracking-tight">Metrica</span>
+                            <span className="text-2xl font-bold text-textPrimary tracking-tight">Glacia</span>
                         </div>
                         <div className="text-tertiary text-sm space-y-1">
                             <p>1234 Main St, Suite 100</p>
                             <p>San Francisco, CA 94123</p>
                             <p>United States</p>
-                            <p>contact@metrica.com</p>
+                            <p>contact@Glacia.com</p>
                         </div>
                     </div>
                     <div className="text-right">

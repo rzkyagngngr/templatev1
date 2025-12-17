@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Gallery() {
     return (
@@ -6,10 +6,10 @@ export default function Gallery() {
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl font-bold text-textPrimary">Gallery</h1>
                 <div className="flex gap-2">
-                    <button className="px-3 py-1 rounded-full bg-primary text-white text-sm font-medium">All</button>
-                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-white hover:bg-white/10 text-sm font-medium transition">Development</button>
-                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-white hover:bg-white/10 text-sm font-medium transition">Design</button>
-                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-white hover:bg-white/10 text-sm font-medium transition">Mobile</button>
+                    <button className="px-3 py-1 rounded-full bg-primary text-slate-900 text-sm font-medium">All</button>
+                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-slate-900 hover:bg-white/10 text-sm font-medium transition">Development</button>
+                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-slate-900 hover:bg-white/10 text-sm font-medium transition">Design</button>
+                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-slate-900 hover:bg-white/10 text-sm font-medium transition">Mobile</button>
                 </div>
             </div>
 
@@ -24,10 +24,10 @@ export default function Gallery() {
 
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-4">
-                                <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-primary flex items-center justify-center text-white backdrop-blur-md transition transform translate-y-4 group-hover:translate-y-0 duration-300">
+                                <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-primary flex items-center justify-center text-slate-900 backdrop-blur-md transition transform translate-y-4 group-hover:translate-y-0 duration-300">
                                     <span className="material-icons-round">zoom_in</span>
                                 </button>
-                                <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-emerald-500 flex items-center justify-center text-white backdrop-blur-md transition transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
+                                <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-emerald-500 flex items-center justify-center text-slate-900 backdrop-blur-md transition transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
                                     <span className="material-icons-round">link</span>
                                 </button>
                             </div>

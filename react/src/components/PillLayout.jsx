@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function PillLayout({ title, bills, activePill, onPillChange, children }) {
     // bills prop is the list of pills/tabs (e.g. ['Index', 'Exchange', 'Wallet'])

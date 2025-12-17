@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 
 export default function TopNav({ onNavigate }) {
     const [activeDropdown, setActiveDropdown] = useState(null);
@@ -28,176 +28,501 @@ export default function TopNav({ onNavigate }) {
     };
 
     return (
-        <nav className="sticky top-0 z-50 flex items-center justify-between px-8 py-3 mr-4 border-b border-white/20 bg-white/6 backdrop-blur-3xl shadow-sm" ref={dropdownRef}>
-            <div className="flex-none flex items-center gap-2">
-                <span>
-                    <img src="/assets/images/logo-sm.png" alt="logo-small" className="h-8" />
-                </span>
-                <span>
-                    <img src="/assets/images/logo-dark.png" alt="logo-large" className="h-5 hidden md:block" />
-                </span>
-            </div>
-
-            <div className="flex-1 flex justify-center px-8">
-                <div className="flex items-center bg-white/50 backdrop-blur-md px-4 py-2 rounded-xl w-80 max-w-full border border-black/5 transition-all focus-within:bg-white/80 focus-within:ring-4 focus-within:ring-primary/15 focus-within:border-primary/30 shadow-inner">
-                    <span className="material-icons-round text-tertiary text-lg mr-2">search</span>
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="bg-transparent border-none outline-none text-sm flex-1 text-textPrimary placeholder-tertiary"
-                    />
-                    <span className="text-[0.65rem] text-tertiary bg-black/5 px-1.5 py-0.5 rounded font-medium ml-2">⌘K</span>
-                </div>
-            </div>
-
-            <div className="flex-none flex items-center gap-4">
-                {/* Language Selector */}
-                <div className="relative">
-                    <button
-                        onClick={() => toggleDropdown('lang')}
-                        className={`flex items-center gap-1.5 px-2.5 py-1.5 bg-white/40 border border-black/5 rounded-lg text-xs text-textPrimary transition hover:bg-white/60 ${activeDropdown === 'lang' ? 'bg-white/60' : ''}`}
-                    >
-                        <span className="text-base">{lang.flag}</span>
-                        <span className="font-semibold text-xs">{lang.code}</span>
-                        <span className={`material-icons-round text-tertiary text-base transition-transform ${activeDropdown === 'lang' ? 'rotate-180' : ''}`}>expand_more</span>
-                    </button>
-
-                    {activeDropdown === 'lang' && (
-                        <div className="absolute top-[calc(100%+0.5rem)] right-0 min-w-[10rem] bg-white/95 backdrop-blur-xl border border-black/10 rounded-xl py-2 shadow-2xl animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                            {[
-                                { code: 'EN', flag: '🇺🇸', name: 'English' },
-                                { code: 'ID', flag: '🇮🇩', name: 'Indonesia' },
-                                { code: 'JP', flag: '🇯🇵', name: '日本語' },
-                                { code: 'CN', flag: '🇨🇳', name: '中文' }
-                            ].map((l) => (
-                                <button
-                                    key={l.code}
-                                    onClick={() => changeLang(l.code, l.flag)}
-                                    className={`w-full flex items-center gap-2 px-4 py-2.5 text-xs text-textPrimary hover:bg-primary/10 hover:text-primary transition ${lang.code === l.code ? 'bg-primary/10 text-primary font-semibold' : ''}`}
-                                >
-                                    <span className="text-base">{l.flag}</span> {l.name}
-                                </button>
-                            ))}
+        <>
+            <style>{`
+                @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+                
+                * {
+                    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+                }
+                
+                body {
+                    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+                    margin: 0;
+                    padding: 0;
+                }
+                
+                .liquid-glass-nav {
+                    background: rgba(255, 255, 255, 0.7);
+                    backdrop-filter: blur(40px) saturate(180%);
+                    -webkit-backdrop-filter: blur(40px) saturate(180%);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+                    box-shadow: 
+                        0 1px 3px rgba(0, 0, 0, 0.05),
+                        0 20px 40px -10px rgba(0, 0, 0, 0.08),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .liquid-glass-nav:hover {
+                    background: rgba(255, 255, 255, 0.85);
+                    box-shadow: 
+                        0 1px 3px rgba(0, 0, 0, 0.05),
+                        0 25px 50px -12px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                }
+                
+                .logo-orb {
+                    position: relative;
+                    animation: float 6s ease-in-out infinite;
+                }
+                
+                @keyframes float {
+                    0%, 100% { transform: translateY(0px) rotate(0deg); }
+                    50% { transform: translateY(-5px) rotate(2deg); }
+                }
+                
+                .logo-glow {
+                    position: absolute;
+                    inset: -8px;
+                    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+                    border-radius: 24px;
+                    opacity: 0;
+                    filter: blur(20px);
+                    transition: opacity 0.5s ease;
+                }
+                
+                .logo-orb:hover .logo-glow {
+                    opacity: 0.6;
+                    animation: pulse 2s ease-in-out infinite;
+                }
+                
+                @keyframes pulse {
+                    0%, 100% { opacity: 0.6; transform: scale(1); }
+                    50% { opacity: 0.8; transform: scale(1.05); }
+                }
+                
+                .logo-core {
+                    position: relative;
+                    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
+                    box-shadow: 
+                        0 8px 32px rgba(59, 130, 246, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .logo-orb:hover .logo-core {
+                    transform: scale(1.05) rotate(5deg);
+                    box-shadow: 
+                        0 12px 48px rgba(59, 130, 246, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+                }
+                
+                .liquid-search {
+                    background: rgba(255, 255, 255, 0.6);
+                    backdrop-filter: blur(20px) saturate(180%);
+                    -webkit-backdrop-filter: blur(20px) saturate(180%);
+                    border: 1px solid rgba(255, 255, 255, 0.9);
+                    box-shadow: 
+                        0 2px 8px rgba(0, 0, 0, 0.04),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .liquid-search:hover, .liquid-search:focus-within {
+                    background: rgba(255, 255, 255, 0.8);
+                    box-shadow: 
+                        0 4px 16px rgba(59, 130, 246, 0.12),
+                        0 2px 8px rgba(0, 0, 0, 0.06),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                    border-color: rgba(59, 130, 246, 0.3);
+                    transform: translateY(-1px);
+                }
+                
+                .liquid-button {
+                    background: rgba(255, 255, 255, 0.5);
+                    backdrop-filter: blur(20px);
+                    -webkit-backdrop-filter: blur(20px);
+                    border: 1px solid rgba(255, 255, 255, 0.8);
+                    box-shadow: 
+                        0 2px 8px rgba(0, 0, 0, 0.04),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+                
+                .liquid-button:hover {
+                    background: rgba(255, 255, 255, 0.8);
+                    border-color: rgba(59, 130, 246, 0.3);
+                    box-shadow: 
+                        0 4px 12px rgba(59, 130, 246, 0.15),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                    transform: translateY(-1px);
+                }
+                
+                .liquid-button-active {
+                    background: rgba(255, 255, 255, 0.95);
+                    border-color: rgba(59, 130, 246, 0.4);
+                    box-shadow: 
+                        0 6px 20px rgba(59, 130, 246, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                }
+                
+                .liquid-dropdown {
+                    background: rgba(255, 255, 255, 0.8);
+                    backdrop-filter: blur(40px) saturate(180%);
+                    -webkit-backdrop-filter: blur(40px) saturate(180%);
+                    border: 1px solid rgba(255, 255, 255, 0.9);
+                    box-shadow: 
+                        0 20px 60px rgba(0, 0, 0, 0.12),
+                        0 4px 16px rgba(0, 0, 0, 0.08),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                    animation: dropdownSlide 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                }
+                
+                @keyframes dropdownSlide {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-10px) scale(0.95);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0) scale(1);
+                    }
+                }
+                
+                .notif-badge {
+                    background: linear-gradient(135deg, #ef4444, #dc2626);
+                    box-shadow: 
+                        0 4px 12px rgba(239, 68, 68, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                    animation: badgePulse 2s ease-in-out infinite;
+                }
+                
+                @keyframes badgePulse {
+                    0%, 100% { transform: scale(1); }
+                    50% { transform: scale(1.1); }
+                }
+                
+                .notif-ring {
+                    animation: ringPulse 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+                }
+                
+                @keyframes ringPulse {
+                    0% {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
+                    100% {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+                
+                .status-online {
+                    background: linear-gradient(135deg, #10b981, #059669);
+                    box-shadow: 
+                        0 2px 8px rgba(16, 185, 129, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+                    animation: statusPulse 3s ease-in-out infinite;
+                }
+                
+                @keyframes statusPulse {
+                    0%, 100% { opacity: 1; }
+                    50% { opacity: 0.7; }
+                }
+                
+                .kbd-key {
+                    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.9));
+                    border: 1px solid rgba(226, 232, 240, 0.8);
+                    box-shadow: 
+                        0 1px 2px rgba(0, 0, 0, 0.05),
+                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                    transition: all 0.2s ease;
+                }
+                
+                .liquid-search:focus-within .kbd-key {
+                    background: linear-gradient(180deg, rgba(59, 130, 246, 0.1), rgba(147, 197, 253, 0.05));
+                    border-color: rgba(59, 130, 246, 0.3);
+                }
+                
+                .dropdown-item {
+                    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                    position: relative;
+                    overflow: hidden;
+                }
+                
+                .dropdown-item::before {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+                    transform: translateX(-100%);
+                    transition: transform 0.6s ease;
+                }
+                
+                .dropdown-item:hover::before {
+                    transform: translateX(100%);
+                }
+                
+                .gradient-orb {
+                    box-shadow: 
+                        0 4px 16px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+                }
+                
+                .unread-indicator {
+                    background: linear-gradient(135deg, #3b82f6, #2563eb);
+                    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+                    animation: indicatorPulse 2s ease-in-out infinite;
+                }
+                
+                @keyframes indicatorPulse {
+                    0%, 100% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.7; transform: scale(0.9); }
+                }
+                
+                .storage-bar {
+                    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+                    box-shadow: 
+                        0 2px 8px rgba(59, 130, 246, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                    animation: shimmer 3s linear infinite;
+                    background-size: 200% 100%;
+                }
+                
+                @keyframes shimmer {
+                    0% { background-position: -200% 0; }
+                    100% { background-position: 200% 0; }
+                }
+                
+                .material-icons-round {
+                    font-family: 'Material Icons Round';
+                    font-weight: normal;
+                    font-style: normal;
+                    font-size: 24px;
+                    line-height: 1;
+                    letter-spacing: normal;
+                    text-transform: none;
+                    display: inline-block;
+                    white-space: nowrap;
+                    word-wrap: normal;
+                    direction: ltr;
+                    -webkit-font-smoothing: antialiased;
+                }
+            `}</style>
+            
+            <nav className="liquid-glass-nav sticky top-0 z-50 flex items-center justify-between px-6 py-2.5" ref={dropdownRef}>
+                {/* Logo Section */}
+                <div className="flex-none flex items-center gap-3">
+                    <div className="logo-orb">
+                        <div className="logo-glow"></div>
+                        <div className="logo-core w-9 h-9 rounded-2xl flex items-center justify-center overflow-hidden">
+                            <img src="/assets/icon.png" alt="Glacia" className="w-full h-full object-cover" />
                         </div>
-                    )}
+                    </div>
+                    <h2 className="text-slate-800 text-xl font-black tracking-tight bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text">
+                        Glacia
+                    </h2>
                 </div>
 
-                {/* Notifications */}
-                <div className="relative">
-                    <button
-                        onClick={() => toggleDropdown('notif')}
-                        className="relative p-1.5 text-secondary hover:bg-black/5 rounded-lg transition"
-                    >
-                        <span className="material-icons-round">notifications</span>
-                        <span className="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-[0.55rem] font-bold text-white bg-danger border-2 border-white rounded-full">3</span>
-                    </button>
+                {/* Search Bar */}
+                <div className="flex-1 flex justify-center px-6">
+                    <div className="liquid-search flex items-center px-5 py-2.5 rounded-full w-[26rem] max-w-full">
+                        <span className="material-icons-round text-slate-500 text-lg mr-3">search</span>
+                        <input
+                            type="text"
+                            placeholder="Search anything..."
+                            className="bg-transparent border-none outline-none text-sm flex-1 text-slate-700 placeholder-slate-400 font-medium"
+                        />
+                    </div>
+                </div>
 
-                    {activeDropdown === 'notif' && (
-                        <div className="absolute top-[calc(100%+0.5rem)] right-0 w-80 bg-white/95 backdrop-blur-xl border border-black/10 rounded-xl shadow-2xl py-0 z-50 overflow-hidden">
-                            <div className="flex justify-between items-center px-4 py-3 border-b border-black/5 bg-gray-50/50">
-                                <span className="font-semibold text-sm">Notifications</span>
-                                <button className="text-[0.7rem] text-primary hover:underline">Mark all read</button>
-                            </div>
+                {/* Right Actions */}
+                <div className="flex-none flex items-center gap-3">
+                    {/* Language Selector */}
+                    <div className="relative">
+                        <button
+                            onClick={() => toggleDropdown('lang')}
+                            className={`liquid-button ${activeDropdown === 'lang' ? 'liquid-button-active' : ''} flex items-center justify-center p-2.5 rounded-full text-xl`}
+                        >
+                            <span>{lang.flag}</span>
+                        </button>
 
-                            <div className="max-h-[20rem] overflow-y-auto">
+                        {activeDropdown === 'lang' && (
+                            <div className="liquid-dropdown absolute top-[calc(100%+0.75rem)] right-0 min-w-[11rem] rounded-3xl py-2 z-50">
                                 {[
-                                    { icon: 'person_add', color: 'bg-primary/15 text-primary', title: 'New user registered', desc: 'John Doe just signed up', time: '2 min ago', unread: true },
-                                    { icon: 'check_circle', color: 'bg-success/15 text-success', title: 'Payment successful', desc: 'Invoice #8832 paid', time: '15 min ago', unread: true },
-                                    { icon: 'warning', color: 'bg-warning/15 text-warning', title: 'Low storage', desc: 'Only 10% space remaining', time: '1 hour ago', unread: false }
-                                ].map((notif, i) => (
-                                    <div key={i} className={`flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition cursor-pointer ${notif.unread ? 'bg-primary/5' : ''}`}>
-                                        <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${notif.color}`}>
-                                            <span className="material-icons-round text-base">{notif.icon}</span>
-                                        </div>
-                                        <div className="flex-1 min-w-0">
-                                            <p className="text-xs font-bold text-textPrimary truncate">{notif.title}</p>
-                                            <p className="text-[0.7rem] text-secondary truncate">{notif.desc}</p>
-                                            <p className="text-[0.65rem] text-tertiary mt-1">{notif.time}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="px-4 py-3 border-t border-black/5 text-center bg-gray-50/50">
-                                <button className="text-xs font-bold text-primary hover:text-primary/80">View all notifications</button>
-                            </div>
-                        </div>
-                    )}
-                </div>
-
-                {/* User Profile */}
-                <div className="relative">
-                    <button
-                        onClick={() => toggleDropdown('user')}
-                        className={`flex items-center gap-2 px-2 py-1.5 bg-white/30 border border-black/5 rounded-full hover:bg-white/50 transition ${activeDropdown === 'user' ? 'bg-white/50' : ''}`}
-                    >
-                        <img src="https://ui-avatars.com/api/?name=Admin&background=0ea5e9&color=fff" alt="User" className="w-8 h-8 rounded-full" />
-                        <div className="flex flex-col items-start pr-1">
-                            <span className="text-xs font-bold text-textPrimary">Admin</span>
-                            <span className="text-[0.65rem] text-tertiary">Administrator</span>
-                        </div>
-                        <span className={`material-icons-round text-tertiary text-base transition-transform ${activeDropdown === 'user' ? 'rotate-180' : ''}`}>expand_more</span>
-                    </button>
-
-                    {activeDropdown === 'user' && (
-                        <div className="absolute top-[calc(100%+0.5rem)] right-0 w-64 bg-white/95 backdrop-blur-xl border border-black/10 rounded-xl shadow-2xl py-0 z-50 overflow-hidden">
-                            <div className="flex items-start gap-3 p-4 border-b border-black/5 bg-gradient-to-br from-primary/10 to-transparent">
-                                <div className="relative flex-shrink-0">
-                                    <img src="https://ui-avatars.com/api/?name=Admin&background=0ea5e9&color=fff" alt="User" className="w-11 h-11 rounded-full border-2 border-white shadow-sm" />
-                                    <span className="absolute bottom-0.5 right-0.5 w-3 h-3 bg-success border-2 border-white rounded-full"></span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <strong className="text-sm">Admin User</strong>
-                                    <small className="text-[0.7rem] text-tertiary">admin@ptos.com</small>
-                                    <span className="mt-1 px-2 py-0.5 bg-primary/15 text-primary text-[0.6rem] font-bold rounded-full w-fit">Administrator</span>
-                                </div>
-                            </div>
-
-                            <div className="p-3 bg-black/5 border-b border-black/5">
-                                <div className="flex items-start gap-2 py-1">
-                                    <span className="material-icons-round text-tertiary text-base mt-0.5">schedule</span>
-                                    <div>
-                                        <span className="block text-[0.65rem] text-tertiary uppercase tracking-wide">Last Login</span>
-                                        <span className="text-xs font-medium text-textPrimary">Today, 09:45 AM</span>
-                                    </div>
-                                </div>
-                                <div className="flex items-start gap-2 py-1 mt-2">
-                                    <span className="material-icons-round text-tertiary text-base mt-0.5">cloud</span>
-                                    <div className="w-full">
-                                        <span className="block text-[0.65rem] text-tertiary uppercase tracking-wide">Storage</span>
-                                        <div className="w-full h-1.5 bg-black/10 rounded-full my-1 overflow-hidden">
-                                            <div className="h-full bg-gradient-to-r from-primary to-navAccent w-[65%] rounded-full"></div>
-                                        </div>
-                                        <span className="text-xs font-medium text-textPrimary">6.5 GB / 10 GB</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="py-2">
-                                {[
-                                    { icon: 'photo_camera', text: 'Change Image' },
-                                    { icon: 'lock', text: 'Change Password', path: '/auth-recover' },
-                                    { icon: 'settings', text: 'Settings', path: '/pages/profile/overview' }
-                                ].map((item, i) => (
+                                    { code: 'EN', flag: '🇺🇸', name: 'English' },
+                                    { code: 'ID', flag: '🇮🇩', name: 'Indonesia' },
+                                    { code: 'JP', flag: '🇯🇵', name: '日本語' },
+                                    { code: 'CN', flag: '🇨🇳', name: '中文' }
+                                ].map((l) => (
                                     <button
-                                        key={i}
-                                        onClick={() => item.path && onNavigate(item.path)}
-                                        className="w-full flex items-center gap-2 px-4 py-2 text-xs text-textPrimary hover:bg-primary/10 hover:text-primary transition group"
+                                        key={l.code}
+                                        onClick={() => changeLang(l.code, l.flag)}
+                                        className={`dropdown-item w-full flex items-center gap-3 px-5 py-3.5 text-sm font-semibold transition-all duration-200 rounded-2xl mx-2 ${
+                                            lang.code === l.code 
+                                                ? 'bg-gradient-to-r from-blue-50 to-indigo-50 text-blue-600' 
+                                                : 'text-slate-700 hover:bg-white/60'
+                                        }`}
                                     >
-                                        <span className="material-icons-round text-textSecondary group-hover:text-primary text-lg">{item.icon}</span>
-                                        {item.text}
+                                        <span className="text-xl">{l.flag}</span> {l.name}
                                     </button>
                                 ))}
-                                <div className="h-px bg-black/5 my-1 mx-2"></div>
-                                <button onClick={() => onNavigate('/auth-login')} className="w-full flex items-center gap-2 px-4 py-2 text-xs text-danger hover:bg-danger/10 transition group">
-                                    <span className="material-icons-round text-danger text-lg">logout</span>
-                                    Logout
-                                </button>
                             </div>
-                        </div>
-                    )}
+                        )}
+                    </div>
+
+                    {/* Notifications */}
+                    <div className="relative">
+                        <button
+                            onClick={() => toggleDropdown('notif')}
+                            className="liquid-button relative p-2.5 text-slate-600 hover:text-blue-600 rounded-full"
+                        >
+                            <span className="material-icons-round text-lg">notifications</span>
+                            <span className="notif-badge absolute -top-0.5 -right-0.5 flex items-center justify-center w-4 h-4 text-[0.6rem] font-black text-white rounded-full">
+                                3
+                            </span>
+                            <span className="notif-ring absolute -top-0.5 -right-0.5 w-4 h-4 bg-red-500 rounded-full opacity-75"></span>
+                        </button>
+
+                        {activeDropdown === 'notif' && (
+                            <div className="liquid-dropdown absolute top-[calc(100%+0.75rem)] right-0 w-[24rem] rounded-3xl shadow-2xl py-0 z-50 overflow-hidden">
+                                <div className="flex justify-between items-center px-6 py-4 border-b border-white/60">
+                                    <span className="font-black text-sm text-slate-800">Notifications</span>
+                                    <button className="text-xs text-blue-600 hover:text-blue-700 font-bold transition-colors">
+                                        Mark all read
+                                    </button>
+                                </div>
+
+                                <div className="max-h-[26rem] overflow-y-auto">
+                                    {[
+                                        { icon: 'person_add', color: 'from-blue-400 to-blue-600', title: 'New user registered', desc: 'John Doe just signed up', time: '2 min ago', unread: true },
+                                        { icon: 'check_circle', color: 'from-emerald-400 to-emerald-600', title: 'Payment successful', desc: 'Invoice #8832 paid', time: '15 min ago', unread: true },
+                                        { icon: 'warning', color: 'from-amber-400 to-amber-600', title: 'Low storage', desc: 'Only 10% space remaining', time: '1 hour ago', unread: false }
+                                    ].map((notif, i) => (
+                                        <div 
+                                            key={i} 
+                                            className={`dropdown-item flex items-start gap-4 px-6 py-4 hover:bg-white/70 cursor-pointer ${
+                                                notif.unread ? 'bg-blue-50/40' : ''
+                                            }`}
+                                        >
+                                            <div className={`gradient-orb w-11 h-11 rounded-2xl bg-gradient-to-br ${notif.color} flex items-center justify-center flex-shrink-0`}>
+                                                <span className="material-icons-round text-slate-900 text-lg">{notif.icon}</span>
+                                            </div>
+                                            <div className="flex-1 min-w-0">
+                                                <p className="text-sm font-bold text-slate-800">{notif.title}</p>
+                                                <p className="text-xs text-slate-500 mt-1 font-medium">{notif.desc}</p>
+                                                <p className="text-[0.7rem] text-slate-700 mt-2 font-semibold">{notif.time}</p>
+                                            </div>
+                                            {notif.unread && (
+                                                <span className="unread-indicator w-2.5 h-2.5 rounded-full flex-shrink-0 mt-1.5"></span>
+                                            )}
+                                        </div>
+                                    ))}
+                                </div>
+
+                                <div className="px-6 py-4 border-t border-white/60 text-center bg-white/30">
+                                    <button className="text-xs font-black text-blue-600 hover:text-blue-700 transition-colors">
+                                        View all notifications
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* User Profile */}
+                    <div className="relative">
+                        <button
+                            onClick={() => toggleDropdown('user')}
+                            className={`liquid-button ${activeDropdown === 'user' ? 'liquid-button-active' : ''} flex items-center gap-2.5 px-3 py-2 rounded-full`}
+                        >
+                            <div className="relative">
+                                <img 
+                                    src="https://ui-avatars.com/api/?name=Admin&background=3b82f6&color=fff&bold=true" 
+                                    alt="User" 
+                                    className="w-8 h-8 rounded-lg shadow-lg border-2 border-white/80" 
+                                />
+                                <span className="status-online absolute -bottom-0.5 -right-0.5 w-3 h-3 border-2 border-white rounded-full"></span>
+                            </div>
+                            <div className="flex flex-col items-start">
+                                <span className="text-[0.7rem] font-black text-slate-800">Admin</span>
+                                <span className="text-[0.6rem] text-slate-500 font-semibold">Administrator</span>
+                            </div>
+                            <span className={`material-icons-round text-slate-700 text-sm transition-transform duration-400 ${activeDropdown === 'user' ? 'rotate-180' : ''}`}>
+                                expand_more
+                            </span>
+                        </button>
+
+                        {activeDropdown === 'user' && (
+                            <div className="liquid-dropdown absolute top-[calc(100%+0.75rem)] right-0 w-80 rounded-3xl shadow-2xl py-0 z-50 overflow-hidden">
+                                {/* Profile Header */}
+                                <div className="relative flex items-start gap-4 p-6 border-b border-white/60 bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-transparent">
+                                    <div className="relative">
+                                        <img 
+                                            src="https://ui-avatars.com/api/?name=Admin&background=3b82f6&color=fff&bold=true" 
+                                            alt="User" 
+                                            className="w-16 h-16 rounded-2xl shadow-xl border-[3px] border-white" 
+                                        />
+                                        <span className="status-online absolute -bottom-1 -right-1 w-5 h-5 border-[3px] border-white rounded-full"></span>
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <strong className="text-sm text-slate-800 font-black">Admin User</strong>
+                                        <small className="text-xs text-slate-500 mt-1 font-semibold">admin@glacia.com</small>
+                                        <span className="mt-2.5 px-3 py-1.5 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-700 text-[0.65rem] font-black rounded-xl w-fit shadow-sm">
+                                            Administrator
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Stats Section */}
+                                <div className="p-5 bg-gradient-to-br from-slate-50/30 to-transparent border-b border-white/60">
+                                    <div className="flex items-start gap-3 py-2.5">
+                                        <span className="material-icons-round text-slate-700 text-xl mt-0.5">schedule</span>
+                                        <div>
+                                            <span className="block text-[0.65rem] text-slate-500 uppercase tracking-wider font-black">
+                                                Last Login
+                                            </span>
+                                            <span className="text-xs font-bold text-slate-700 mt-1.5 block">Today, 09:45 AM</span>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-3 py-2.5 mt-2">
+                                        <span className="material-icons-round text-slate-700 text-xl mt-0.5">cloud</span>
+                                        <div className="w-full">
+                                            <span className="block text-[0.65rem] text-slate-500 uppercase tracking-wider font-black">
+                                                Storage
+                                            </span>
+                                            <div className="w-full h-2.5 bg-slate-200/70 rounded-full my-2.5 overflow-hidden shadow-inner">
+                                                <div className="storage-bar h-full w-[65%] rounded-full"></div>
+                                            </div>
+                                            <span className="text-xs font-bold text-slate-700">6.5 GB / 10 GB</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Menu Items */}
+                                <div className="py-2">
+                                    {[
+                                        { icon: 'photo_camera', text: 'Change Image' },
+                                        { icon: 'lock', text: 'Change Password', path: '/auth-recover' },
+                                        { icon: 'settings', text: 'Settings', path: '/pages/profile/overview' }
+                                    ].map((item, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => item.path && onNavigate(item.path)}
+                                            className="dropdown-item w-full flex items-center gap-3 px-6 py-3.5 text-sm font-bold text-slate-700 hover:bg-white/70 hover:text-blue-600 group"
+                                        >
+                                            <span className="material-icons-round text-slate-700 group-hover:text-blue-600 text-xl transition-colors">
+                                                {item.icon}
+                                            </span>
+                                            {item.text}
+                                        </button>
+                                    ))}
+                                    <div className="h-px bg-gradient-to-r from-transparent via-slate-200 to-transparent my-2 mx-5"></div>
+                                    <button 
+                                        onClick={() => onNavigate('/auth-login')} 
+                                        className="dropdown-item w-full flex items-center gap-3 px-6 py-3.5 text-sm font-bold text-red-600 hover:bg-red-50/70 group"
+                                    >
+                                        <span className="material-icons-round text-xl">logout</span>
+                                        Logout
+                                    </button>
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }

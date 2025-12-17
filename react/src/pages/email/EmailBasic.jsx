@@ -1,0 +1,4 @@
+﻿import React from 'react';
+export default function EmailBasic() {
+    return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Email Template - Basic</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>Email</span><span className="mx-2">/</span><span className="text-slate-900">Basic</span></div></div><div className="glass-card p-8"><div className="space-y-4"><p className="text-slate-900">Subject: Welcome to our platform</p><div className="bg-white/5 rounded-lg p-6 mt-6"><p className="text-slate-900 mb-4">Hi John,</p><p className="text-slate-600 text-sm mb-4">Welcome to our platform. We're excited to have you on board.</p><p className="text-slate-900 mt-6">Best regards,<br/>The Team</p></div></div></div></div>);
+}

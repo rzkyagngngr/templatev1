@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 
 export default function Kanban() {
     const [columns] = useState([
@@ -46,13 +46,13 @@ export default function Kanban() {
         <div className="w-full h-full flex flex-col">
             {/* Header / Breadcrumb */}
             <div className="flex justify-between items-center mb-6">
-                <h4 className="text-xl font-bold text-white tracking-wide">Kanban Board</h4>
+                <h4 className="text-xl font-bold text-slate-900 tracking-wide">Kanban Board</h4>
                 <div className="text-sm text-slate-400">
-                    <span className="hover:text-white cursor-pointer">Metrica</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Glacia</span>
                     <span className="mx-2">/</span>
-                    <span className="hover:text-white cursor-pointer">Projects</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Projects</span>
                     <span className="mx-2">/</span>
-                    <span className="text-white">Kanban</span>
+                    <span className="text-slate-900">Kanban</span>
                 </div>
             </div>
 
@@ -61,8 +61,8 @@ export default function Kanban() {
                     {columns.map((col) => (
                         <div key={col.id} className="w-80 flex-shrink-0 flex flex-col">
                             <div className={`glass-card p-4 border-t-4 ${col.color} mb-4 flex justify-between items-center bg-slate-900/40`}>
-                                <h5 className="font-bold text-white">{col.title}</h5>
-                                <button className="text-slate-400 hover:text-white"><span className="material-icons-round text-sm">more_vert</span></button>
+                                <h5 className="font-bold =">{col.title}</h5>
+                                <button className="text-slate-700 hover:="><span className="material-icons-round text-sm">more_vert</span></button>
                             </div>
 
                             <div className="flex flex-col gap-4">
@@ -71,26 +71,26 @@ export default function Kanban() {
                                         <div className="flex justify-between items-start mb-2">
                                             <i className={`mdi mdi-circle-outline font-14 text-${task.priority === 'purple' ? 'purple-500' : task.priority === 'danger' ? 'red-500' : task.priority === 'success' ? 'green-500' : 'yellow-500'}`}></i>
                                             <div className="dropdown opacity-0 group-hover:opacity-100 transition-opacity">
-                                                <a href="#" className="text-slate-400 hover:text-white"><span className="material-icons-round text-sm">more_vert</span></a>
+                                                <a href="#" className="text-slate-700 hover:="><span className="material-icons-round text-sm">more_vert</span></a>
                                             </div>
                                         </div>
-                                        <h5 className="text-white font-bold text-sm mb-1">{task.title}</h5>
-                                        <p className="text-slate-400 text-xs mb-3">{task.subtitle}</p>
+                                        <h5 className="text-slate-900 font-bold text-sm mb-1">{task.title}</h5>
+                                        <p className="text-slate-700 text-xs mb-3">{task.subtitle}</p>
 
                                         <div className="flex justify-between items-center">
-                                            <div className="flex gap-3 text-slate-400 text-xs">
+                                            <div className="flex gap-3 text-slate-700 text-xs">
                                                 <span className="flex items-center"><span className="material-icons-round text-[10px] mr-1">format_list_bulleted</span> {task.totalInfo}</span>
                                                 <span className="flex items-center"><span className="material-icons-round text-[10px] mr-1">chat_bubble_outline</span> {task.comments}</span>
                                             </div>
                                             <div className="flex -space-x-2">
                                                 {task.assigned.map((a, i) => (
-                                                    <img key={i} src={`https://mannatthemes.com/metrica/default/assets/images/users/user-${a}.jpg`} className="w-6 h-6 rounded-full border border-slate-700" alt="" />
+                                                    <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${a}.jpg`} className="w-6 h-6 rounded-full border border-slate-700" alt="" />
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
                                 ))}
-                                <button className="w-full py-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white text-sm font-medium transition-colors border border-dashed border-white/20">
+                                <button className="w-full py-2 rounded-lg bg-white/5 hover:bg-white/10 text-slate-700 hover:text-slate-900 text-sm font-medium transition-colors border border-dashed border-white/20">
                                     + Add Task
                                 </button>
                             </div>

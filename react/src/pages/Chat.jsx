@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import PillLayout from '../components/PillLayout';
 
 // Mock Data
@@ -61,7 +61,7 @@ export default function Chat() {
                                     </div>
                                     <div className="flex justify-between items-center">
                                         <p className="text-xs text-tertiary truncate">{user.lastMsg}</p>
-                                        {user.count > 0 && <span className="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">{user.count}</span>}
+                                        {user.count > 0 && <span className="bg-primary text-slate-900 text-[10px] font-bold px-1.5 py-0.5 rounded-full">{user.count}</span>}
                                     </div>
                                 </div>
                             </div>
@@ -101,11 +101,11 @@ export default function Chat() {
                         {MESSAGES.map((msg, i) => (
                             <div key={i} className={`flex ${msg.sender === 'me' ? 'justify-end' : 'justify-start'}`}>
                                 <div className={`max-w-[70%] p-3 rounded-2xl text-sm ${msg.sender === 'me'
-                                        ? 'bg-primary text-white rounded-tr-none'
+                                        ? 'bg-primary text-slate-900 rounded-tr-none'
                                         : 'bg-white/10 text-textPrimary rounded-tl-none'
                                     }`}>
                                     <p>{msg.text}</p>
-                                    <div className={`text-[10px] mt-1 text-right ${msg.sender === 'me' ? 'text-white/70' : 'text-tertiary'}`}>{msg.time}</div>
+                                    <div className={`text-[10px] mt-1 text-right ${msg.sender === 'me' ? '=/70' : 'text-tertiary'}`}>{msg.time}</div>
                                 </div>
                             </div>
                         ))}
@@ -113,10 +113,10 @@ export default function Chat() {
 
                     {/* Input */}
                     <div className="p-4 border-t border-white/5 flex gap-3 items-center">
-                        <button className="text-tertiary hover:text-white transition"><span className="material-icons-round">sentiment_satisfied</span></button>
-                        <button className="text-tertiary hover:text-white transition"><span className="material-icons-round">attach_file</span></button>
+                        <button className="text-tertiary hover:text-slate-900 transition"><span className="material-icons-round">sentiment_satisfied</span></button>
+                        <button className="text-tertiary hover:text-slate-900 transition"><span className="material-icons-round">attach_file</span></button>
                         <input type="text" className="flex-1 bg-white/5 rounded-full px-4 py-2 text-sm text-textPrimary placeholder-tertiary border-none outline-none focus:bg-white/10 transition" placeholder="Type a message..." />
-                        <button className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/30 hover:scale-105 transition">
+                        <button className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-slate-900 shadow-lg shadow-primary/30 hover:scale-105 transition">
                             <span className="material-icons-round text-lg">send</span>
                         </button>
                     </div>

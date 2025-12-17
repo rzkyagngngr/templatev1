@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Team() {
     const teams = [
@@ -8,7 +8,7 @@ export default function Team() {
             role: 'Team Leader',
             teamName: 'UI/UX Design Team',
             desc: 'Contrary to popular belief, Lorem Ipsum is not simply.',
-            img: 'https://mannatthemes.com/metrica/default/assets/images/users/user-10.jpg',
+            img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-10.jpg',
             members: [1, 2, 3, 4],
             extraMembers: 6,
             project: {
@@ -24,7 +24,7 @@ export default function Team() {
             role: 'Team Leader',
             teamName: 'Web Design Team',
             desc: 'Contrary to popular belief, Lorem Ipsum is not simply.',
-            img: 'https://mannatthemes.com/metrica/default/assets/images/users/user-5.jpg',
+            img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-5.jpg',
             members: [5, 6, 7, 8],
             extraMembers: 2,
             project: {
@@ -40,7 +40,7 @@ export default function Team() {
             role: 'Team Leader',
             teamName: 'Frontend Developer Team',
             desc: 'Contrary to popular belief, Lorem Ipsum is not simply.',
-            img: 'https://mannatthemes.com/metrica/default/assets/images/users/user-9.jpg',
+            img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-9.jpg',
             members: [2, 3, 5, 8],
             extraMembers: 0,
             project: {
@@ -56,7 +56,7 @@ export default function Team() {
             role: 'Team Leader',
             teamName: 'UI/UX Design Team',
             desc: 'Contrary to popular belief, Lorem Ipsum is not simply.',
-            img: 'https://mannatthemes.com/metrica/default/assets/images/users/user-4.jpg',
+            img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-4.jpg',
             members: [1, 2, 3, 4],
             extraMembers: 6,
             project: {
@@ -72,7 +72,7 @@ export default function Team() {
             role: 'Team Leader',
             teamName: 'Web Design Team',
             desc: 'Contrary to popular belief, Lorem Ipsum is not simply.',
-            img: 'https://mannatthemes.com/metrica/default/assets/images/users/user-2.jpg',
+            img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-2.jpg',
             members: [5, 6, 7, 8],
             extraMembers: 2,
             project: {
@@ -88,7 +88,7 @@ export default function Team() {
             role: 'Team Leader',
             teamName: 'Frontend Developer Team',
             desc: 'Contrary to popular belief, Lorem Ipsum is not simply.',
-            img: 'https://mannatthemes.com/metrica/default/assets/images/users/user-1.jpg',
+            img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-1.jpg',
             members: [2, 3, 5, 8],
             extraMembers: 0,
             project: {
@@ -104,20 +104,20 @@ export default function Team() {
         <div className="w-full">
             {/* Header / Breadcrumb */}
             <div className="flex justify-between items-center mb-6">
-                <h4 className="text-xl font-bold text-white tracking-wide">Teams</h4>
+                <h4 className="text-xl font-bold text-slate-900 tracking-wide">Teams</h4>
                 <div className="text-sm text-slate-400">
-                    <span className="hover:text-white cursor-pointer">Metrica</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Glacia</span>
                     <span className="mx-2">/</span>
-                    <span className="hover:text-white cursor-pointer">Projects</span>
+                    <span className="hover:text-slate-900 cursor-pointer">Projects</span>
                     <span className="mx-2">/</span>
-                    <span className="text-white">Teams</span>
+                    <span className="text-slate-900">Teams</span>
                 </div>
             </div>
 
             {/* Controls */}
             <div className="flex justify-between items-center mb-6">
-                <h5 className="text-slate-300">Here is the list of all available teams. <span className="bg-pink-500/20 text-pink-500 px-2 py-0.5 rounded text-xs ml-2">{teams.length}</span></h5>
-                <button className="bg-primary hover:bg-primary-dark text-white px-4 py-1.5 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20">
+                <h5 className="text-slate-600">Here is the list of all available teams. <span className="bg-pink-500/20 text-pink-500 px-2 py-0.5 rounded text-xs ml-2">{teams.length}</span></h5>
+                <button className="bg-primary hover:bg-primary-dark text-slate-900 px-4 py-1.5 rounded-lg text-sm transition-colors shadow-lg shadow-primary/20">
                     Create Card
                 </button>
             </div>
@@ -129,27 +129,27 @@ export default function Team() {
                         <div className="flex items-center mb-4">
                             <img src={team.img} alt={team.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/10" />
                             <div className="ml-3">
-                                <h5 className="text-white font-bold">{team.name}</h5>
-                                <p className="text-slate-400 text-xs">{team.role}</p>
+                                <h5 className="text-slate-900 font-bold">{team.name}</h5>
+                                <p className="text-slate-700 text-xs">{team.role}</p>
                             </div>
                             <div className="ml-auto">
-                                <button className="text-slate-400 hover:text-white"><span className="material-icons-round">more_vert</span></button>
+                                <button className="text-slate-700 hover:="><span className="material-icons-round">more_vert</span></button>
                             </div>
                         </div>
 
-                        <h4 className="text-lg font-bold text-white mb-2">{team.teamName}</h4>
-                        <p className="text-slate-400 text-sm mb-4">{team.desc}</p>
+                        <h4 className="text-lg font-bold text-slate-900 mb-2">{team.teamName}</h4>
+                        <p className="text-slate-700 text-sm mb-4">{team.desc}</p>
 
                         <div className="flex justify-between items-center mb-4 pb-4 border-b border-white/5">
                             <div className="flex -space-x-2">
                                 {team.members.map((m, i) => (
-                                    <img key={i} src={`https://mannatthemes.com/metrica/default/assets/images/users/user-${m + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="" />
+                                    <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${m + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="" />
                                 ))}
                                 {team.extraMembers > 0 && (
-                                    <div className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs text-white">+{team.extraMembers}</div>
+                                    <div className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs =">+{team.extraMembers}</div>
                                 )}
                             </div>
-                            <button className="text-xs bg-white/5 hover:bg-white/10 text-white px-3 py-1 rounded-full transition-colors flex items-center">
+                            <button className="text-xs bg-white/5 hover:bg-white/10 text-slate-900 px-3 py-1 rounded-full transition-colors flex items-center">
                                 View Details <span className="material-icons-round text-xs ml-1">arrow_forward</span>
                             </button>
                         </div>
@@ -157,11 +157,11 @@ export default function Team() {
                         <div className="flex items-center gap-3">
                             <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0">
                                 {/* Using random images for project thumbnails as per HTML */}
-                                <img src={`https://mannatthemes.com/metrica/default/assets/images/small/project-${(team.id % 3) + 1}.jpg`} className="w-full h-full object-cover rounded-full" alt="" />
+                                <img src={`https://mannatthemes.com/Glacia/default/assets/images/small/project-${(team.id % 3) + 1}.jpg`} className="w-full h-full object-cover rounded-full" alt="" />
                             </div>
                             <div className="flex-grow">
-                                <h6 className="text-white font-semibold text-sm mb-1">{team.project.name}</h6>
-                                <div className="flex justify-between text-xs text-slate-400 mb-1">
+                                <h6 className="text-slate-900 font-semibold text-sm mb-1">{team.project.name}</h6>
+                                <div className="flex justify-between text-xs text-slate-700 mb-1">
                                     <span><span className="text-success material-icons-round text-[10px] align-middle mr-1">list</span>{team.project.tasks}</span>
                                     <span>{team.project.progress}% Complete</span>
                                 </div>

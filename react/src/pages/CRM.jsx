@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import PillLayout from '../components/PillLayout';
 import DataTable from '../components/DataTable';
 
@@ -11,58 +11,66 @@ const getAvatar = (name) => {
 // --- Sub-View: Index (Dashboard) ---
 const IndexView = () => {
     return (
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 -m-6 p-6">
         <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div className="mb-8">
+                <h1 className="text-4xl font-bold text-slate-900">CRM Dashboard</h1>
+                <p className="text-slate-600 mt-2">Manage customer relationships and sales pipeline</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
                 {[
                     { label: 'Total Revenue', value: '$24,500', change: '+15%', color: 'from-blue-500 to-indigo-500', icon: 'payments' },
                     { label: 'New Deals', value: '45', change: '+5%', color: 'from-emerald-500 to-teal-500', icon: 'handshake' },
                     { label: 'Conversion Rate', value: '18.5%', change: '-2%', color: 'from-orange-500 to-amber-500', icon: 'trending_up' },
                     { label: 'Active Leads', value: '128', change: '+8%', color: 'from-purple-500 to-pink-500', icon: 'group' },
                 ].map((stat, i) => (
-                    <div key={i} className="glass-card p-4 relative overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
-                        <div className="flex justify-between items-start mb-4">
-                            <div>
-                                <span className="text-xs font-semibold text-tertiary uppercase tracking-wider">{stat.label}</span>
-                                <h3 className="text-2xl font-bold text-textPrimary mt-1">{stat.value}</h3>
+                    <div key={i} className="backdrop-blur-2xl bg-gradient-to-br from-white/80 to-white/40 rounded-3xl border border-white/60 p-6 hover:shadow-2xl hover:shadow-blue-200/40 hover:scale-105 transition-all duration-300 shadow-xl shadow-blue-100/30">
+                        <div className="flex items-start justify-between mb-3">
+                            <div className={`p-3 rounded-2xl bg-gradient-to-br ${stat.color} shadow-lg`}>
+                                <span className="material-icons-round text-white">{stat.icon}</span>
                             </div>
-                            <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center text-white shadow-lg shadow-primary/20`}>
-                                <span className="material-icons-round text-lg">{stat.icon}</span>
-                            </div>
+                            <span className={`text-xs font-bold px-2 py-1 rounded-full ${stat.change.startsWith('+') ? 'bg-emerald-500/20 text-emerald-700' : 'bg-red-500/20 text-red-700'}`}>
+                                {stat.change}
+                            </span>
                         </div>
-                        <div className={`text-xs font-bold ${stat.change.startsWith('+') ? 'text-emerald-500' : 'text-rose-500'}`}>
-                            {stat.change} <span className="text-tertiary font-normal ml-1">vs last month</span>
-                        </div>
+                        <p className="text-slate-600 text-sm font-semibold">{stat.label}</p>
+                        <h3 className="text-3xl font-bold text-slate-900 mt-1">{stat.value}</h3>
                     </div>
                 ))}
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div className="lg:col-span-2 glass-card p-6 min-h-[300px] flex items-center justify-center text-tertiary">
-                    {/* Placeholder for Main Chart */}
-                    <div className="text-center">
-                        <span className="material-icons-round text-5xl mb-2 opacity-20">bar_chart</span>
-                        <p>Sales Performance Chart</p>
+                <div className="lg:col-span-2 backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 rounded-3xl border border-white/60 overflow-hidden shadow-2xl shadow-blue-200/40 p-6">
+                    <h2 className="text-xl font-bold text-slate-900 mb-6">Sales Performance</h2>
+                    <div className="min-h-[300px] flex items-center justify-center text-slate-500">
+                        <div className="text-center">
+                            <span className="material-icons-round text-5xl mb-2 opacity-20">bar_chart</span>
+                            <p>Sales Performance Chart</p>
+                        </div>
                     </div>
                 </div>
-                <div className="glass-card p-6">
-                    <h3 className="font-bold text-textPrimary mb-4">Top Deals</h3>
+                <div className="backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 rounded-3xl border border-white/60 overflow-hidden shadow-2xl shadow-blue-200/40 p-6">
+                    <h3 className="font-bold text-slate-900 mb-4">Top Deals</h3>
                     <div className="space-y-4">
                         {[
-                            { n: 'Tech Corp Upgrade', v: '$12,000', s: 'Won' },
-                            { n: 'Global Logistics', v: '$8,500', s: 'Pending' },
-                            { n: 'StartUp Inc Seed', v: '$5,200', s: 'Won' },
+                            { n: 'Tech Corp Upgrade', v: '$12,000', s: 'Won', c: 'emerald' },
+                            { n: 'Global Logistics', v: '$8,500', s: 'Pending', c: 'amber' },
+                            { n: 'StartUp Inc Seed', v: '$5,200', s: 'Won', c: 'emerald' },
                         ].map((d, i) => (
-                            <div key={i} className="flex justify-between items-center border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                                <div>
-                                    <div className="text-sm font-medium text-textPrimary">{d.n}</div>
-                                    <div className="text-xs text-tertiary">{d.s}</div>
+                            <div key={i} className="backdrop-blur-xl bg-white/40 rounded-2xl p-4 border border-white/50 hover:shadow-lg hover:scale-102 transition-all mb-3">
+                                <div className="flex justify-between items-center">
+                                    <div>
+                                        <div className="text-sm font-semibold text-slate-900">{d.n}</div>
+                                        <span className={`text-xs px-2 py-1 rounded-full mt-1 inline-block bg-${d.c}-500/20 text-${d.c}-700 font-semibold`}>{d.s}</span>
+                                    </div>
+                                    <div className="text-lg font-bold text-slate-900">{d.v}</div>
                                 </div>
-                                <div className="text-sm font-bold text-textPrimary">{d.v}</div>
                             </div>
                         ))}
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

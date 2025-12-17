@@ -1,14 +1,14 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Login() {
     return (
         <div className="w-full max-w-md glass-card p-8 animate-in fade-in zoom-in duration-300">
             <div className="text-center mb-8">
-                <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white mb-4 shadow-lg shadow-cyan-500/30">
+                <div className="mx-auto w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-slate-900 mb-4 shadow-lg shadow-cyan-500/30">
                     <span className="material-icons-round text-2xl">lock</span>
                 </div>
                 <h2 className="text-2xl font-bold text-textPrimary mb-2">Welcome Back!</h2>
-                <p className="text-tertiary text-sm">Sign in to continue to Metrica.</p>
+                <p className="text-tertiary text-sm">Sign in to continue to Glacia.</p>
             </div>
 
             <form className="space-y-4">
@@ -28,14 +28,14 @@ export default function Login() {
                 </div>
 
                 <div className="flex justify-between items-center text-xs">
-                    <label className="flex items-center gap-2 cursor-pointer text-tertiary hover:text-white transition">
+                    <label className="flex items-center gap-2 cursor-pointer text-tertiary hover:text-slate-900 transition">
                         <input type="checkbox" className="rounded bg-white/10 border-white/20 text-primary focus:ring-0 checked:bg-primary" />
                         Remember me
                     </label>
                     <a href="#" className="text-primary hover:text-primary-dark transition">Forgot password?</a>
                 </div>
 
-                <button type="button" className="w-full py-3 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/30 hover:scale-105 transition transform active:scale-95">Log In</button>
+                <button type="button" className="w-full py-3 bg-primary text-slate-900 font-bold rounded-xl shadow-lg shadow-primary/30 hover:scale-105 transition transform active:scale-95">Log In</button>
             </form>
 
             <div className="mt-8 text-center text-sm text-tertiary">

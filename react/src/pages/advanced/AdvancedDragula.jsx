@@ -1,0 +1,2 @@
+﻿import React from 'react';
+export default function AdvancedDragula() { return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Dragula</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>Advanced</span><span className="mx-2">/</span><span className="text-slate-900">Dragula</span></div></div><div className="glass-card p-6"><p className="text-slate-700">Drag and drop functionality</p></div></div>); }

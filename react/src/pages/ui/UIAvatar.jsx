@@ -1,0 +1,4 @@
+﻿import React from 'react';
+export default function UIAvatar() {
+    return (<div className="w-full space-y-6"><div><h4 className="text-xl font-bold text-slate-900 tracking-wide">Avatars</h4><div className="text-sm text-slate-700 mt-1"><span>Glacia</span><span className="mx-2">/</span><span>UI</span><span className="mx-2">/</span><span className="text-slate-900">Avatars</span></div></div><div className="glass-card p-6"><div className="flex gap-6"><div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-primary/50 flex items-center justify-center text-slate-900 font-bold">JD</div><div className="w-12 h-12 rounded-full bg-gradient-to-br from-success to-success/50 flex items-center justify-center text-slate-900 font-bold">AS</div><div className="w-12 h-12 rounded-full bg-gradient-to-br from-warning to-warning/50 flex items-center justify-center text-slate-900 font-bold">MJ</div></div></div></div>);
+}

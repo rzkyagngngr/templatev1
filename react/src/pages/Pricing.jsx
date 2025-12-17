@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Pricing() {
     return (
@@ -26,7 +26,7 @@ export default function Pricing() {
 
                 {/* Pro */}
                 <div className="glass-card p-8 flex flex-col relative overflow-hidden transform md:-translate-y-4 border-2 border-primary/50 group hover:-translate-y-6 transition duration-300 z-10">
-                    <div className="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-3 py-1 rounded-bl-xl">POPULAR</div>
+                    <div className="absolute top-0 right-0 bg-primary text-slate-900 text-xs font-bold px-3 py-1 rounded-bl-xl">POPULAR</div>
                     <div className="mb-4">
                         <h3 className="text-xl font-bold text-textPrimary">Pro</h3>
                         <p className="text-sm text-tertiary">For small teams</p>
@@ -38,7 +38,7 @@ export default function Pricing() {
                         <li className="flex items-center gap-3 text-sm text-textPrimary"><span className="material-icons-round text-emerald-500 text-lg">check</span> Priority Support</li>
                         <li className="flex items-center gap-3 text-sm text-textPrimary"><span className="material-icons-round text-emerald-500 text-lg">check</span> Analytics</li>
                     </ul>
-                    <button className="w-full py-3 rounded-xl bg-primary text-white font-bold shadow-lg shadow-primary/30 hover:bg-primary-dark transition">Get Started</button>
+                    <button className="w-full py-3 rounded-xl bg-primary text-slate-900 font-bold shadow-lg shadow-primary/30 hover:bg-primary-dark transition">Get Started</button>
                     <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
                 </div>
 

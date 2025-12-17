@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 export default function Cards() {
     return (
@@ -31,12 +31,12 @@ export default function Cards() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="p-6 rounded-2xl bg-gradient-to-br from-[#1e1e2d] to-[#2a2a3c] border border-white/5 shadow-2xl relative overflow-hidden group">
                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/30 transition duration-500"></div>
-                    <h3 className="text-xl font-bold text-white mb-2 relative z-10">Neon Glow</h3>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 relative z-10">Neon Glow</h3>
                     <p className="text-gray-400 relative z-10">Dark theme card with subtle neon glow effects.</p>
                 </div>
 
                 <div className="glass-card p-6 flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center text-slate-900 text-2xl font-bold shadow-lg">
                         JS
                     </div>
                     <div>
