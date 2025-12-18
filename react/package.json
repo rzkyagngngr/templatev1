@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:secure": "vite build && node scripts/encrypt-bundle.js",
+    "encrypt": "node scripts/encrypt-bundle.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:secure": "vite preview --outDir dist-encrypted"
   },
   "dependencies": {
     "apexcharts": "^4.0.0",
@@ -33,7 +36,8 @@
     "react-select": "^5.8.0",
     "simple-datatables": "^9.0.0",
     "sweetalert2": "^11.10.0",
-    "tailwind-merge": "^2.1.0"
+    "tailwind-merge": "^2.1.0",
+    "@simplewebauthn/browser": "^13.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -46,6 +50,7 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "typescript": "^5.9.2"
   }
 }
