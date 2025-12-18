@@ -6,10 +6,10 @@ export default function Opportunities() {
 
     // Dummy Data
     const [opportunities] = useState([
-        { id: 1, company: 'Starbucks coffee', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'Won', statusColor: 'text-emerald-600', img: 'https://mannatthemes.com/Glacia/default/assets/images/small/opp-1.png' },
-        { id: 2, company: 'Mac Donald', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'Cold', statusColor: 'text-slate-400', img: 'https://mannatthemes.com/Glacia/default/assets/images/small/opp-2.png' },
-        { id: 3, company: 'Life Good', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'Hot', statusColor: 'text-purple-600', img: 'https://mannatthemes.com/Glacia/default/assets/images/small/opp-3.png' },
-        { id: 4, company: 'Build Construction', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'In Progress', statusColor: 'text-yellow-600', img: 'https://mannatthemes.com/Glacia/default/assets/images/small/opp-1.png' },
+        { id: 1, company: 'Starbucks coffee', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'Won', statusColor: 'text-emerald-600', img: 'https://picsum.photos/seed/crm-opp-1/80/80' },
+        { id: 2, company: 'Mac Donald', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'Cold', statusColor: 'text-slate-400', img: 'https://picsum.photos/seed/crm-opp-2/80/80' },
+        { id: 3, company: 'Life Good', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'Hot', statusColor: 'text-purple-600', img: 'https://picsum.photos/seed/crm-opp-3/80/80' },
+        { id: 4, company: 'Build Construction', email: 'Ernest@Webster.com', phone: '+1 234 567 890', status: 'In Progress', statusColor: 'text-yellow-600', img: 'https://picsum.photos/seed/crm-opp-4/80/80' },
     ]);
 
     return (
@@ -86,7 +86,7 @@ export default function Opportunities() {
                 {opportunities.map((opp) => (
                     <div key={opp.id} className="glass-card hover:bg-white/5 transition-colors group">
                         <div className="flex items-center p-2">
-                            <img src={opp.img} alt="" className="w-12 h-12 rounded-full mr-4 border border-white/10" />
+                            <img src={opp.img} alt="" className="w-12 h-12 rounded-full mr-4 border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 hover:scale-105 transition-all duration-300" />
                             <div className="flex-1 min-w-0">
                                 <h5 className="text-base font-bold text-slate-900 mb-1 truncate">{opp.company}</h5>
                                 <div className="flex flex-col sm:flex-row sm:items-center text-xs text-slate-700 gap-1 sm:gap-4">

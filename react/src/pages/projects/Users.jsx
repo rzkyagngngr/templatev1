@@ -38,7 +38,7 @@ export default function Users() {
                             <button className="text-slate-700 hover:="><span className="material-icons-round text-base">edit</span></button>
                             <button className="text-slate-700 hover:="><span className="material-icons-round text-base">delete</span></button>
                         </div>
-                        <img src={user.img} alt="" className="w-20 h-20 rounded-full border-4 border-white/10 mb-4" />
+                        <img src={user.img} alt="" className="w-20 h-20 rounded-full border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 mb-4 hover:scale-105 transition-all duration-300" />
                         <h5 className="text-lg font-bold text-slate-900 mb-1">
                             {user.name}
                             {user.status && <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-yellow-500/20 text-yellow-500">{user.status}</span>}
@@ -71,7 +71,7 @@ export default function Users() {
                                 <tr key={user.id} className="hover:bg-white/5 transition-colors group">
                                     <td className="p-3 border-b border-white/5">
                                         <div className="flex items-center">
-                                            <img src={user.img} alt="" className="w-8 h-8 rounded-full mr-3 border border-white/10" />
+                                            <img src={user.img} alt="" className="w-8 h-8 rounded-full mr-3 border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 hover:scale-105 transition-all duration-300" />
                                             <span className="text-sm font-medium text-slate-200 group-hover:text-slate-900 transition-colors">{user.name}</span>
                                         </div>
                                     </td>

@@ -45,6 +45,7 @@ import HospitalDashboard from './pages/hospital/HospitalDashboard';
 import HospitalDoctors from './pages/hospital/HospitalDoctors';
 import HospitalAppointments from './pages/hospital/HospitalAppointments';
 import HospitalPatients from './pages/hospital/HospitalPatients';
+import HospitalGeneral from './pages/hospital/HospitalGeneral';
 import DoctorSchedule from './pages/hospital/DoctorSchedule';
 import AddDoctor from './pages/hospital/AddDoctor';
 import EditDoctor from './pages/hospital/EditDoctor';
@@ -84,6 +85,9 @@ import Hospital from './pages/Hospital';
 import CryptoExchange from './pages/crypto/CryptoExchange';
 import CryptoWallet from './pages/crypto/CryptoWallet';
 import CryptoNews from './pages/crypto/CryptoNews';
+import CryptoIndex from './pages/crypto/CryptoIndex';
+import CryptoIco from './pages/crypto/CryptoIco';
+import CryptoSettings from './pages/crypto/CryptoSettings';
 
 // UI Pages
 import UIAlerts from './pages/ui/UIAlerts';
@@ -99,6 +103,13 @@ import UIImages from './pages/ui/UIImages';
 import UILists from './pages/ui/UILists';
 import UIPagination from './pages/ui/UIPagination';
 import UIProgress from './pages/ui/UIProgress';
+import UICarousels from './pages/ui/UICarousels';
+import UISpinners from './pages/ui/UISpinners';
+import UINavbar from './pages/ui/UINavbar';
+import UINavs from './pages/ui/UINavs';
+import UIPopovers from './pages/ui/UIPopovers';
+import UITabs from './pages/ui/UITabs';
+import UIVideos from './pages/ui/UIVideos';
 
 // Advanced UI Pages
 import AdvancedAnimation from './pages/advanced/AdvancedAnimation';
@@ -108,6 +119,9 @@ import AdvancedToasts from './pages/advanced/AdvancedToasts';
 import AdvancedHighlight from './pages/advanced/AdvancedHighlight';
 import AdvancedDragula from './pages/advanced/AdvancedDragula';
 import AdvancedSweetAlerts from './pages/advanced/AdvancedSweetAlerts';
+import AdvancedFileManager from './pages/advanced/AdvancedFileManager';
+import AdvancedRangeSlider from './pages/advanced/AdvancedRangeSlider';
+import AdvancedRibbons from './pages/advanced/AdvancedRibbons';
 
 // Form Pages
 import FormElements from './pages/forms/FormElements';
@@ -116,6 +130,7 @@ import FormAdvanced from './pages/forms/FormAdvanced';
 import FormWizard from './pages/forms/FormWizard';
 import FormEditors from './pages/forms/FormEditors';
 import FormUpload from './pages/forms/FormUpload';
+import FormImageCrop from './pages/forms/FormImageCrop';
 
 // Chart Pages
 import ChartsApex from './pages/charts/ChartsApex';
@@ -145,11 +160,16 @@ import EmailAlert from './pages/email/EmailAlert';
 import EmailBilling from './pages/email/EmailBilling';
 import EmailInbox from './pages/apps/email/EmailInbox';
 import EmailRead from './pages/apps/email/EmailRead';
+import EmailStarred from './pages/apps/email/EmailStarred';
+import EmailSent from './pages/apps/email/EmailSent';
+import EmailTrash from './pages/apps/email/EmailTrash';
 
 // Pages Section
 import PagesStarter from './pages/pages/PagesStarter';
 import PagesBlogs from './pages/pages/PagesBlogs';
 import PagesFAQ from './pages/pages/PagesFAQ';
+import Tour from './pages/pages/Tour';
+import Treeview from './pages/pages/Treeview';
 
 // Auth Pages
 import AuthLogin from './pages/auth/AuthLogin';
@@ -283,14 +303,15 @@ function App() {
 
                 {/* Email & Chat */}
                 <Route path="apps/email/inbox" element={<EmailInbox />} />
-                <Route path="apps/email/starred" element={<Placeholder title="Starred Emails" />} />
-                <Route path="apps/email/sent" element={<Placeholder title="Sent Emails" />} />
-                <Route path="apps/email/trash" element={<Placeholder title="Trash Emails" />} />
+                <Route path="apps/email/starred" element={<EmailStarred />} />
+                <Route path="apps/email/sent" element={<EmailSent />} />
+                <Route path="apps/email/trash" element={<EmailTrash />} />
                 <Route path="apps/email/read" element={<EmailRead />} />
                 {/* Mapping Global Chat route for navigation */}
                 <Route path="apps/chat" element={<Chat />} />
 
                 {/* Hospital Routes */}
+                <Route path="apps/hospital/general" element={<HospitalGeneral />} />
                 <Route path="apps/hospital/dashboard" element={<Hospital />} />
                 <Route path="apps/hospital/doctors" element={<HospitalDoctors />} />
                 <Route path="apps/hospital/appointments" element={<HospitalAppointments />} />
@@ -341,11 +362,12 @@ function App() {
 
                 {/* Crypto Routes */}
                 <Route path="apps/crypto/dashboard" element={<Crypto />} />
+                <Route path="apps/crypto/index" element={<CryptoIndex />} />
                 <Route path="apps/crypto/exchange" element={<CryptoExchange />} />
                 <Route path="apps/crypto/wallet" element={<CryptoWallet />} />
                 <Route path="apps/crypto/news" element={<CryptoNews />} />
-                <Route path="apps/crypto/ico" element={<Placeholder title="Crypto ICO" />} />
-                <Route path="apps/crypto/settings" element={<Placeholder title="Crypto Settings" />} />
+                <Route path="apps/crypto/ico" element={<CryptoIco />} />
+                <Route path="apps/crypto/settings" element={<CryptoSettings />} />
 
                 {/* UI Routes */}
                 <Route path="ui/elements/alerts" element={<UIAlerts />} />
@@ -361,15 +383,15 @@ function App() {
                 <Route path="ui/elements/lists" element={<UILists />} />
                 <Route path="ui/elements/pagination" element={<UIPagination />} />
                 <Route path="ui/elements/progress" element={<UIProgress />} />
-                <Route path="ui/elements/carousels" element={<Placeholder title="Carousels" />} />
+                <Route path="ui/elements/carousels" element={<UICarousels />} />
                 <Route path="ui/elements/list" element={<UILists />} />
-                <Route path="ui/elements/navs" element={<Placeholder title="Navs" />} />
-                <Route path="ui/elements/navbar" element={<Placeholder title="Navbar" />} />
+                <Route path="ui/elements/navs" element={<UINavs />} />
+                <Route path="ui/elements/navbar" element={<UINavbar />} />
                 <Route path="ui/elements/paginations" element={<UIPagination />} />
-                <Route path="ui/elements/popovers" element={<Placeholder title="Popovers" />} />
-                <Route path="ui/elements/spinners" element={<Placeholder title="Spinners" />} />
-                <Route path="ui/elements/tabs" element={<Placeholder title="Tabs" />} />
-                <Route path="ui/elements/videos" element={<Placeholder title="Videos" />} />
+                <Route path="ui/elements/popovers" element={<UIPopovers />} />
+                <Route path="ui/elements/spinners" element={<UISpinners />} />
+                <Route path="ui/elements/tabs" element={<UITabs />} />
+                <Route path="ui/elements/videos" element={<UIVideos />} />
 
                 {/* Advanced UI Routes */}
                 <Route path="ui/advanced/animation" element={<AdvancedAnimation />} />
@@ -379,9 +401,9 @@ function App() {
                 <Route path="ui/advanced/highlight" element={<AdvancedHighlight />} />
                 <Route path="ui/advanced/dragula" element={<AdvancedDragula />} />
                 <Route path="ui/advanced/sweetalerts" element={<AdvancedSweetAlerts />} />
-                <Route path="ui/advanced/files" element={<Placeholder title="File Manager" />} />
-                <Route path="ui/advanced/slider" element={<Placeholder title="Range Slider" />} />
-                <Route path="ui/advanced/ribbons" element={<Placeholder title="Ribbons" />} />
+                <Route path="ui/advanced/files" element={<AdvancedFileManager />} />
+                <Route path="ui/advanced/slider" element={<AdvancedRangeSlider />} />
+                <Route path="ui/advanced/ribbons" element={<AdvancedRibbons />} />
 
                 {/* Forms Routes */}
                 <Route path="ui/forms/basic" element={<FormElements />} />
@@ -390,7 +412,7 @@ function App() {
                 <Route path="ui/forms/wizard" element={<FormWizard />} />
                 <Route path="ui/forms/editors" element={<FormEditors />} />
                 <Route path="ui/forms/upload" element={<FormUpload />} />
-                <Route path="ui/forms/crop" element={<Placeholder title="Image Crop" />} />
+                <Route path="ui/forms/crop" element={<FormImageCrop />} />
 
                 {/* Charts Routes */}
                 <Route path="ui/charts/apex" element={<ChartsApex />} />
@@ -425,8 +447,8 @@ function App() {
                 <Route path="pages/blogs" element={<PagesBlogs />} />
                 <Route path="pages/faq" element={<PagesFAQ />} />
                 <Route path="pages/gallery" element={<Gallery />} />
-                <Route path="pages/tour" element={<Placeholder title="Tour" />} />
-                <Route path="pages/treeview" element={<Placeholder title="Treeview" />} />
+                <Route path="pages/tour" element={<Tour />} />
+                <Route path="pages/treeview" element={<Treeview />} />
                 <Route path="pages/profile/overview" element={<Profile />} />
                 <Route path="pages/timeline" element={<Timeline />} />
                 <Route path="pages/pricing" element={<Pricing />} />

@@ -2,12 +2,12 @@
 
 export default function Customers() {
     const customers = [
-        { id: 1, name: 'Dorothy Key', rating: 4.8, location: 'New York USA', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-4.jpg' },
-        { id: 2, name: 'Donald Gardner', rating: 4.8, location: 'Dealer, Washington', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-1.jpg' },
-        { id: 3, name: 'Joseph Cross', rating: 4.8, location: 'Tokyo Japan', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-5.jpg' },
-        { id: 4, name: 'Nancy Flanary', rating: 4.8, location: 'Sydney Australia', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-6.jpg' },
-        { id: 5, name: 'Sherron Nelson', rating: 4.8, location: 'Berlin, Germany', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-7.jpg' },
-        { id: 6, name: 'Richard Curtis', rating: 4.8, location: 'Dealer, Washington', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-8.jpg' },
+        { id: 1, name: 'Dorothy Key', rating: 4.8, location: 'New York USA', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/crm-customer-1/120/120' },
+        { id: 2, name: 'Donald Gardner', rating: 4.8, location: 'Dealer, Washington', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/crm-customer-2/120/120' },
+        { id: 3, name: 'Joseph Cross', rating: 4.8, location: 'Tokyo Japan', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/crm-customer-3/120/120' },
+        { id: 4, name: 'Nancy Flanary', rating: 4.8, location: 'Sydney Australia', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/crm-customer-4/120/120' },
+        { id: 5, name: 'Sherron Nelson', rating: 4.8, location: 'Berlin, Germany', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/crm-customer-5/120/120' },
+        { id: 6, name: 'Richard Curtis', rating: 4.8, location: 'Dealer, Washington', date: '20 June 2020', phone: '+91 23456 78910', email: 'mannat.theme@gmail.com', lastMessage: 'popular belief, Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/crm-customer-6/120/120' },
     ];
 
     return (
@@ -28,7 +28,7 @@ export default function Customers() {
                 {customers.map((customer) => (
                     <div key={customer.id} className="glass-card p-6 flex flex-col gap-4">
                         <div className="flex items-start">
-                            <img src={customer.img} alt="" className="w-12 h-12 rounded-full border border-white/10 mr-4" />
+                            <img src={customer.img} alt="" className="w-14 h-14 rounded-full border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 mr-4 hover:scale-105 transition-all duration-300 object-cover" />
                             <div className="flex-1">
                                 <div className="flex justify-between items-start">
                                     <h5 className="text-base font-bold =">{customer.name}</h5>

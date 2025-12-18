@@ -84,7 +84,7 @@ export default function Kanban() {
                                             </div>
                                             <div className="flex -space-x-2">
                                                 {task.assigned.map((a, i) => (
-                                                    <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${a}.jpg`} className="w-6 h-6 rounded-full border border-slate-700" alt="" />
+                                                    <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${a}.jpg`} className="w-6 h-6 rounded-full backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300" alt="" />
                                                 ))}
                                             </div>
                                         </div>

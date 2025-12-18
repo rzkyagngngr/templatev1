@@ -127,7 +127,7 @@ export default function Team() {
                     <div key={team.id} className="glass-card p-6 flex flex-col hover:bg-white/10 transition-colors group">
 
                         <div className="flex items-center mb-4">
-                            <img src={team.img} alt={team.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/10" />
+                            <img src={team.img} alt={team.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 hover:scale-105 transition-all duration-300" />
                             <div className="ml-3">
                                 <h5 className="text-slate-900 font-bold">{team.name}</h5>
                                 <p className="text-slate-700 text-xs">{team.role}</p>

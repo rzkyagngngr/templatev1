@@ -5,12 +5,12 @@ export default function Leads() {
 
     // Dummy Data
     const [leads] = useState([
-        { id: 1, name: 'Donald Gardner', email: 'xyx@gmail.com', phone: '+123456789', company: 'Starbucks coffee', status: 'New Lead', statusColor: 'bg-indigo-500/20 text-indigo-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-10.jpg', isNew: true },
-        { id: 2, name: 'Matt Rosales', email: 'xyx@gmail.com', phone: '+123456789', company: 'Mac Donald', status: 'Follow Up', statusColor: 'bg-blue-500/20 text-blue-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-9.jpg' },
-        { id: 3, name: 'Michael Hill', email: 'xyx@gmail.com', phone: '+123456789', company: 'Life Good', status: 'Converted', statusColor: 'bg-green-500/20 text-green-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-8.jpg', isNew: true },
-        { id: 4, name: 'Nancy Flanary', email: 'xyx@gmail.com', phone: '+123456789', company: 'Flipcart', status: 'New Lead', statusColor: 'bg-indigo-500/20 text-indigo-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-7.jpg' },
-        { id: 5, name: 'Dorothy Key', email: 'xyx@gmail.com', phone: '+123456789', company: 'Adidas', status: 'Lost', statusColor: 'bg-red-500/20 text-red-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-6.jpg' },
-        { id: 6, name: 'Joseph Cross', email: 'xyx@gmail.com', phone: '+123456789', company: 'Reebok', status: 'New Lead', statusColor: 'bg-indigo-500/20 text-indigo-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-5.jpg' },
+        { id: 1, name: 'Donald Gardner', email: 'xyx@gmail.com', phone: '+123456789', company: 'Starbucks coffee', status: 'New Lead', statusColor: 'bg-indigo-500/20 text-indigo-300', img: 'https://picsum.photos/seed/crm-lead-1/100/100', isNew: true },
+        { id: 2, name: 'Matt Rosales', email: 'xyx@gmail.com', phone: '+123456789', company: 'Mac Donald', status: 'Follow Up', statusColor: 'bg-blue-500/20 text-blue-300', img: 'https://picsum.photos/seed/crm-lead-2/100/100' },
+        { id: 3, name: 'Michael Hill', email: 'xyx@gmail.com', phone: '+123456789', company: 'Life Good', status: 'Converted', statusColor: 'bg-green-500/20 text-green-300', img: 'https://picsum.photos/seed/crm-lead-3/100/100', isNew: true },
+        { id: 4, name: 'Nancy Flanary', email: 'xyx@gmail.com', phone: '+123456789', company: 'Flipcart', status: 'New Lead', statusColor: 'bg-indigo-500/20 text-indigo-300', img: 'https://picsum.photos/seed/crm-lead-4/100/100' },
+        { id: 5, name: 'Dorothy Key', email: 'xyx@gmail.com', phone: '+123456789', company: 'Adidas', status: 'Lost', statusColor: 'bg-red-500/20 text-red-300', img: 'https://picsum.photos/seed/crm-lead-5/100/100' },
+        { id: 6, name: 'Joseph Cross', email: 'xyx@gmail.com', phone: '+123456789', company: 'Reebok', status: 'New Lead', statusColor: 'bg-indigo-500/20 text-indigo-300', img: 'https://picsum.photos/seed/crm-lead-6/100/100' },
     ]);
 
     return (
@@ -30,7 +30,7 @@ export default function Leads() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-6">
                 {/* Profile Card */}
                 <div className="lg:col-span-4 glass-card flex items-center gap-4">
-                    <img src="https://mannatthemes.com/Glacia/default/assets/images/users/user-4.jpg" alt="user" className="w-16 h-16 rounded-full border-2 border-white/20 shadow-lg" />
+                    <img src="https://picsum.photos/seed/crm-lead-profile/80/80" alt="user" className="w-20 h-20 rounded-full object-cover border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 shadow-lg hover:scale-105 transition-all duration-300" />
                     <div className="flex-1">
                         <h5 className="text-lg font-bold text-slate-900 m-0">Merri Diamond</h5>
                         <p className="text-sm text-slate-400">Lead Manager</p>

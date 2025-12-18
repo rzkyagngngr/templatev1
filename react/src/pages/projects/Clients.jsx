@@ -29,7 +29,7 @@ export default function Clients() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {clients.map((client) => (
                     <div key={client.id} className="glass-card p-6 flex flex-col items-center text-center hover:bg-white/10 transition-colors group">
-                        <img src={client.img} alt={client.name} className="w-20 h-20 rounded-full border-2 border-white/10 shadow-lg mb-4 object-cover" />
+                        <img src={client.img} alt={client.name} className="w-20 h-20 rounded-full border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 mb-4 object-cover hover:scale-105 transition-all duration-300" />
                         <h4 className="text-lg font-bold text-slate-900 mb-1 group-hover:text-primary transition-colors">{client.name}</h4>
 
                         <div className="flex items-center text-slate-700 text-xs mb-1">

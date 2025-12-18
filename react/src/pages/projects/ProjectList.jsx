@@ -131,7 +131,7 @@ export default function ProjectList() {
                 {projects.map((project) => (
                     <div key={project.id} className="glass-card p-6 flex flex-col h-full hover:bg-white/10 transition-colors group">
                         <div className="flex items-center gap-4 mb-4">
-                            <img src={project.image} alt={project.name} className="w-12 h-12 rounded-full object-cover border-2 border-white/10" />
+                            <img src={project.image} alt={project.name} className="w-12 h-12 rounded-full object-cover backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300" />
                             <div className="overflow-hidden">
                                 <h4 className="text-lg font-bold text-slate-900 truncate">{project.name}</h4>
                                 <p className="text-slate-700 text-xs truncate">Client: {project.client}</p>
@@ -175,7 +175,7 @@ export default function ProjectList() {
                             <div className="flex justify-between items-center">
                                 <div className="flex -space-x-2">
                                     {project.users.map((u, index) => (
-                                        <img key={index} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${u + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="user" />
+                                        <img key={index} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${u + 4}.jpg`} className="w-8 h-8 rounded-full backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300" alt="user" />
                                     ))}
                                     <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-slate-800 flex items-center justify-center text-xs text-blue-600 font-semibold">+{project.extraUsers}</div>
                                 </div>

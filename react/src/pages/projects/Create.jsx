@@ -96,7 +96,7 @@ export default function Create() {
                         <div className="form-group mb-6 text-center lg:text-left">
                             <label className="text-sm text-slate-700 mb-3 block">Project Avatar</label>
                             <div className="relative inline-block group">
-                                <img src="https://mannatthemes.com/Glacia/default/assets/images/small/project-3.jpg" alt="" className="w-full max-w-sm rounded-lg border-4 border-white/5 shadow-xl" />
+                                <img src="https://mannatthemes.com/Glacia/default/assets/images/small/project-3.jpg" alt="" className="w-full max-w-sm rounded-lg backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300" />
                                 <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-lg">
                                     <button className="px-4 py-2 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-lg text-slate-900 text-sm font-medium border border-white/20">Change Avatar</button>
                                 </div>
@@ -113,7 +113,7 @@ export default function Create() {
                             <label className="text-sm text-slate-700 mb-3 block">Project Team Members</label>
                             <div className="flex flex-wrap gap-2">
                                 {[1, 2, 3, 4, 5].map(i => (
-                                    <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${i + 4}.jpg`} className="w-10 h-10 rounded-full border-2 border-slate-800 hover:scale-110 transition-transform cursor-pointer" alt="" />
+                                    <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${i + 4}.jpg`} className="w-10 h-10 rounded-full backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer" alt="" />
                                 ))}
                                 <button className="w-10 h-10 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs text-slate-900 hover:bg-slate-600 transition-colors">
                                     <span className="material-icons-round font-bold">+</span>

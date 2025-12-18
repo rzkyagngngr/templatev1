@@ -1,44 +1,105 @@
-﻿import React from 'react';
+﻿import React, { useState } from 'react';
+import { ChevronRight, ZoomIn } from 'lucide-react';
 
 export default function Gallery() {
-    return (
-        <div className="space-y-6">
-            <div className="flex justify-between items-center">
-                <h1 className="text-2xl font-bold text-textPrimary">Gallery</h1>
-                <div className="flex gap-2">
-                    <button className="px-3 py-1 rounded-full bg-primary text-slate-900 text-sm font-medium">All</button>
-                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-slate-900 hover:bg-white/10 text-sm font-medium transition">Development</button>
-                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-slate-900 hover:bg-white/10 text-sm font-medium transition">Design</button>
-                    <button className="px-3 py-1 rounded-full bg-white/5 text-tertiary hover:text-slate-900 hover:bg-white/10 text-sm font-medium transition">Mobile</button>
-                </div>
-            </div>
+  const [selectedImage, setSelectedImage] = useState(null);
 
-            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-                    <div key={i} className="break-inside-avoid glass-card p-0 overflow-hidden group relative cursor-pointer">
-                        <div className={`w-full bg-white/5 ${i % 2 === 0 ? 'h-64' : 'h-48'} relative overflow-hidden`}>
-                            {/* Placeholder pattern */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center">
-                                <span className="material-icons-round text-primary text-4xl opacity-50 group-hover:scale-125 transition duration-500">image</span>
-                            </div>
+  const images = [
+    { id: 1, title: 'Dashboard Overview', category: 'dashboard', img: 'https://picsum.photos/400/300?random=1' },
+    { id: 2, title: 'Analytics Reports', category: 'analytics', img: 'https://picsum.photos/400/300?random=2' },
+    { id: 3, title: 'User Management', category: 'users', img: 'https://picsum.photos/400/300?random=3' },
+    { id: 4, title: 'Settings Panel', category: 'settings', img: 'https://picsum.photos/400/300?random=4' },
+    { id: 5, title: 'Mobile View', category: 'mobile', img: 'https://picsum.photos/400/300?random=5' },
+    { id: 6, title: 'Dark Mode', category: 'dashboard', img: 'https://picsum.photos/400/300?random=6' },
+    { id: 7, title: 'Team Collaboration', category: 'users', img: 'https://picsum.photos/400/300?random=7' },
+    { id: 8, title: 'Performance Charts', category: 'analytics', img: 'https://picsum.photos/400/300?random=8' },
+    { id: 9, title: 'API Integration', category: 'settings', img: 'https://picsum.photos/400/300?random=9' }
+  ];
 
-                            {/* Overlay */}
-                            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-4">
-                                <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-primary flex items-center justify-center text-slate-900 backdrop-blur-md transition transform translate-y-4 group-hover:translate-y-0 duration-300">
-                                    <span className="material-icons-round">zoom_in</span>
-                                </button>
-                                <button className="w-10 h-10 rounded-full bg-white/20 hover:bg-emerald-500 flex items-center justify-center text-slate-900 backdrop-blur-md transition transform translate-y-4 group-hover:translate-y-0 duration-300 delay-75">
-                                    <span className="material-icons-round">link</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div className="p-4">
-                            <h3 className="font-bold text-textPrimary">Project Image {i}</h3>
-                            <p className="text-xs text-tertiary">Design, Development</p>
-                        </div>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 -m-6 p-6">
+      {/* Breadcrumb */}
+      <div className="mb-8 flex items-center gap-2 text-sm">
+        <span className="text-gray-600">Glacia</span>
+        <ChevronRight size={16} className="text-gray-400" />
+        <span className="text-gray-600">Pages</span>
+        <ChevronRight size={16} className="text-gray-400" />
+        <span className="bg-gradient-to-br from-blue-600 to-purple-600 bg-clip-text text-transparent font-semibold">Gallery</span>
+      </div>
+
+      {/* Header */}
+      <div className="max-w-5xl mx-auto mb-12 text-center">
+        <h1 className="text-4xl font-bold bg-gradient-to-br from-blue-900 to-purple-900 bg-clip-text text-transparent mb-4">Gallery</h1>
+        <p className="text-gray-600 text-lg">Explore our design showcase</p>
+      </div>
+
+      {/* Gallery Grid */}
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {images.map(image => (
+            <div
+              key={image.id}
+              onClick={() => setSelectedImage(image)}
+              className="group cursor-pointer"
+            >
+              <div className="backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 rounded-3xl border border-white/60 shadow-xl shadow-blue-200/40 overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300 h-full flex flex-col">
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={image.img}
+                    alt={image.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="p-3 backdrop-blur-xl bg-white/90 border border-white/50 rounded-2xl">
+                        <ZoomIn size={24} className="text-blue-600" />
+                      </div>
                     </div>
-                ))}
+                  </div>
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <h3 className="font-bold text-lg text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{image.title}</h3>
+                  <div className="mt-auto">
+                    <span className="inline-block px-3 py-1 backdrop-blur-xl bg-gradient-to-br from-blue-400/50 to-purple-400/50 text-blue-900 text-sm font-semibold rounded-full border border-white/50">
+                      {image.category}
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
+          ))}
         </div>
-    );
+      </div>
+
+      {/* Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <div
+            className="backdrop-blur-2xl bg-gradient-to-br from-white/95 to-white/90 rounded-3xl border border-white/60 shadow-2xl max-w-2xl w-full overflow-hidden"
+            onClick={e => e.stopPropagation()}
+          >
+            <img
+              src={selectedImage.img}
+              alt={selectedImage.title}
+              className="w-full h-96 object-cover"
+            />
+            <div className="p-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">{selectedImage.title}</h2>
+              <p className="text-gray-600 mb-6">Category: <span className="font-semibold text-gray-900">{selectedImage.category}</span></p>
+              <button
+                onClick={() => setSelectedImage(null)}
+                className="w-full py-3 backdrop-blur-xl bg-gradient-to-br from-blue-500/50 to-purple-500/50 text-white rounded-2xl font-semibold border border-white/50 hover:shadow-lg transition-all duration-300"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }

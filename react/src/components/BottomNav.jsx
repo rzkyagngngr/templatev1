@@ -88,61 +88,22 @@ export default function BottomNav({ activeTab, onNavigate }) {
                     label: 'Hospital',
                     submenus: [
                         {
-                            label: 'Appointments',
-                            submenus: [
-                                { label: 'Dr. Shedule', path: '/apps/hospital/schedule' },
-                                { label: 'All Appointments', path: '/apps/hospital/appointments' },
-                            ]
+                            label: 'Appointments', path: '/apps/hospital/appointments'
                         },
                         {
-                            label: 'Doctors',
-                            submenus: [
-                                { label: 'All Doctors', path: '/apps/hospital/doctors' },
-                                { label: 'Add Doctor', path: '/apps/hospital/add-doctor' },
-                                { label: 'Doctor Edit', path: '/apps/hospital/edit-doctor' },
-                                { label: 'Doctor Profile', path: '/apps/hospital/doctor-profile' },
-                            ]
+                            label: 'Doctors', path: '/apps/hospital/doctors'
                         },
                         {
-                            label: 'Patients',
-                            submenus: [
-                                { label: 'All Patients', path: '/apps/hospital/patients' },
-                                { label: 'Add Patient', path: '/apps/hospital/add-patient' },
-                                { label: 'Patient Edit', path: '/apps/hospital/edit-patient' },
-                                { label: 'Patient Profile', path: '/apps/hospital/patient-profile' },
-                            ]
+                            label: 'Patients', path: '/apps/hospital/patients'
                         },
                         {
-                            label: 'Payments',
-                            submenus: [
-                                { label: 'All Payments', path: '/apps/hospital/payments' },
-                                { label: 'Payment Invoice', path: '/apps/hospital/invoice' },
-                                { label: 'Cashless Payments', path: '/apps/hospital/cashless' },
-                            ]
+                            label: 'Payments', path: '/apps/hospital/payments'
                         },
                         {
-                            label: 'Staff',
-                            submenus: [
-                                { label: 'All Staff', path: '/apps/hospital/staff' },
-                                { label: 'Add Member', path: '/apps/hospital/add-staff' },
-                                { label: 'Edit Member', path: '/apps/hospital/edit-staff' },
-                                { label: 'Member Profile', path: '/apps/hospital/staff-profile' },
-                                { label: 'Staff Salary', path: '/apps/hospital/salary' },
-                            ]
+                            label: 'Staff', path: '/apps/hospital/staff'
                         },
                         {
-                            label: 'General',
-                            submenus: [
-                                { label: 'Room Allotments', path: '/apps/hospital/rooms' },
-                                { label: 'Expenses Report', path: '/apps/hospital/expenses' },
-                                { label: 'Departments', path: '/apps/hospital/departments' },
-                                { label: 'Insurance Co.', path: '/apps/hospital/insurance' },
-                                { label: 'Events', path: '/apps/hospital/events' },
-                                { label: 'Leaves', path: '/apps/hospital/leaves' },
-                                { label: 'Holidays', path: '/apps/hospital/holidays' },
-                                { label: 'Attendance', path: '/apps/hospital/attendance' },
-                                { label: 'Chat', path: '/apps/hospital/chat' },
-                            ]
+                            label: 'General', path: '/apps/hospital/general'
                         },
                     ]
                 },
@@ -226,7 +187,6 @@ export default function BottomNav({ activeTab, onNavigate }) {
                         { label: 'Apex', path: '/ui/charts/apex' },
                         { label: 'JustGage', path: '/ui/charts/justgage' },
                         { label: 'Chartjs', path: '/ui/charts/chartjs' },
-                        { label: 'Toast', path: '/ui/charts/toast' },
                     ]
                 },
                 {

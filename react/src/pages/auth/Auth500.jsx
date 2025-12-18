@@ -1,4 +1,16 @@
 ﻿import React from 'react';
+
 export default function Auth500() {
-    return (<div className="min-h-screen w-full flex items-center justify-center"><div className="text-center"><h1 className="text-9xl font-bold text-danger mb-4">500</h1><h2 className="text-3xl font-bold text-slate-900 mb-2">Server Error</h2><p className="text-slate-700 mb-8">Something went wrong on our end</p><button className="px-6 py-2.5 bg-primary hover:bg-primary/90 rounded-lg text-slate-900 font-medium">Go Home</button></div></div>);
+    return (
+        <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+            <div className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl shadow-xl shadow-black/5 p-12 text-center max-w-md">
+                <h1 className="text-9xl font-bold text-red-600 mb-4">500</h1>
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">Server Error</h2>
+                <p className="text-gray-700 mb-8">Something went wrong on our end. Please try again later.</p>
+                <button className="px-8 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:shadow-lg text-white rounded-3xl font-semibold transition-all">
+                    Go Home
+                </button>
+            </div>
+        </div>
+    );
 }

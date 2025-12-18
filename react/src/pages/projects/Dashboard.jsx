@@ -241,7 +241,7 @@ export default function Dashboard() {
                         <div>
                             <div className="flex flex-col md:flex-row justify-between mb-6">
                                 <div className="flex items-center gap-4">
-                                    <img src="https://mannatthemes.com/Glacia/default/assets/images/small/project-2.jpg" alt="" className="w-16 h-16 rounded-full border-2 border-white/10 shadow-lg object-cover" />
+                                    <img src="https://mannatthemes.com/Glacia/default/assets/images/small/project-2.jpg" alt="" className="w-16 h-16 rounded-full backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300 object-cover" />
                                     <div>
                                         <h4 className="text-xl font-bold =">Banking App</h4>
                                         <p className="text-slate-700 text-sm">Client: <span className="text-slate-200">Hyman M. Cross</span></p>
@@ -289,7 +289,7 @@ export default function Dashboard() {
                                     </div>
                                     <div className="flex -space-x-2">
                                         {[1, 2, 3, 4].map(i => (
-                                            <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${i + 4}.jpg`} className="w-8 h-8 rounded-full border-2 border-slate-800" alt="" />
+                                            <img key={i} src={`https://mannatthemes.com/Glacia/default/assets/images/users/user-${i + 4}.jpg`} className="w-8 h-8 rounded-full backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 border border-white/60 shadow-2xl hover:scale-105 transition-all duration-300" alt="" />
                                         ))}
                                         <div className="w-8 h-8 rounded-full bg-slate-700 border-2 border-slate-800 flex items-center justify-center text-xs =">+4</div>
                                     </div>

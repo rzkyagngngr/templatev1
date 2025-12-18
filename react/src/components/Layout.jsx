@@ -14,7 +14,7 @@ export default function Layout({ children, activePage, onNavigate }) {
     }
 
     return (
-        <div className="min-h-screen bg-bg text-textPrimary pb-28">
+        <div className="min-h-screen bg-bg text-textPrimary bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pb-28">
             <TopNav onNavigate={onNavigate} />
             <main className="max-w-[75rem] mx-auto px-4 py-6">
                 {children}

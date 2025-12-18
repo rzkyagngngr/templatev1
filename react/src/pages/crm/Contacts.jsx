@@ -5,12 +5,12 @@ export default function Contacts() {
 
     // Dummy Data
     const [contacts] = useState([
-        { id: 1, name: 'Donald Gardner', email: 'xyx@gmail.com', phone: '+123456789', score: '68', company: 'Starbucks coffee', tags: ['test', 'another'], img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-10.jpg', isNew: true },
-        { id: 2, name: 'Matt Rosales', email: 'xyx@gmail.com', phone: '+123456789', score: '112', company: 'Mac Donald', tags: ['test', 'another', 'something'], img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-9.jpg' },
-        { id: 3, name: 'Michael Hill', email: 'xyx@gmail.com', phone: '+123456789', score: '64', company: 'Life Good', tags: ['test', 'another'], img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-8.jpg', isNew: true },
-        { id: 4, name: 'Nancy Flanary', email: 'xyx@gmail.com', phone: '+123456789', score: '124', company: 'Flipcart', tags: ['test', 'another', 'something'], img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-7.jpg' },
-        { id: 5, name: 'Dorothy Key', email: 'xyx@gmail.com', phone: '+123456789', score: '33', company: 'Adidas', tags: ['test', 'something'], img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-6.jpg' },
-        { id: 6, name: 'Joseph Cross', email: 'xyx@gmail.com', phone: '+123456789', score: '84', company: 'Reebok', tags: ['test', 'another', 'something'], img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-5.jpg' },
+        { id: 1, name: 'Donald Gardner', email: 'xyx@gmail.com', phone: '+123456789', score: '68', company: 'Starbucks coffee', tags: ['test', 'another'], img: 'https://picsum.photos/seed/crm-contact-1/100/100', isNew: true },
+        { id: 2, name: 'Matt Rosales', email: 'xyx@gmail.com', phone: '+123456789', score: '112', company: 'Mac Donald', tags: ['test', 'another', 'something'], img: 'https://picsum.photos/seed/crm-contact-2/100/100' },
+        { id: 3, name: 'Michael Hill', email: 'xyx@gmail.com', phone: '+123456789', score: '64', company: 'Life Good', tags: ['test', 'another'], img: 'https://picsum.photos/seed/crm-contact-3/100/100', isNew: true },
+        { id: 4, name: 'Nancy Flanary', email: 'xyx@gmail.com', phone: '+123456789', score: '124', company: 'Flipcart', tags: ['test', 'another', 'something'], img: 'https://picsum.photos/seed/crm-contact-4/100/100' },
+        { id: 5, name: 'Dorothy Key', email: 'xyx@gmail.com', phone: '+123456789', score: '33', company: 'Adidas', tags: ['test', 'something'], img: 'https://picsum.photos/seed/crm-contact-5/100/100' },
+        { id: 6, name: 'Joseph Cross', email: 'xyx@gmail.com', phone: '+123456789', score: '84', company: 'Reebok', tags: ['test', 'another', 'something'], img: 'https://picsum.photos/seed/crm-contact-6/100/100' },
     ]);
 
     return (
@@ -58,7 +58,7 @@ export default function Contacts() {
                                 <tr key={contact.id} className="hover:bg-white/20 transition-all">
                                     <td className="p-4">
                                         <div className="flex items-center">
-                                            <img src={contact.img} alt="" className="w-8 h-8 rounded-full mr-3 border-2 border-white shadow-lg" />
+                                            <img src={contact.img} alt="" className="w-10 h-10 rounded-full mr-3 object-cover border-2 border-white/60 shadow-2xl backdrop-blur-2xl bg-gradient-to-br from-white/90 to-white/50 hover:scale-105 transition-all duration-300" />
                                             <span className="text-sm font-medium text-slate-900">{contact.name}</span>
                                             {contact.isNew && <span className="ml-2 text-[10px] px-2 py-0.5 rounded-full bg-pink-500/20 text-pink-700 font-semibold">New</span>}
                                         </div>
