@@ -7,7 +7,7 @@
 
 export type LicenseInfo = {
   productId: string;
-  type: 'trial' | 'standard' | 'premium' | 'enterprise';
+  type: 'trial' | 'standard' | 'premium' | 'enterprise' | 'vl' | 'lifetime';
   customerName?: string;
   expiryDate?: Date;
   features?: string[];
@@ -58,7 +58,7 @@ function validateLicenseFormat(licenseKey: string): boolean {
  * Parse license key into components (client-side decoding)
  * SECURITY NOTE: This is obfuscation only. True validation requires server API.
  */
-function parseLicenseKey(licenseKey: string): LicenseInfo | null {
+async function parseLicenseKey(licenseKey: string): Promise<LicenseInfo | null> {
   try {
     const parts = licenseKey.split('-');
     if (parts.length !== 4) return null;
@@ -74,6 +74,8 @@ function parseLicenseKey(licenseKey: string): LicenseInfo | null {
       'B8G4C': 'standard',
       'C9H5D': 'premium',
       'D0I6E': 'enterprise',
+      'E1J7F': 'vl',
+      'F2K8G': 'lifetime',
     };
     const type = typeMap[typePart.substring(0, 5)] || 'trial';
 
@@ -82,10 +84,11 @@ function parseLicenseKey(licenseKey: string): LicenseInfo | null {
     const year = parseInt(expiryStr.substring(0, 4), 10);
     const month = parseInt(expiryStr.substring(4, 6), 10) - 1;
     const day = parseInt(expiryStr.substring(6, 8), 10);
-    const expiryDate = new Date(year, month, day);
+    const expiryDate = type === 'lifetime' ? new Date(9999, 11, 31) : new Date(year, month, day);
 
-    // Verify checksum (simple XOR check for demo - use HMAC in production)
-    const expectedChecksum = simpleChecksum(productPart + typePart + expiryPart);
+    // Verify checksum (SHA-256 based)
+    const baseKey = `${productPart}-${typePart}-${expiryPart}`;
+    const expectedChecksum = await generateChecksum(baseKey);
     if (checksumPart !== expectedChecksum) {
       return null;
     }
@@ -102,15 +105,15 @@ function parseLicenseKey(licenseKey: string): LicenseInfo | null {
 }
 
 /**
- * Simple checksum generator (demo only - use HMAC-SHA256 in production)
+ * Generate checksum for license key using SHA-256
  */
-function simpleChecksum(data: string): string {
-  let hash = 0;
-  for (let i = 0; i < data.length; i++) {
-    hash = ((hash << 5) - hash) + data.charCodeAt(i);
-    hash = hash & hash; // Convert to 32-bit integer
-  }
-  return Math.abs(hash).toString(36).toUpperCase().substring(0, 4).padStart(4, 'X');
+async function generateChecksum(str: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  return hashHex.slice(0, 4).toUpperCase();
 }
 
 /**
@@ -180,7 +183,7 @@ export async function validateLicenseKey(
   }
 
   // 3. Client-side validation (fallback - less secure)
-  const info = parseLicenseKey(licenseKey);
+  const info = await parseLicenseKey(licenseKey);
   
   if (!info) {
     return {
@@ -215,11 +218,11 @@ export async function validateLicenseKey(
  * Generate a license key (server-side only - this is a demo generator)
  * In production, this should ONLY run on your secure server
  */
-export function generateLicenseKey(
+export async function generateLicenseKey(
   productId: string,
   type: LicenseInfo['type'],
   expiryDate: Date
-): string {
+): Promise<string> {
   // Product part (5 chars, padded)
   const productPart = productId.toUpperCase().padEnd(5, 'X').substring(0, 5);
 
@@ -229,6 +232,8 @@ export function generateLicenseKey(
     standard: 'B8G4C',
     premium: 'C9H5D',
     enterprise: 'D0I6E',
+    vl: 'E1J7F',
+    lifetime: 'F2K8G',
   };
   const typePart = typeMap[type] || 'A7F3B';
 
@@ -238,8 +243,9 @@ export function generateLicenseKey(
   const day = expiryDate.getDate().toString().padStart(2, '0');
   const expiryPart = year + month + day;
 
-  // Checksum
-  const checksumPart = simpleChecksum(productPart + typePart + expiryPart);
+  // Checksum (same SHA-256 scheme used by validation)
+  const baseKey = `${productPart}-${typePart}-${expiryPart}`;
+  const checksumPart = await generateChecksum(baseKey);
 
   return `${productPart}-${typePart}-${expiryPart}-${checksumPart}`;
 }

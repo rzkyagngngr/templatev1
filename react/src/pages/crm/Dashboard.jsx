@@ -108,11 +108,11 @@ export default function Dashboard() {
                                 </thead>
                             <tbody>
                                 {[
-                                    { name: 'Donald Gardner', email: 'xyx@gmail.com', phone: '+123456789', company: 'Starbucks coffee', status: 'New Lead', statusColor: 'bg-purple-500/20 text-purple-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-10.jpg' },
-                                    { name: 'Matt Rosales', email: 'xyx@gmail.com', phone: '+123456789', company: 'Mac Donald', status: 'New Lead', statusColor: 'bg-purple-500/20 text-purple-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-9.jpg' },
-                                    { name: 'Michael Hill', email: 'xyx@gmail.com', phone: '+123456789', company: 'Life Good', status: 'Lost', statusColor: 'bg-red-500/20 text-red-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-8.jpg' },
-                                    { name: 'Nancy Flanary', email: 'xyx@gmail.com', phone: '+123456789', company: 'Flipcart', status: 'New Lead', statusColor: 'bg-purple-500/20 text-purple-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-7.jpg' },
-                                    { name: 'Dorothy Key', email: 'xyx@gmail.com', phone: '+123456789', company: 'Adidas', status: 'Follow Up', statusColor: 'bg-blue-500/20 text-blue-300', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-6.jpg' },
+                                    { name: 'Donald Gardner', email: 'xyx@gmail.com', phone: '+123456789', company: 'Starbucks coffee', status: 'New Lead', statusColor: 'bg-purple-500/20 text-purple-300', img: 'https://picsum.photos/seed/lead1/100' },
+                                    { name: 'Matt Rosales', email: 'xyx@gmail.com', phone: '+123456789', company: 'Mac Donald', status: 'New Lead', statusColor: 'bg-purple-500/20 text-purple-300', img: 'https://picsum.photos/seed/lead2/100' },
+                                    { name: 'Michael Hill', email: 'xyx@gmail.com', phone: '+123456789', company: 'Life Good', status: 'Lost', statusColor: 'bg-red-500/20 text-red-300', img: 'https://picsum.photos/seed/lead3/100' },
+                                    { name: 'Nancy Flanary', email: 'xyx@gmail.com', phone: '+123456789', company: 'Flipcart', status: 'New Lead', statusColor: 'bg-purple-500/20 text-purple-300', img: 'https://picsum.photos/seed/lead4/100' },
+                                    { name: 'Dorothy Key', email: 'xyx@gmail.com', phone: '+123456789', company: 'Adidas', status: 'Follow Up', statusColor: 'bg-blue-500/20 text-blue-300', img: 'https://picsum.photos/seed/lead5/100' },
                                 ].map((lead, i) => (
                                     <tr key={i} className="hover:bg-white/30 transition-all duration-200 border-b border-slate-200/50 last:border-0">
                                         <td className="p-4">

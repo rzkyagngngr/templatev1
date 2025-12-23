@@ -2,14 +2,14 @@
 
 export default function Clients() {
     const clients = [
-        { id: 1, name: 'Charles Fang', location: 'New York, USA', phone: '+1 123 456 789', bio: 'It is a long established fact that a reader will be distracted when looking at its layout.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-8.jpg' },
-        { id: 2, name: 'Wendy Keen', location: 'New York, USA', phone: '+1 123 456 789', bio: 'There are many variations of passages of Lorem Ipsum available, but the majority have.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-4.jpg' },
-        { id: 3, name: 'Marvin Turner', location: 'New York, USA', phone: '+1 123 456 789', bio: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-5.jpg' },
-        { id: 4, name: 'Charles Fang', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Bonorum et Malorum" by Cicero are also reproduced in their exact original form.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-1.jpg' },
-        { id: 5, name: 'Joseph Cate', location: 'New York, USA', phone: '+1 123 456 789', bio: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-9.jpg' },
-        { id: 6, name: 'Robert Kipp', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Latin words, consectetur, from a Lorem Ipsum passage, and going through.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-10.jpg' },
-        { id: 7, name: 'Nancy Perdue', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-7.jpg' },
-        { id: 8, name: 'Joseph Cate', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Contrary to popular belief, consectetur, from a Lorem Ipsum is not simply random text.', img: 'https://mannatthemes.com/Glacia/default/assets/images/users/user-2.jpg' },
+        { id: 1, name: 'Charles Fang', location: 'New York, USA', phone: '+1 123 456 789', bio: 'It is a long established fact that a reader will be distracted when looking at its layout.', img: 'https://picsum.photos/seed/client1/200' },
+        { id: 2, name: 'Wendy Keen', location: 'New York, USA', phone: '+1 123 456 789', bio: 'There are many variations of passages of Lorem Ipsum available, but the majority have.', img: 'https://picsum.photos/seed/client2/200' },
+        { id: 3, name: 'Marvin Turner', location: 'New York, USA', phone: '+1 123 456 789', bio: 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those.', img: 'https://picsum.photos/seed/client3/200' },
+        { id: 4, name: 'Charles Fang', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Bonorum et Malorum" by Cicero are also reproduced in their exact original form.', img: 'https://picsum.photos/seed/client4/200' },
+        { id: 5, name: 'Joseph Cate', location: 'New York, USA', phone: '+1 123 456 789', bio: 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks.', img: 'https://picsum.photos/seed/client5/200' },
+        { id: 6, name: 'Robert Kipp', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Latin words, consectetur, from a Lorem Ipsum passage, and going through.', img: 'https://picsum.photos/seed/client6/200' },
+        { id: 7, name: 'Nancy Perdue', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics.', img: 'https://picsum.photos/seed/client7/200' },
+        { id: 8, name: 'Joseph Cate', location: 'New York, USA', phone: '+1 123 456 789', bio: 'Contrary to popular belief, consectetur, from a Lorem Ipsum is not simply random text.', img: 'https://picsum.photos/seed/client8/200' },
     ];
 
     return (

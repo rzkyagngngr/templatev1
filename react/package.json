@@ -1,18 +1,25 @@
 {
-  "name": "ptos-admin-react",
+  "name": "glacia-admin-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:ssg": "npm run build && node scripts/ssg-build.js",
+    "build:ssg:static": "npm run build && node scripts/ssg-static.js",
+    "build:standalone": "npm run build && node scripts/create-standalone.js",
     "build:secure": "vite build && node scripts/encrypt-bundle.js",
+    "build:ssg:secure": "npm run build && node scripts/ssg-build.js && node scripts/encrypt-bundle.js",
     "encrypt": "node scripts/encrypt-bundle.js",
+    "keygen": "node ../extras/keygen/cli.js",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "preview:ssg": "vite preview --outDir dist",
     "preview:secure": "vite preview --outDir dist-encrypted"
   },
   "dependencies": {
+    "@simplewebauthn/browser": "^13.1.0",
     "apexcharts": "^4.0.0",
     "axios": "^1.6.0",
     "chart.js": "^4.4.1",
@@ -36,13 +43,12 @@
     "react-select": "^5.8.0",
     "simple-datatables": "^9.0.0",
     "sweetalert2": "^11.10.0",
-    "tailwind-merge": "^2.1.0",
-    "@simplewebauthn/browser": "^13.1.0"
+    "tailwind-merge": "^2.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.55.0",
     "eslint-plugin-react": "^7.33.2",
@@ -50,7 +56,9 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "postcss": "^8.4.32",
     "tailwindcss": "^3.4.0",
+    "typescript": "^5.9.2",
     "vite": "^5.0.8",
-    "typescript": "^5.9.2"
+    "vite-plugin-pages": "^0.33.2",
+    "vite-ssg": "^28.2.2"
   }
 }

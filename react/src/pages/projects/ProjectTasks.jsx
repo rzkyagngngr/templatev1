@@ -1,101 +1,201 @@
 ﻿import React, { useState } from 'react';
-import { CheckCircle, Circle, Trash2, Edit2, Plus } from 'lucide-react';
+import { CheckCircle2, Circle, Trash2, Edit2, Plus, Filter, Search, Calendar, Clock, Flag, User } from 'lucide-react';
 
 export default function ProjectTasks() {
   const [tasks, setTasks] = useState([
-    { id: 1, title: 'Design UI Mockups', status: 'completed', dueDate: '2025-01-10', priority: 'high', assignee: 'Sarah', desc: 'Create mockups for all pages' },
-    { id: 2, title: 'Setup Development Environment', status: 'completed', dueDate: '2025-01-05', priority: 'high', assignee: 'John', desc: 'Configure dev tools' },
-    { id: 3, title: 'API Endpoint Development', status: 'pending', dueDate: '2025-01-20', priority: 'high', assignee: 'Mike', desc: 'Build REST APIs' },
-    { id: 4, title: 'Database Schema Design', status: 'pending', dueDate: '2025-01-18', priority: 'medium', assignee: 'Lisa', desc: 'Design database structure' },
-    { id: 5, title: 'Frontend Testing', status: 'pending', dueDate: '2025-02-01', priority: 'medium', assignee: 'Tom', desc: 'Unit and integration tests' },
+    { id: 1, title: 'Design UI Mockups', status: 'completed', dueDate: '2025-01-10', priority: 'high', assignee: 'Sarah Chen', desc: 'Create mockups for all pages', project: 'Banking App', tags: ['design', 'ui'] },
+    { id: 2, title: 'Setup Development Environment', status: 'completed', dueDate: '2025-01-05', priority: 'high', assignee: 'John Doe', desc: 'Configure dev tools and dependencies', project: 'E-Commerce', tags: ['dev', 'setup'] },
+    { id: 3, title: 'API Endpoint Development', status: 'pending', dueDate: '2025-01-20', priority: 'high', assignee: 'Mike Johnson', desc: 'Build REST APIs for core features', project: 'Healthcare Portal', tags: ['backend', 'api'] },
+    { id: 4, title: 'Database Schema Design', status: 'pending', dueDate: '2025-01-18', priority: 'medium', assignee: 'Lisa Wang', desc: 'Design database structure and relationships', project: 'Real Estate CRM', tags: ['database', 'design'] },
+    { id: 5, title: 'Frontend Testing', status: 'pending', dueDate: '2025-02-01', priority: 'medium', assignee: 'Tom Martinez', desc: 'Unit and integration tests', project: 'E-Commerce', tags: ['testing', 'qa'] },
+    { id: 6, title: 'Mobile Responsive Design', status: 'progress', dueDate: '2025-01-22', priority: 'high', assignee: 'Sarah Chen', desc: 'Ensure mobile compatibility', project: 'Banking App', tags: ['mobile', 'responsive'] },
+    { id: 7, title: 'Security Audit', status: 'progress', dueDate: '2025-01-25', priority: 'critical', assignee: 'John Doe', desc: 'Comprehensive security review', project: 'Healthcare Portal', tags: ['security', 'audit'] },
   ]);
 
   const [filter, setFilter] = useState('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredTasks = filter === 'all' ? tasks : tasks.filter(t => t.status === filter);
+  const filteredTasks = tasks.filter(t => {
+    const matchesFilter = filter === 'all' || t.status === filter;
+    const matchesSearch = t.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                         t.desc.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
+
+  const getPriorityConfig = (priority) => {
+    const configs = {
+      critical: { bg: 'bg-red-500/20', border: 'border-red-500/30', text: 'text-red-700', icon: 'text-red-600' },
+      high: { bg: 'bg-orange-500/20', border: 'border-orange-500/30', text: 'text-orange-700', icon: 'text-orange-600' },
+      medium: { bg: 'bg-blue-500/20', border: 'border-blue-500/30', text: 'text-blue-700', icon: 'text-blue-600' },
+      low: { bg: 'bg-slate-500/20', border: 'border-slate-500/30', text: 'text-slate-700', icon: 'text-slate-600' }
+    };
+    return configs[priority] || configs.medium;
+  };
+
+  const statusConfig = {
+    completed: { label: 'Completed', color: 'from-green-500 to-emerald-500', text: 'text-green-700' },
+    progress: { label: 'In Progress', color: 'from-purple-500 to-pink-500', text: 'text-purple-700' },
+    pending: { label: 'Pending', color: 'from-orange-500 to-amber-500', text: 'text-orange-700' }
+  };
+
+  const stats = [
+    { label: 'Total Tasks', value: tasks.length, icon: CheckCircle2, color: 'from-blue-500 to-indigo-500' },
+    { label: 'Completed', value: tasks.filter(t => t.status === 'completed').length, icon: CheckCircle2, color: 'from-green-500 to-emerald-500' },
+    { label: 'In Progress', value: tasks.filter(t => t.status === 'progress').length, icon: Clock, color: 'from-purple-500 to-pink-500' },
+    { label: 'Pending', value: tasks.filter(t => t.status === 'pending').length, icon: Circle, color: 'from-orange-500 to-amber-500' },
+  ];
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-black">Project Tasks</h1>
-        <button className="bg-blue-500 text-slate-900 px-4 py-2 rounded-lg hover:bg-blue-600 flex items-center gap-2">
-          <Plus size={20} /> New Task
-        </button>
-      </div>
-
-      {/* Filters */}
-      <div className="flex gap-2 mb-6">
-        {['all', 'pending', 'completed'].map((f) => (
-          <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`px-4 py-2 rounded-lg font-medium text-sm capitalize ${
-              filter === f
-                ? 'bg-blue-500 ='
-                : 'glass-card border border-gray-300 text-black hover:bg-gray-100'
-            }`}
-          >
-            {f}
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 -m-6 p-6">
+      <div className="w-full">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900 mb-1">Project Tasks</h1>
+            <p className="text-slate-600 text-sm">Track and manage all project tasks</p>
+          </div>
+          <button className="px-4 py-2.5 backdrop-blur-xl bg-gradient-to-r from-indigo-500 to-purple-500 border border-white/60 rounded-3xl text-white hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-xl">
+            <Plus className="inline-block w-4 h-4 mr-2" />
+            New Task
           </button>
-        ))}
-      </div>
+        </div>
 
-      {/* Tasks List */}
-      <div className="glass-card border border-gray-300 rounded-lg p-6 mb-6">
-        <div className="space-y-4">
-          {filteredTasks.map((task) => (
-            <div key={task.id} className="border border-gray-300 rounded-lg p-4 bg-white hover:bg-gray-50">
-              <div className="flex items-start gap-4">
-                <button className="mt-1 flex-shrink-0">
-                  {task.status === 'completed' ? (
-                    <CheckCircle className="text-green-500" size={24} />
-                  ) : (
-                    <Circle className="text-gray-400" size={24} />
-                  )}
-                </button>
-
-                <div className="flex-1">
-                  <h3 className={`font-bold text-black mb-1 ${task.status === 'completed' ? 'line-through text-gray-500' : ''}`}>
-                    {task.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-2">{task.desc}</p>
-
-                  <div className="flex flex-wrap gap-2 items-center">
-                    <span className={`text-xs px-2 py-1 rounded ${
-                      task.priority === 'high' ? 'bg-red-100 text-red-800' :
-                      task.priority === 'medium' ? 'bg-yellow-100 text-yellow-800' :
-                      'bg-green-100 text-green-800'
-                    }`}>
-                      {task.priority} priority
-                    </span>
-                    <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{task.assignee}</span>
-                    <span className="text-xs text-gray-600">Due: {task.dueDate}</span>
+        {/* Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          {stats.map((stat, idx) => {
+            const Icon = stat.icon;
+            return (
+              <div key={idx} className="backdrop-blur-xl bg-white/50 border border-white/60 rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+                <div className="flex items-center justify-between mb-3">
+                  <div className={`w-12 h-12 rounded-2xl bg-gradient-to-r ${stat.color} flex items-center justify-center shadow-lg`}>
+                    <Icon className="w-6 h-6 text-white" />
                   </div>
                 </div>
-
-                <div className="flex gap-2 flex-shrink-0">
-                  <Edit2 size={18} className="text-gray-400 cursor-pointer hover:text-black" />
-                  <Trash2 size={18} className="text-gray-400 cursor-pointer hover:text-red-500" />
-                </div>
+                <p className="text-slate-600 text-xs font-semibold uppercase tracking-wider mb-1">{stat.label}</p>
+                <h3 className="text-3xl font-bold text-slate-900">{stat.value}</h3>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
-      </div>
 
-      {/* Task Statistics */}
-      <div className="grid grid-cols-3 gap-4">
-        <div className="glass-card border border-gray-300 rounded-lg p-4 bg-white">
-          <p className="text-gray-600 text-sm mb-1">Total Tasks</p>
-          <p className="text-3xl font-bold text-black">{tasks.length}</p>
+        {/* Filters & Search */}
+        <div className="backdrop-blur-xl bg-white/50 border border-white/60 rounded-3xl p-6 shadow-xl mb-6">
+          <div className="flex flex-col md:flex-row gap-4">
+            {/* Search */}
+            <div className="flex-1 relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search tasks..."
+                className="w-full pl-12 pr-4 py-3 backdrop-blur-xl bg-white/60 border border-white/60 rounded-3xl text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all duration-300"
+              />
+            </div>
+
+            {/* Filter Buttons */}
+            <div className="flex gap-2">
+              {[
+                { id: 'all', label: 'All' },
+                { id: 'pending', label: 'Pending' },
+                { id: 'progress', label: 'In Progress' },
+                { id: 'completed', label: 'Completed' }
+              ].map((f) => (
+                <button
+                  key={f.id}
+                  onClick={() => setFilter(f.id)}
+                  className={`px-4 py-2 rounded-3xl font-medium text-sm transition-all duration-300 ${
+                    filter === f.id
+                      ? 'backdrop-blur-xl bg-gradient-to-r from-indigo-500 to-purple-500 text-white shadow-lg'
+                      : 'backdrop-blur-xl bg-white/40 text-slate-700 hover:bg-white/60'
+                  }`}
+                >
+                  {f.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
-        <div className="glass-card border border-gray-300 rounded-lg p-4 bg-white">
-          <p className="text-gray-600 text-sm mb-1">Completed</p>
-          <p className="text-3xl font-bold text-green-600">{tasks.filter(t => t.status === 'completed').length}</p>
-        </div>
-        <div className="glass-card border border-gray-300 rounded-lg p-4 bg-white">
-          <p className="text-gray-600 text-sm mb-1">Pending</p>
-          <p className="text-3xl font-bold text-orange-600">{tasks.filter(t => t.status === 'pending').length}</p>
+
+        {/* Tasks List */}
+        <div className="backdrop-blur-xl bg-white/50 border border-white/60 rounded-3xl p-6 shadow-xl mb-6">
+          <div className="space-y-3">
+            {filteredTasks.map((task) => {
+              const priorityConfig = getPriorityConfig(task.priority);
+              const statusCfg = statusConfig[task.status];
+              
+              return (
+                <div key={task.id} className="backdrop-blur-xl bg-white/60 border border-white/60 rounded-3xl p-5 hover:bg-white/70 hover:shadow-xl transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    {/* Status Icon */}
+                    <button className="mt-1 flex-shrink-0">
+                      {task.status === 'completed' ? (
+                        <CheckCircle2 className="text-green-600 w-6 h-6" />
+                      ) : (
+                        <Circle className="text-slate-400 w-6 h-6 hover:text-indigo-600 transition-colors" />
+                      )}
+                    </button>
+
+                    {/* Task Content */}
+                    <div className="flex-1">
+                      <div className="flex flex-wrap items-start gap-3 mb-2">
+                        <h3 className={`font-bold text-slate-900 ${task.status === 'completed' ? 'line-through text-slate-500' : ''}`}>
+                          {task.title}
+                        </h3>
+                        <span className={`px-3 py-1 rounded-2xl text-xs font-semibold backdrop-blur-xl border ${priorityConfig.bg} ${priorityConfig.border} ${priorityConfig.text}`}>
+                          <Flag className={`inline-block w-3 h-3 mr-1 ${priorityConfig.icon}`} />
+                          {task.priority}
+                        </span>
+                        <span className={`px-3 py-1 rounded-2xl text-xs font-semibold backdrop-blur-xl bg-gradient-to-r ${statusCfg.color} text-white border border-white/30`}>
+                          {statusCfg.label}
+                        </span>
+                      </div>
+
+                      <p className="text-sm text-slate-600 mb-3">{task.desc}</p>
+
+                      {/* Metadata */}
+                      <div className="flex flex-wrap gap-4 items-center text-xs">
+                        <div className="flex items-center gap-1.5 text-slate-600">
+                          <User className="w-4 h-4" />
+                          <span className="font-medium">{task.assignee}</span>
+                        </div>
+                        <div className="flex items-center gap-1.5 text-slate-600">
+                          <Calendar className="w-4 h-4" />
+                          <span>Due: {task.dueDate}</span>
+                        </div>
+                        <div className="backdrop-blur-xl bg-indigo-500/20 border border-indigo-500/30 text-indigo-700 px-2.5 py-1 rounded-2xl font-medium">
+                          {task.project}
+                        </div>
+                        {task.tags.map((tag, i) => (
+                          <span key={i} className="backdrop-blur-xl bg-slate-500/10 border border-slate-500/20 text-slate-600 px-2 py-0.5 rounded-2xl">
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex gap-2 flex-shrink-0">
+                      <button className="p-2 backdrop-blur-xl bg-white/40 rounded-2xl hover:bg-white/60 transition-all duration-300 group">
+                        <Edit2 className="w-4 h-4 text-slate-500 group-hover:text-indigo-600" />
+                      </button>
+                      <button className="p-2 backdrop-blur-xl bg-white/40 rounded-2xl hover:bg-red-500/20 transition-all duration-300 group">
+                        <Trash2 className="w-4 h-4 text-slate-500 group-hover:text-red-600" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+
+            {filteredTasks.length === 0 && (
+              <div className="text-center py-12 text-slate-500">
+                <Circle className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                <p className="font-medium">No tasks found</p>
+                <p className="text-sm">Try adjusting your filters or search query</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

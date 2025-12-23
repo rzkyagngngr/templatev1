@@ -2,6 +2,27 @@ import React from 'react';
 import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 
+function IllegalActionScreen({ code = 'PTOS-GATEKEEPER-MISSING' }) {
+    return (
+        <div className="min-h-screen flex items-center justify-center p-6 bg-gray-50">
+            <div className="w-full max-w-lg rounded-3xl p-6 bg-white shadow-2xl border border-gray-200">
+                <div className="flex items-start gap-3">
+                    <div className="w-11 h-11 rounded-2xl flex items-center justify-center bg-red-50 border border-red-100">
+                        <span className="text-red-600 font-bold">!</span>
+                    </div>
+                    <div>
+                        <h1 className="text-lg font-bold text-gray-900">ILLEGAL ACTION</h1>
+                        <p className="text-sm text-gray-700 mt-1">
+                            License protection module is missing or was removed.
+                        </p>
+                        <p className="text-xs text-gray-500 mt-3">Ref: {code}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 // Pages
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -226,6 +247,9 @@ import OperationsTickets from './pages/operations/OperationsTickets';
 
 // Projects Pages
 import ProjectApprovals from './pages/projects/ProjectApprovals';
+import ProjectKanban from './pages/projects/ProjectKanban';
+import ProjectTasks from './pages/projects/ProjectTasks';
+import ProjectChat from './pages/projects/ProjectChat';
 
 // Reporting Pages
 import ReportDashboard from './pages/reporting/ReportDashboard';
@@ -250,6 +274,17 @@ const Placeholder = ({ title }) => <div className="= p-6">Placeholder for {title
 function App() {
     const navigate = useNavigate();
     const location = useLocation();
+
+    // Best-effort runtime guard: if LicenseGatekeeper module was deleted/removed from the app wrapper,
+    // block rendering in non-file:// mode.
+    const isStandalone = typeof window !== 'undefined' && window.location.protocol === 'file:';
+    const gatekeeperPresent =
+        isStandalone ||
+        (typeof window !== 'undefined' && window.__PTOS_LICENSE_GATEKEEPER_PRESENT__ === true);
+
+    if (!gatekeeperPresent) {
+        return <IllegalActionScreen />;
+    }
 
     // Derived active tab from path for BottomNav
     const getActiveTab = () => {
@@ -295,7 +330,7 @@ function App() {
                 <Route path="apps/projects/kanban" element={<Kanban />} />
                 <Route path="apps/projects/users" element={<Users />} />
                 <Route path="apps/projects/create" element={<Create />} />
-                <Route path="apps/projects/chat" element={<Placeholder title="Projects Chat" />} />
+                <Route path="apps/projects/chat" element={<ProjectChat />} />
 
                 {/* Other Apps */}
                 <Route path="apps/calendar" element={<Calendar />} />
@@ -513,6 +548,8 @@ function App() {
                 {/* Projects Routes */}
                 <Route path="projects/approvals" element={<ProjectApprovals />} />
                 <Route path="projects/dashboard" element={<DashboardProject />} />
+                <Route path="projects/kanban" element={<ProjectKanban />} />
+                <Route path="projects/tasks" element={<ProjectTasks />} />
 
                 {/* Reporting Routes */}
                 <Route path="reporting/dashboard" element={<ReportDashboard />} />

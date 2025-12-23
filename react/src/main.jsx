@@ -1,9 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter } from 'react-router-dom'
 import App from './App.jsx'
 import LicenseGatekeeper from './security/LicenseGatekeeper'
 import './index.css'
+
+// Use HashRouter for file:// protocol (standalone HTML files)
+// Use BrowserRouter for HTTP/HTTPS (normal deployment)
+const Router = window.location.protocol === 'file:' ? HashRouter : BrowserRouter;
+
+// Skip license check for standalone files (file:// protocol)
+const isStandalone = window.location.protocol === 'file:';
 
 /**
  * LICENSE PROTECTION ACTIVE
@@ -13,6 +20,7 @@ import './index.css'
  * HOW IT WORKS:
  * - Development (npm run dev): Shows license screen, validates format only
  * - Production (npm run build + encrypt): Bundle is encrypted, requires valid license to decrypt
+ * - Standalone (npm run build:standalone): No license required, works offline
  * 
  * SETUP FOR PRODUCTION:
  * 1. npm run build
@@ -25,13 +33,18 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <LicenseGatekeeper 
-            productId="APP01"
-            // licenseServerUrl="https://your-api.com/api/licenses"
-        >
-            <BrowserRouter>
+        {isStandalone ? (
+            <Router>
                 <App />
-            </BrowserRouter>
-        </LicenseGatekeeper>
+            </Router>
+        ) : (
+            <LicenseGatekeeper 
+                productId="APP01-F2K8G-99991231-BEAA" customerName='Glacia' visible={true}
+            >
+                <Router>
+                    <App />
+                </Router>
+            </LicenseGatekeeper>
+        )}
     </React.StrictMode>,
 )

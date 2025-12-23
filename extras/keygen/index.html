@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PTOS Keygen</title>
+  <style>
+    :root {
+      --bg1: #0b1220;
+      --bg2: #101a33;
+      --glass: rgba(255, 255, 255, 0.10);
+      --glass-2: rgba(255, 255, 255, 0.18);
+      --border: rgba(255, 255, 255, 0.22);
+      --text: rgba(255, 255, 255, 0.92);
+      --muted: rgba(255, 255, 255, 0.65);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --accent1: rgba(99, 102, 241, 0.95);
+      --accent2: rgba(168, 85, 247, 0.95);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(99, 102, 241, 0.30), transparent 55%),
+        radial-gradient(900px 700px at 85% 25%, rgba(168, 85, 247, 0.25), transparent 55%),
+        radial-gradient(900px 700px at 50% 95%, rgba(14, 165, 233, 0.18), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      display: grid;
+      place-items: center;
+      padding: 28px;
+    }
+
+    .shell {
+      width: min(920px, 100%);
+      display: grid;
+      gap: 18px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .orb {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.9), rgba(168,85,247,0.9));
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .orb::before {
+      content: "";
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), transparent 40%);
+      transform: rotate(25deg);
+      opacity: 0.35;
+    }
+
+    .title {
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .subtitle {
+      margin: 2px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      backdrop-filter: blur(34px) saturate(160%);
+      -webkit-backdrop-filter: blur(34px) saturate(160%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(600px 300px at 20% 10%, rgba(255,255,255,0.18), transparent 60%),
+        radial-gradient(600px 300px at 80% 0%, rgba(255,255,255,0.10), transparent 60%);
+      opacity: 0.9;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 860px) {
+      .grid { grid-template-columns: 1.1fr 0.9fr; }
+    }
+
+    .pane {
+      padding: 18px;
+      position: relative;
+    }
+
+    .pane + .pane {
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    @media (min-width: 860px) {
+      .pane + .pane {
+        border-top: none;
+        border-left: 1px solid rgba(255,255,255,0.12);
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin: 10px 0 6px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.10);
+      color: var(--text);
+      outline: none;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+    }
+
+    input::placeholder { color: rgba(255,255,255,0.45); }
+
+    .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 520px) { .row { grid-template-columns: 1fr 1fr; } }
+
+    .actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+
+    .btn {
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 14px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.10);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+      user-select: none;
+    }
+
+    .btn:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.28); background: rgba(255,255,255,0.14); }
+    .btn:active { transform: translateY(0px); }
+
+    .btn-primary {
+      border: 1px solid rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      box-shadow: 0 14px 40px rgba(99, 102, 241, 0.18);
+    }
+
+    .btn-primary:hover { background: linear-gradient(135deg, rgba(99, 102, 241, 1), rgba(168, 85, 247, 1)); }
+
+    .out {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.08);
+      padding: 14px;
+      min-height: 120px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .key {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 14px;
+      line-height: 1.35;
+      letter-spacing: 0.4px;
+      word-break: break-all;
+    }
+
+    .meta {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hint { color: var(--muted); font-size: 12px; margin: 0; }
+
+    .toast {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 10px 12px;
+      border-radius: 14px;
+      backdrop-filter: blur(22px) saturate(160%);
+      -webkit-backdrop-filter: blur(22px) saturate(160%);
+      color: var(--text);
+      font-size: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="header">
+      <div class="brand">
+        <div class="orb" aria-hidden="true"></div>
+        <div>
+          <h1 class="title">PTOS Keygen</h1>
+          <p class="subtitle">Offline license key generator (simple checksum format)</p>
+        </div>
+      </div>
+      <div class="pill">Works offline • No server</div>
+    </div>
+
+    <div class="card">
+      <div class="grid">
+        <div class="pane">
+          <p class="hint">Generate keys for your app. Choose Trial, VL, or Lifetime.</p>
+
+          <div class="row">
+            <div>
+              <label for="product">Product ID</label>
+              <input id="product" placeholder="APP01" value="APP01" maxlength="8" />
+            </div>
+            <div>
+              <label for="type">License Type</label>
+              <select id="type">
+                <option value="trial">Trial (30 days)</option>
+                <option value="vl">VL (365 days)</option>
+                <option value="lifetime">Lifetime (no expiry)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="days">Valid Days</label>
+              <input id="days" type="number" min="1" step="1" value="30" />
+            </div>
+            <div>
+              <label for="customer">Customer (label only)</label>
+              <input id="customer" placeholder="Customer" value="Customer" />
+            </div>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="generate">Generate</button>
+            <button class="btn" id="copy" disabled>Copy Key</button>
+            <button class="btn" id="reset">Reset</button>
+          </div>
+        </div>
+
+        <div class="pane">
+          <div class="out">
+            <div class="meta">
+              <div><strong>Output</strong></div>
+              <div id="meta">Not generated yet</div>
+            </div>
+            <div class="key" id="key">—</div>
+          </div>
+          <p class="hint" style="margin-top: 12px;">Key format: <span class="key">PRODUCT-TYPE-YYYYMMDD-CHECK</span></p>
+        </div>
+      </div>
+    </div>
+
+    <p class="hint">Tip: Open this file directly (double-click). It does not need Node.js.</p>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const TYPE_CODES = {
+      trial: 'A7F3B',
+      vl: 'E1J7F',
+      lifetime: 'F2K8G',
+    };
+
+    function pad2(n) { return String(n).padStart(2, '0'); }
+
+    function toYYYYMMDD(date) {
+      return `${date.getFullYear()}${pad2(date.getMonth() + 1)}${pad2(date.getDate())}`;
+    }
+
+    function setToast(text) {
+      const t = document.getElementById('toast');
+      t.textContent = text;
+      t.style.display = 'block';
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => { t.style.display = 'none'; }, 1800);
+    }
+
+    async function sha256Hex(str) {
+      const enc = new TextEncoder();
+      const data = enc.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function checksum4(baseKey) {
+      const hex = await sha256Hex(baseKey);
+      return hex.slice(0, 4).toUpperCase();
+    }
+
+    function normalizeProductId(raw) {
+      const v = String(raw || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+      return (v || 'APP01').padEnd(5, 'X').slice(0, 5);
+    }
+
+    function computeExpiry(type, days) {
+      if (type === 'lifetime') return '99991231';
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return toYYYYMMDD(d);
+    }
+
+    function updateDaysUI() {
+      const type = document.getElementById('type').value;
+      const days = document.getElementById('days');
+      if (type === 'lifetime') {
+        days.value = 0;
+        days.disabled = true;
+      } else if (type === 'vl') {
+        days.disabled = false;
+        days.value = 365;
+      } else {
+        days.disabled = false;
+        days.value = 30;
+      }
+    }
+
+    async function generate() {
+      const type = document.getElementById('type').value;
+      const product = normalizeProductId(document.getElementById('product').value);
+      const customer = document.getElementById('customer').value || 'Customer';
+      const daysRaw = parseInt(document.getElementById('days').value || '0', 10);
+      const days = Number.isFinite(daysRaw) ? Math.max(0, daysRaw) : 0;
+
+      const typeCode = TYPE_CODES[type] || TYPE_CODES.trial;
+      const expiry = computeExpiry(type, days);
+
+      const baseKey = `${product}-${typeCode}-${expiry}`;
+      const check = await checksum4(baseKey);
+      const key = `${baseKey}-${check}`;
+
+      const meta = document.getElementById('meta');
+      const keyEl = document.getElementById('key');
+      const copyBtn = document.getElementById('copy');
+
+      let expiryLabel = expiry;
+      if (type === 'lifetime') expiryLabel = 'No expiry (9999-12-31)';
+
+      meta.textContent = `Type: ${type.toUpperCase()} • Expiry: ${expiryLabel} • Customer: ${customer}`;
+      keyEl.textContent = key;
+      copyBtn.disabled = false;
+      window.__lastKey = key;
+      setToast('Key generated');
+    }
+
+    async function copyKey() {
+      const key = window.__lastKey;
+      if (!key) return;
+      await navigator.clipboard.writeText(key);
+      setToast('Copied to clipboard');
+    }
+
+    document.getElementById('type').addEventListener('change', updateDaysUI);
+    document.getElementById('generate').addEventListener('click', () => void generate());
+    document.getElementById('copy').addEventListener('click', () => void copyKey());
+    document.getElementById('reset').addEventListener('click', () => {
+      document.getElementById('product').value = 'APP01';
+      document.getElementById('customer').value = 'Customer';
+      document.getElementById('type').value = 'trial';
+      updateDaysUI();
+      document.getElementById('meta').textContent = 'Not generated yet';
+      document.getElementById('key').textContent = '—';
+      document.getElementById('copy').disabled = true;
+      window.__lastKey = null;
+      setToast('Reset');
+    });
+
+    updateDaysUI();
+  </script>
+</body>
+</html>

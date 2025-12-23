@@ -1,0 +1,13 @@
+{
+  "name": "ptos-keygen",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "License key generator CLI for the PTOS template",
+  "bin": {
+    "ptos-keygen": "./cli.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

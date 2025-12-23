@@ -15,6 +15,7 @@ import express from 'express';
 import cors from 'cors';
 import crypto from 'crypto';
 import dotenv from 'dotenv';
+import { validateLicenseKey, generateLicenseKey, generateHMAC } from '../../extras/keygen/licenseEngineNode.js';
 
 dotenv.config();
 

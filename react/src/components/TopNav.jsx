@@ -4,6 +4,9 @@ export default function TopNav({ onNavigate }) {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [lang, setLang] = useState({ code: 'EN', flag: '🇺🇸' });
 
+    const isFileProtocol = typeof window !== 'undefined' && window.location.protocol === 'file:';
+    const logoSrc = isFileProtocol ? './assets/icon.png' : '/assets/icon.png';
+
     const dropdownRef = useRef(null);
 
     useEffect(() => {
@@ -44,23 +47,21 @@ export default function TopNav({ onNavigate }) {
                 }
                 
                 .liquid-glass-nav {
-                    background: rgba(255, 255, 255, 0.7);
-                    backdrop-filter: blur(40px) saturate(180%);
-                    -webkit-backdrop-filter: blur(40px) saturate(180%);
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+                    background: rgba(255, 255, 255, 0.12);
+                    backdrop-filter: blur(1.5rem) saturate(1.8);
+                    -webkit-backdrop-filter: blur(1.5rem) saturate(1.8);
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
                     box-shadow: 
-                        0 1px 3px rgba(0, 0, 0, 0.05),
-                        0 20px 40px -10px rgba(0, 0, 0, 0.08),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                        0 4px 30px rgba(0, 0, 0, 0.1),
+                        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 
                 .liquid-glass-nav:hover {
-                    background: rgba(255, 255, 255, 0.85);
+                    background: rgba(255, 255, 255, 0.18);
                     box-shadow: 
-                        0 1px 3px rgba(0, 0, 0, 0.05),
-                        0 25px 50px -12px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 1);
+                        0 8px 40px rgba(0, 0, 0, 0.15),
+                        0 0 0 1px rgba(255, 255, 255, 0.15) inset;
                 }
                 
                 .logo-orb {
@@ -95,11 +96,6 @@ export default function TopNav({ onNavigate }) {
                 
                 .logo-core {
                     position: relative;
-                    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
-                    box-shadow: 
-                        0 8px 32px rgba(59, 130, 246, 0.3),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.5),
-                        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
                     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 }
                 
@@ -309,10 +305,10 @@ export default function TopNav({ onNavigate }) {
                     <div className="logo-orb">
                         <div className="logo-glow"></div>
                         <div className="logo-core w-9 h-9 rounded-2xl flex items-center justify-center overflow-hidden">
-                            <img src="/assets/icon.png" alt="Glacia" className="w-full h-full object-cover" />
+                            <img src={logoSrc} alt="Glacia" className="w-full h-full object-cover" />
                         </div>
                     </div>
-                    <h2 className="text-slate-800 text-xl font-black tracking-tight bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text">
+                    <h2 className="text-slate-800 text-xl font-black tracking-tight ">
                         Glacia
                     </h2>
                 </div>

@@ -10,7 +10,7 @@
  *   node scripts/generate-license.js --product APP01 --type premium --days 365 --customer "John Doe"
  */
 
-import { generateLicenseKey } from '../src/security/licenseEngine.ts';
+import { generateLicenseKey } from './licenseEngineNode.js';
 
 // Parse command line arguments
 const args = process.argv.slice(2);
@@ -36,16 +36,16 @@ console.log(`  Type: ${options.type}`);
 console.log(`  Valid for: ${options.days} days`);
 console.log(`  Customer: ${options.customer}\n`);
 
-// Calculate expiry date
-const expiryDate = new Date();
-expiryDate.setDate(expiryDate.getDate() + parseInt(options.days, 10));
-
 // Generate license
 const licenseKey = generateLicenseKey(
   options.product,
   options.type,
-  expiryDate
+  parseInt(options.days, 10)
 );
+
+// Calculate expiry date for display
+const expiryDate = new Date();
+expiryDate.setDate(expiryDate.getDate() + parseInt(options.days, 10));
 
 console.log('Generated License Key:');
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━');
