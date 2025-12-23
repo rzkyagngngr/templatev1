@@ -107,7 +107,7 @@ import CryptoExchange from './pages/crypto/CryptoExchange';
 import CryptoWallet from './pages/crypto/CryptoWallet';
 import CryptoNews from './pages/crypto/CryptoNews';
 import CryptoIndex from './pages/crypto/CryptoIndex';
-import CryptoIco from './pages/crypto/CryptoIco';
+import CryptoIco from './pages/crypto/CryptoICO';
 import CryptoSettings from './pages/crypto/CryptoSettings';
 
 // UI Pages
