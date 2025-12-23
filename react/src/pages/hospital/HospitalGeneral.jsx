@@ -1,164 +1,230 @@
 import React, { useState } from 'react';
-import { Users, Activity, Heart, Brain, Stethoscope, TrendingUp, Calendar, Clock, MapPin, Phone, Mail } from 'lucide-react';
+import { Activity, HeartPulse, CalendarDays, Users, CreditCard, Stethoscope, TrendingUp } from 'lucide-react';
 
-export default function HospitalGeneral() {
-  const [activeTab, setActiveTab] = useState('overview');
+function GlassCard({ children, className = '' }) {
+  return (
+    <div className={`backdrop-blur-xl bg-white/40 border border-white/30 rounded-3xl shadow-[0_8px_32px_rgba(15,23,42,0.06)] overflow-hidden ${className}`}>
+      {children}
+    </div>
+  );
+}
 
-  const stats = [
-    { label: 'Total Doctors', value: '156', icon: Stethoscope, color: 'from-blue-500 to-blue-600', trend: '+12%' },
-    { label: 'Total Patients', value: '2,847', icon: Users, color: 'from-green-500 to-green-600', trend: '+8%' },
-    { label: 'Appointments', value: '342', icon: Calendar, color: 'from-yellow-500 to-yellow-600', trend: '+23%' },
-    { label: 'Bed Occupancy', value: '78%', icon: Activity, color: 'from-purple-500 to-purple-600', trend: '+5%' },
-    { label: 'Emergency Cases', value: '45', icon: Heart, color: 'from-red-500 to-red-600', trend: '+15%' },
-    { label: 'Departments', value: '18', icon: Brain, color: 'from-indigo-500 to-indigo-600', trend: '0%' },
-  ];
-
-  const departments = [
-    { name: 'Cardiology', head: 'Dr. Smith', patients: 142, doctors: 12 },
-    { name: 'Neurology', head: 'Dr. Johnson', patients: 98, doctors: 8 },
-    { name: 'Orthopedics', head: 'Dr. Williams', patients: 167, doctors: 10 },
-    { name: 'Pediatrics', head: 'Dr. Brown', patients: 203, doctors: 14 },
-  ];
-
-  const recentActivities = [
-    { type: 'admission', patient: 'John Doe', time: '2 hours ago', icon: '📥' },
-    { type: 'appointment', patient: 'Jane Smith', time: '4 hours ago', icon: '📅' },
-    { type: 'discharge', patient: 'Mike Johnson', time: '6 hours ago', icon: '📤' },
-    { type: 'emergency', patient: 'Sarah Lee', time: '8 hours ago', icon: '🚨' },
-  ];
+function StatusChip({ label, status, meta, tone }) {
+  const toneClasses = tone === 'ok'
+    ? 'bg-emerald-500/10 text-emerald-800 border-emerald-500/20'
+    : tone === 'warn'
+    ? 'bg-amber-500/10 text-amber-800 border-amber-500/20'
+    : 'bg-red-500/10 text-red-800 border-red-500/20';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 -m-6 p-6">
-      {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Hospital General Overview</h1>
-        <p className="text-gray-600">Central management dashboard for hospital operations</p>
+    <div className={`flex items-center gap-2 px-3 py-2 rounded-2xl border ${toneClasses} backdrop-blur-xl`}>
+      <span className="relative inline-flex w-2 h-2">
+        <span className={`absolute inset-0 rounded-full opacity-30 ${tone === 'ok' ? 'bg-emerald-500' : tone === 'warn' ? 'bg-amber-500' : 'bg-red-500'}`}></span>
+        <span className={`relative w-2 h-2 rounded-full ${tone === 'ok' ? 'bg-emerald-500' : tone === 'warn' ? 'bg-amber-500' : 'bg-red-500'}`}></span>
+      </span>
+      <div className="leading-tight">
+        <div className="text-[11px] font-semibold tracking-tight">{label}</div>
+        <div className="text-[11px] opacity-80">{status} • {meta}</div>
       </div>
+    </div>
+  );
+}
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        {stats.map((stat, idx) => {
-          const Icon = stat.icon;
-          return (
-            <div key={idx} className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl p-6 shadow-xl shadow-black/5 hover:shadow-2xl transition-all duration-300">
-              <div className="flex items-center justify-between">
-                <div className="flex-1">
-                  <p className="text-gray-600 text-sm font-medium mb-1">{stat.label}</p>
-                  <div className="flex items-baseline gap-2">
-                    <h3 className="text-3xl font-bold text-gray-900">{stat.value}</h3>
-                    <span className="text-green-600 text-sm font-semibold">{stat.trend}</span>
-                  </div>
-                </div>
-                <div className={`p-4 bg-gradient-to-br ${stat.color} rounded-2xl text-white`}>
-                  <Icon size={24} />
-                </div>
-              </div>
-            </div>
-          );
-        })}
+function SegmentedControl({ value, onChange, options }) {
+  return (
+    <div className="inline-flex items-center gap-1 p-1 rounded-2xl bg-white/30 border border-white/40">
+      {options.map((opt) => (
+        <button
+          key={opt.value}
+          type="button"
+          onClick={() => onChange(opt.value)}
+          className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
+            value === opt.value
+              ? 'bg-white/80 text-slate-900 shadow-sm'
+              : 'text-slate-700 hover:bg-white/40'
+          }`}
+        >
+          {opt.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function HeroAreaChart() {
+  return (
+    <div className="relative h-64 w-full">
+      <svg viewBox="0 0 600 220" className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="hgFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="rgb(56 189 248)" stopOpacity="0.28" />
+            <stop offset="100%" stopColor="rgb(56 189 248)" stopOpacity="0" />
+          </linearGradient>
+          <linearGradient id="hgStroke" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="rgb(56 189 248)" stopOpacity="0.9" />
+            <stop offset="50%" stopColor="rgb(99 102 241)" stopOpacity="0.85" />
+            <stop offset="100%" stopColor="rgb(20 184 166)" stopOpacity="0.85" />
+          </linearGradient>
+        </defs>
+        <path d="M0,150 C60,160 90,120 140,128 C190,136 220,90 270,96 C320,102 340,70 390,78 C440,86 470,58 520,62 C555,65 580,58 600,54 L600,220 L0,220 Z" fill="url(#hgFill)" />
+        <path d="M0,150 C60,160 90,120 140,128 C190,136 220,90 270,96 C320,102 340,70 390,78 C440,86 470,58 520,62 C555,65 580,58 600,54" fill="none" stroke="url(#hgStroke)" strokeWidth="3" strokeLinecap="round" />
+      </svg>
+      <div className="absolute inset-x-0 bottom-0 px-4 pb-4 flex items-center justify-between text-xs text-slate-700">
+        <span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span>
       </div>
+    </div>
+  );
+}
 
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Departments Section */}
-        <div className="lg:col-span-2">
-          <div className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl shadow-xl shadow-black/5 overflow-hidden">
-            <div className="p-6 border-b border-white/30">
-              <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <Stethoscope size={24} className="text-blue-600" />
-                Departments Overview
-              </h2>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-white/30 border-b border-white/30">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Department</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Head</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Doctors</th>
-                    <th className="px-6 py-3 text-left text-sm font-semibold text-gray-900">Patients</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {departments.map((dept, idx) => (
-                    <tr key={idx} className="border-b border-white/20 hover:bg-white/30 transition-colors">
-                      <td className="px-6 py-4 font-medium text-gray-900">{dept.name}</td>
-                      <td className="px-6 py-4 text-gray-700">{dept.head}</td>
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100/50 text-blue-700">
-                          {dept.doctors}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100/50 text-green-700">
-                          {dept.patients}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+function MiniBarChart() {
+  const bars = [
+    { label: 'ER', v: 72 },
+    { label: 'ICU', v: 58 },
+    { label: 'OPD', v: 84 },
+    { label: 'Lab', v: 46 },
+    { label: 'Ward', v: 66 }
+  ];
+  return (
+    <div className="h-40 flex items-end gap-3">
+      {bars.map((b) => (
+        <div key={b.label} className="flex-1 flex flex-col items-center gap-2">
+          <div className="w-full rounded-2xl bg-white/30 border border-white/40 overflow-hidden">
+            <div className="w-full rounded-2xl bg-gradient-to-t from-sky-400/70 via-indigo-400/55 to-teal-300/55" style={{ height: `${Math.max(18, Math.min(100, b.v))}%` }} />
           </div>
+          <div className="text-[11px] font-semibold text-slate-700">{b.label}</div>
         </div>
+      ))}
+    </div>
+  );
+}
 
-        {/* Recent Activity */}
-        <div>
-          <div className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl shadow-xl shadow-black/5 p-6">
-            <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-              <Activity size={24} className="text-purple-600" />
-              Recent Activity
-            </h2>
-            <div className="space-y-4">
-              {recentActivities.map((activity, idx) => (
-                <div key={idx} className="flex items-start gap-4 pb-4 border-b border-white/20 last:border-0">
-                  <div className="text-2xl">{activity.icon}</div>
-                  <div className="flex-1">
-                    <p className="font-medium text-gray-900">{activity.patient}</p>
-                    <p className="text-sm text-gray-600 flex items-center gap-1">
-                      <Clock size={14} />
-                      {activity.time}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+function MiniDonutChart({ value = 72 }) {
+  const r = 42;
+  const c = 2 * Math.PI * r;
+  const pct = Math.max(0, Math.min(100, value));
+  const dash = (pct / 100) * c;
+  return (
+    <div className="flex items-center gap-4">
+      <div className="relative w-28 h-28">
+        <svg viewBox="0 0 120 120" className="w-full h-full">
+          <defs>
+            <linearGradient id="donut" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="rgb(56 189 248)" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="rgb(20 184 166)" stopOpacity="0.9" />
+            </linearGradient>
+          </defs>
+          <circle cx="60" cy="60" r={r} fill="none" stroke="rgba(148,163,184,0.25)" strokeWidth="12" />
+          <circle cx="60" cy="60" r={r} fill="none" stroke="url(#donut)" strokeWidth="12" strokeLinecap="round" strokeDasharray={`${dash} ${c - dash}`} transform="rotate(-90 60 60)" />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
+            <div className="text-2xl font-black text-slate-900 tabular-nums">{pct}%</div>
+            <div className="text-[11px] text-slate-700">occupied</div>
           </div>
         </div>
       </div>
-
-      {/* Contact & Info Section */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-        <div className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl shadow-xl shadow-black/5 p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-blue-100 rounded-2xl">
-              <Phone className="text-blue-600" size={24} />
-            </div>
-            <h3 className="text-lg font-bold text-gray-900">Emergency Contact</h3>
+      <div className="flex-1">
+        <div className="text-sm font-semibold text-slate-900">Bed occupancy</div>
+        <div className="text-xs text-slate-700 mt-1">Target 70–85% for balanced throughput.</div>
+        <div className="mt-3 flex items-center gap-2">
+          <div className="h-2 flex-1 rounded-full bg-white/30 border border-white/40 overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-sky-400/75 to-teal-300/75" style={{ width: `${pct}%` }} />
           </div>
-          <p className="text-gray-700 text-sm">+1 (555) 123-4567</p>
-        </div>
-
-        <div className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl shadow-xl shadow-black/5 p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-green-100 rounded-2xl">
-              <MapPin className="text-green-600" size={24} />
-            </div>
-            <h3 className="text-lg font-bold text-gray-900">Main Location</h3>
-          </div>
-          <p className="text-gray-700 text-sm">123 Medical Center Dr, Healthcare City</p>
-        </div>
-
-        <div className="backdrop-blur-2xl bg-white/50 border border-white/60 rounded-3xl shadow-xl shadow-black/5 p-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="p-3 bg-purple-100 rounded-2xl">
-              <Mail className="text-purple-600" size={24} />
-            </div>
-            <h3 className="text-lg font-bold text-gray-900">Email Support</h3>
-          </div>
-          <p className="text-gray-700 text-sm">info@hospital.com</p>
+          <div className="text-xs font-semibold text-slate-700200 tabular-nums">{pct}%</div>
         </div>
       </div>
     </div>
   );
 }
+
+export default function HospitalGeneral() {
+  const [range, setRange] = useState('7d');
+
+  const kpis = [
+    { label: 'Appointments today', value: '128', delta: '+6.2%', icon: CalendarDays },
+    { label: 'Active doctors', value: '42', delta: '+2 on-duty', icon: Stethoscope },
+    { label: 'Current patients', value: '312', delta: '+14 admit', icon: Users },
+    { label: 'Revenue today', value: '$48,260', delta: '+9.1%', icon: CreditCard }
+  ];
+
+  return (
+    <div className="min-h-screen -m-6 p-6 bg-gradient-to-br from-slate-50 via-sky-50 to-slate-50 from-slate-50 via-sky-50/50 to-slate-50">
+      <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Hospital Overview</h1>
+          <p className="text-sm md:text-base text-slate-700 mt-1">Real-time operations dashboard</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <StatusChip label="ER" status="Stable" meta="12 waiting" tone="ok" />
+          <StatusChip label="ICU" status="Elevated" meta="18/24 beds" tone="warn" />
+          <div className="hidden md:flex items-center gap-2 px-3 py-2 rounded-2xl bg-white/30 border border-white/40 backdrop-blur-xl">
+            <HeartPulse className="w-4 h-4 text-sky-700" />
+            <span className="text-xs font-semibold text-slate-700200 tabular-nums">Live</span>
+          </div>
+        </div>
+      </header>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        {kpis.map((kpi) => {
+          const Icon = kpi.icon;
+          return (
+            <GlassCard key={kpi.label} className="p-5">
+              <div className="flex items-start justify-between">
+                <div>
+                  <div className="text-xs font-semibold text-slate-700">{kpi.label}</div>
+                  <div className="mt-2 text-2xl md:text-3xl font-black text-slate-900 tabular-nums">{kpi.value}</div>
+                  <div className="mt-1 text-xs font-semibold text-slate-700 tabular-nums">{kpi.delta}</div>
+                </div>
+                <div className="p-2.5 rounded-2xl bg-white/50/5 border border-white/50">
+                  <Icon className="w-5 h-5 text-sky-700" />
+                </div>
+              </div>
+            </GlassCard>
+          );
+        })}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <GlassCard className="lg:col-span-2">
+          <div className="p-5 flex items-start justify-between gap-4">
+            <div>
+              <div className="text-sm font-semibold text-slate-900">Hospital activity</div>
+              <div className="mt-1 text-xs text-slate-700">Visits • Admissions • Diagnostics</div>
+              <div className="mt-3 flex items-baseline gap-3">
+                <div className="text-2xl font-black text-slate-900 tabular-nums">1,482</div>
+                <div className="text-xs font-semibold text-emerald-800 tabular-nums">+4.3%</div>
+                <div className="text-xs text-slate-700">vs previous</div>
+              </div>
+            </div>
+            <SegmentedControl value={range} onChange={setRange} options={[{ label: '24H', value: '24h' }, { label: '7D', value: '7d' }, { label: '30D', value: '30d' }]} />
+          </div>
+          <div className="px-2 pb-5">
+            <HeroAreaChart key={range} />
+          </div>
+        </GlassCard>
+
+        <div className="grid grid-cols-1 gap-4">
+          <GlassCard className="p-5">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-sm font-semibold text-slate-900">Patient inflow</div>
+                <div className="text-xs text-slate-700 mt-1">By department</div>
+              </div>
+              <div className="p-2.5 rounded-2xl bg-white/50/5 border border-white/50">
+                <Activity className="w-5 h-5 text-indigo-700" />
+              </div>
+            </div>
+            <div className="mt-4">
+              <MiniBarChart />
+            </div>
+          </GlassCard>
+
+          <GlassCard className="p-5">
+            <MiniDonutChart value={78} />
+          </GlassCard>
+        </div>
+      </div>
+    </div>
+  );
+}
+

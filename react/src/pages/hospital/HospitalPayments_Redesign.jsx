@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { DollarSign, CreditCard, TrendingUp, Clock, CheckCircle, XCircle, Download, Search } from 'lucide-react';
 
 function GlassCard({ children, className = '' }) {
-  return <div className={`backdrop-blur-xl bg-white/40 border border-white/30 rounded-3xl shadow-[0_8px_32px_rgba(15,23,42,0.06)] overflow-hidden ${className}`}>{children}</div>;
+  return <div className={`backdrop-blur-2xl bg-white/55 dark:bg-slate-900/35 border border-white/50 dark:border-white/10 rounded-3xl shadow-[0_20px_60px_rgba(15,23,42,0.08)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.35)] overflow-hidden ${className}`}>{children}</div>;
 }
 
 function SegmentedControl({ value, onChange, options }) {
   return (
-    <div className="inline-flex items-center gap-1 p-1 rounded-2xl bg-white/30 border border-white/40">
+    <div className="inline-flex items-center gap-1 p-1 rounded-2xl bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10">
       {options.map((opt) => (
-        <button key={opt.value} type="button" onClick={() => onChange(opt.value)} className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${value === opt.value ? 'bg-white/80 text-slate-900 shadow-sm' : 'text-slate-800 hover:bg-white/40'}`}>{opt.label}</button>
+        <button key={opt.value} type="button" onClick={() => onChange(opt.value)} className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${value === opt.value ? 'bg-white/70 dark:bg-white/10 text-slate-900 dark:text-slate-100 shadow-sm' : 'text-slate-600 dark:text-slate-300 hover:bg-white/40 dark:hover:bg-white/5'}`}>{opt.label}</button>
       ))}
     </div>
   );
@@ -32,7 +32,7 @@ function RevenueAreaChart() {
         <path d="M0,160 L70,150 L140,135 L210,125 L280,110 L350,95 L420,85 L490,70 L560,60 L630,50 L700,40 L700,200 L0,200 Z" fill="url(#revFill)" />
         <path d="M0,160 L70,150 L140,135 L210,125 L280,110 L350,95 L420,85 L490,70 L560,60 L630,50 L700,40" fill="none" stroke="url(#revStroke)" strokeWidth="3" strokeLinecap="round" />
       </svg>
-      <div className="absolute inset-x-0 bottom-0 px-2 pb-2 flex items-center justify-between text-[10px] text-slate-800">
+      <div className="absolute inset-x-0 bottom-0 px-2 pb-2 flex items-center justify-between text-[10px] text-slate-600 dark:text-slate-300">
         <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
       </div>
     </div>
@@ -64,8 +64,8 @@ function PaymentMethodDonut() {
         {data.map((d) => (
           <div key={d.label} className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: d.color, opacity: 0.85 }} />
-            <span className="text-xs font-medium text-slate-700">{d.label}</span>
-            <span className="ml-auto text-xs font-semibold text-slate-900 tabular-nums">{d.pct}%</span>
+            <span className="text-xs font-medium text-slate-700 dark:text-slate-200">{d.label}</span>
+            <span className="ml-auto text-xs font-semibold text-slate-900 dark:text-slate-100 tabular-nums">{d.pct}%</span>
           </div>
         ))}
       </div>
@@ -95,30 +95,30 @@ export default function HospitalPayments() {
   ];
 
   const getStatusClass = (status) => {
-    if (status === 'paid') return 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20';
-    if (status === 'pending') return 'bg-amber-500/10 text-amber-700 border-amber-500/20';
-    return 'bg-red-500/10 text-red-700 border-red-500/20';
+    if (status === 'paid') return 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20';
+    if (status === 'pending') return 'bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/20';
+    return 'bg-red-500/10 text-red-700 dark:text-red-300 border-red-500/20';
   };
 
   const getMethodBadge = (method) => {
-    if (method === 'Card') return 'bg-indigo-500/10 text-indigo-700 border-indigo-500/20';
-    if (method === 'Cash') return 'bg-emerald-500/10 text-emerald-700 border-emerald-500/20';
-    return 'bg-sky-500/10 text-sky-700 border-sky-500/20';
+    if (method === 'Card') return 'bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 border-indigo-500/20';
+    if (method === 'Cash') return 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20';
+    return 'bg-sky-500/10 text-sky-700 dark:text-sky-300 border-sky-500/20';
   };
 
   return (
-    <div className="min-h-screen -m-6 p-6 bg-gradient-to-br from-slate-50 via-sky-50 to-slate-50">
+    <div className="min-h-screen -m-6 p-6 bg-gradient-to-br from-slate-50 via-sky-50 to-slate-50 dark:from-slate-950 dark:via-slate-950 dark:to-slate-950">
       <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-6">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">Payments & Billing</h1>
-          <p className="text-sm md:text-base text-slate-800 mt-1">Financial transactions & invoicing</p>
+          <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Payments & Billing</h1>
+          <p className="text-sm md:text-base text-slate-600 dark:text-slate-300 mt-1">Financial transactions & invoicing</p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
-            <input type="text" placeholder="Search invoices..." className="pl-9 pr-4 py-2 rounded-2xl bg-white/30 border border-white/40 text-sm text-slate-900 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 backdrop-blur-xl" />
+            <input type="text" placeholder="Search invoices..." className="pl-9 pr-4 py-2 rounded-2xl bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-sky-500/50 backdrop-blur-xl" />
           </div>
-          <button className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-sky-500/90 hover:bg-sky-600/90 border border-white/50 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all">
+          <button className="flex items-center gap-2 px-4 py-2 rounded-2xl bg-sky-500/90 dark:bg-sky-600/80 hover:bg-sky-600/90 dark:hover:bg-sky-700/80 border border-white/50 dark:border-white/10 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all">
             <Download className="w-4 h-4" />
             Export
           </button>
@@ -132,12 +132,12 @@ export default function HospitalPayments() {
             <GlassCard key={kpi.label} className="p-5">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-xs font-semibold text-slate-800">{kpi.label}</div>
-                  <div className="mt-2 text-2xl md:text-3xl font-black text-slate-900 tabular-nums">{kpi.value}</div>
-                  <div className="mt-1 text-xs font-medium text-slate-800">{kpi.delta}</div>
+                  <div className="text-xs font-semibold text-slate-600 dark:text-slate-300">{kpi.label}</div>
+                  <div className="mt-2 text-2xl md:text-3xl font-black text-slate-900 dark:text-slate-100 tabular-nums">{kpi.value}</div>
+                  <div className="mt-1 text-xs font-medium text-slate-600 dark:text-slate-300">{kpi.delta}</div>
                 </div>
-                <div className="p-2.5 rounded-2xl bg-white/50 border border-white/50">
-                  <Icon className="w-5 h-5 text-sky-600" />
+                <div className="p-2.5 rounded-2xl bg-white/50 dark:bg-white/5 border border-white/50 dark:border-white/10">
+                  <Icon className="w-5 h-5 text-sky-600 dark:text-sky-300" />
                 </div>
               </div>
             </GlassCard>
@@ -150,12 +150,12 @@ export default function HospitalPayments() {
           <div className="p-5 border-b border-white/20">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm font-semibold text-slate-900">Revenue trend</div>
-                <div className="text-xs text-slate-800 mt-1">Monthly revenue performance</div>
+                <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">Revenue trend</div>
+                <div className="text-xs text-slate-600 dark:text-slate-300 mt-1">Monthly revenue performance</div>
               </div>
               <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-emerald-600" />
-                <span className="text-sm font-bold text-emerald-700">+12.5%</span>
+                <TrendingUp className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-sm font-bold text-emerald-700 dark:text-emerald-300">+12.5%</span>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function HospitalPayments() {
         </GlassCard>
 
         <GlassCard className="p-5">
-          <div className="text-sm font-semibold text-slate-900 mb-4">Payment methods</div>
+          <div className="text-sm font-semibold text-slate-900 dark:text-slate-100 mb-4">Payment methods</div>
           <PaymentMethodDonut />
         </GlassCard>
       </div>
@@ -176,48 +176,48 @@ export default function HospitalPayments() {
 
       <GlassCard>
         <div className="p-5 border-b border-white/20">
-          <div className="text-sm font-semibold text-slate-900">Recent transactions</div>
+          <div className="text-sm font-semibold text-slate-900 dark:text-slate-100">Recent transactions</div>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-white/20">
-                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900">Invoice ID</th>
-                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900">Patient</th>
-                <th className="px-5 py-4 text-right text-xs font-semibold text-slate-900">Amount</th>
-                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900">Method</th>
-                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900">Status</th>
-                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900">Date & Time</th>
-                <th className="px-5 py-4 text-right text-xs font-semibold text-slate-900">Actions</th>
+                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900 dark:text-slate-100">Invoice ID</th>
+                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900 dark:text-slate-100">Patient</th>
+                <th className="px-5 py-4 text-right text-xs font-semibold text-slate-900 dark:text-slate-100">Amount</th>
+                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900 dark:text-slate-100">Method</th>
+                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900 dark:text-slate-100">Status</th>
+                <th className="px-5 py-4 text-left text-xs font-semibold text-slate-900 dark:text-slate-100">Date & Time</th>
+                <th className="px-5 py-4 text-right text-xs font-semibold text-slate-900 dark:text-slate-100">Actions</th>
               </tr>
             </thead>
             <tbody>
               {transactions.map((tx) => (
-                <tr key={tx.id} className="border-b border-white/10 hover:bg-white/20 transition-all">
+                <tr key={tx.id} className="border-b border-white/10 hover:bg-white/20 dark:hover:bg-white/5 transition-all">
                   <td className="px-5 py-4">
-                    <span className="text-sm font-mono font-semibold text-slate-900">{tx.id}</span>
+                    <span className="text-sm font-mono font-semibold text-slate-900 dark:text-slate-100">{tx.id}</span>
                   </td>
                   <td className="px-5 py-4">
-                    <span className="text-sm font-medium text-slate-700">{tx.patient}</span>
+                    <span className="text-sm font-medium text-slate-700 dark:text-slate-200">{tx.patient}</span>
                   </td>
                   <td className="px-5 py-4 text-right">
-                    <span className="text-sm font-bold text-slate-900 tabular-nums">${tx.amount.toFixed(2)}</span>
+                    <span className="text-sm font-bold text-slate-900 dark:text-slate-100 tabular-nums">${tx.amount.toFixed(2)}</span>
                   </td>
                   <td className="px-5 py-4">
                     <span className={`inline-flex px-2 py-1 rounded-xl text-[11px] font-semibold border ${getMethodBadge(tx.method)}`}>{tx.method}</span>
                   </td>
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-1.5">
-                      {tx.status === 'paid' ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600" /> : <Clock className="w-3.5 h-3.5 text-amber-600" />}
+                      {tx.status === 'paid' ? <CheckCircle className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" /> : <Clock className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />}
                       <span className={`inline-flex px-2 py-1 rounded-xl text-[11px] font-semibold border ${getStatusClass(tx.status)}`}>{tx.status}</span>
                     </div>
                   </td>
                   <td className="px-5 py-4">
-                    <div className="text-sm text-slate-700">{tx.date}</div>
-                    <div className="text-xs text-slate-800 tabular-nums">{tx.time}</div>
+                    <div className="text-sm text-slate-700 dark:text-slate-200">{tx.date}</div>
+                    <div className="text-xs text-slate-600 dark:text-slate-300 tabular-nums">{tx.time}</div>
                   </td>
                   <td className="px-5 py-4 text-right">
-                    <button className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/30 border border-white/40 hover:bg-white/60 dark:hover:bg-white/10 text-xs font-semibold text-slate-900 transition-all">
+                    <button className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-white/40 dark:bg-white/5 border border-white/50 dark:border-white/10 hover:bg-white/60 dark:hover:bg-white/10 text-xs font-semibold text-slate-900 dark:text-slate-100 transition-all">
                       <Download className="w-3 h-3" />
                       Invoice
                     </button>
