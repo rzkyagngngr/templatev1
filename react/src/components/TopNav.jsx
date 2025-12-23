@@ -5,7 +5,7 @@ export default function TopNav({ onNavigate }) {
     const [lang, setLang] = useState({ code: 'EN', flag: '🇺🇸' });
 
     const isFileProtocol = typeof window !== 'undefined' && window.location.protocol === 'file:';
-    const logoSrc = isFileProtocol ? './assets/icon.png' : '/assets/icon.png';
+    const logoSrc = 'https://s3-ptos-m.s3.ap-southeast-3.amazonaws.com/LAMPIRAN_UPDATE/icon.png';
 
     const dropdownRef = useRef(null);
 
